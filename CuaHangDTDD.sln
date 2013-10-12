@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuaHangDTDD", "CuaHangDTDD\CuaHangDTDD.csproj", "{6FB29325-CC72-4653-9B70-1037D125496E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winform", "Winform\Winform.csproj", "{57E48EAA-B277-4F58-A239-2E59E120A8DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FB29325-CC72-4653-9B70-1037D125496E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FB29325-CC72-4653-9B70-1037D125496E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FB29325-CC72-4653-9B70-1037D125496E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FB29325-CC72-4653-9B70-1037D125496E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E48EAA-B277-4F58-A239-2E59E120A8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E48EAA-B277-4F58-A239-2E59E120A8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E48EAA-B277-4F58-A239-2E59E120A8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E48EAA-B277-4F58-A239-2E59E120A8DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
