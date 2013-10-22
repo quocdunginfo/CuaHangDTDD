@@ -1,5 +1,4 @@
-﻿using CuaHangDTDD.Controllers.ModelController;
-using CuaHangDTDD.Models;
+﻿using CuaHangDTDD.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +12,7 @@ namespace CuaHangDTDD.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
-            NhanVienController ctr = new NhanVienController();
-            ViewBag.NhanVien_List = ctr._db.ds_nhanvien.ToList();
-            if (ctr.login("admin", "admin"))
-            {
-                ViewBag.Message = "dang nhap thanh cong!";
-            }
+            ViewBag.Title = "nothing";
             return View();
         }
 

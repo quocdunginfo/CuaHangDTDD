@@ -1,15 +1,9 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    var NhanVien_List = (List<CuaHangDTDD.Models.NhanVien>)ViewBag.NhanVien_List;
 
 }
 
 <h2>@ViewBag.Message</h2>
 <p>
     To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-    @foreach (var item in NhanVien_List)
-    {
-        <text>@item.tendangnhap</text>
-        @ViewBag.Message
-    }
 </p>

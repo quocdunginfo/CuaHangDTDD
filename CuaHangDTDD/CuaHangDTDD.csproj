@@ -96,11 +96,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ModelController\NhanVienController.cs" />
     <Compile Include="Controllers\WebController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310121518031_InitialCreate.cs" />
+    <Compile Include="Migrations\201310121518031_InitialCreate.Designer.cs">
+      <DependentUpon>201310121518031_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310221642417_cap_nhat_class_jkasdhjashdjksdasd.cs" />
+    <Compile Include="Migrations\201310221642417_cap_nhat_class_jkasdhjashdjksdasd.Designer.cs">
+      <DependentUpon>201310221642417_cap_nhat_class_jkasdhjashdjksdasd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TableModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Library\CookieLibrary.cs" />
@@ -200,9 +208,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\ModelController\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201310121518031_InitialCreate.resx">
+      <DependentUpon>201310121518031_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310221642417_cap_nhat_class_jkasdhjashdjksdasd.resx">
+      <DependentUpon>201310221642417_cap_nhat_class_jkasdhjashdjksdasd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
