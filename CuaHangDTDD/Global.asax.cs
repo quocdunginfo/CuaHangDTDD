@@ -24,19 +24,19 @@ namespace CuaHangDTDD
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             /* begin Web Controller*/
             routes.MapRoute(
-                "WebPage", // Route name
-                "Web", // URL with parameters
-                new { controller = "Web", action = "Index2" } // Parameter defaults
+                "FrontPage", // Route name
+                "Front", // URL with parameters
+                new { controller = "Front", action = "Index2" } // Parameter defaults
             );
 
             routes.MapRoute(
-                "WebPageIndex", // Route name
-                "Web/Index", // URL with parameters
+                "FrontPageIndex", // Route name
+                "Front/Index", // URL with parameters
                 new { controller = "Web", action = "Index2" } // Parameter defaults
             );
             routes.MapRoute(
-                "WebPageIndexWithSlash", // Route name
-                "Web/Index/", // URL with parameters
+                "FrontPageIndexWithSlash", // Route name
+                "Front/Index/", // URL with parameters
                 new { controller = "Web", action = "Index2" } // Parameter defaults
             );
             /* end Web Controller*/
@@ -44,7 +44,7 @@ namespace CuaHangDTDD
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "Front", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }
