@@ -10,8 +10,7 @@ namespace CuaHangDTDD.Controllers
 {
     public class FrontController : Controller
     {
-        //
-        // GET: /Web/
+        /*Để các trang Front kế thừa*/
         protected HttpCookie _timkiem_sanpham;
         [NonAction]
         protected void _khoitao_cookie()

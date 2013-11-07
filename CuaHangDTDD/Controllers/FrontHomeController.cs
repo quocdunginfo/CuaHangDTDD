@@ -8,9 +8,7 @@ namespace CuaHangDTDD.Controllers
 {
     public class FrontHomeController : FrontController
     {
-        //
-        // GET: /FrontHome/
-
+        /*Hiển thị Slideshow, 9 sản phẩm mới nhất, hiển thị danh mục hãng SX*/
         public ActionResult Index()
         {
             return View();

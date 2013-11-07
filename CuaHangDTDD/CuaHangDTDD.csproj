@@ -95,8 +95,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\FrontAboutController.cs" />
+    <Compile Include="Controllers\FrontCartController.cs" />
+    <Compile Include="Controllers\FrontContactController.cs" />
     <Compile Include="Controllers\FrontController.cs" />
     <Compile Include="Controllers\FrontHomeController.cs" />
+    <Compile Include="Controllers\FrontProductDetailController.cs" />
+    <Compile Include="Controllers\FrontProductsController.cs" />
+    <Compile Include="Controllers\FrontSearchController.cs" />
     <Compile Include="Controllers\ModelController\DonHangController.cs" />
     <Compile Include="Controllers\ModelController\HangSXController.cs" />
     <Compile Include="Controllers\ModelController\HinhAnhController.cs" />
@@ -480,7 +486,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\FrontHome\Index.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
-    <Content Include="Views\FrontHome\_ViewStart.cshtml" />
     <Content Include="Views\FrontHome\Index3.cshtml" />
     <Content Include="Views\FrontHome\Index4.cshtml" />
   </ItemGroup>
