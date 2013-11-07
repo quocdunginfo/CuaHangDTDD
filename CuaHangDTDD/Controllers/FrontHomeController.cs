@@ -15,6 +15,14 @@ namespace CuaHangDTDD.Controllers
         {
             return View();
         }
+        public ActionResult Index3()
+        {
+            return View();
+        }
+        public ActionResult Index4()
+        {
+            return View();
+        }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
