@@ -32,19 +32,19 @@ namespace CuaHangDTDD
             routes.MapRoute(
                 "FrontPageIndex", // Route name
                 "Front/Index", // URL with parameters
-                new { controller = "Web", action = "Index2" } // Parameter defaults
+                new { controller = "Front", action = "Index2" } // Parameter defaults
             );
             routes.MapRoute(
                 "FrontPageIndexWithSlash", // Route name
                 "Front/Index/", // URL with parameters
-                new { controller = "Web", action = "Index2" } // Parameter defaults
+                new { controller = "Front", action = "Index2" } // Parameter defaults
             );
             /* end Web Controller*/
 
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Front", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "FrontHome", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }

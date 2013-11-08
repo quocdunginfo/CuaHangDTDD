@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CuaHangDTDD.ModelController;
+using CuaHangDTDD.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +13,8 @@ namespace CuaHangDTDD.Controllers
         /*Hiển thị Slideshow, 9 sản phẩm mới nhất, hiển thị danh mục hãng SX*/
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult Index3()
-        {
+            ViewBag.SanPham_List = new SanPhamController().timkiem("","","","",-1,-1,null,"1","id",true,0,8);
+            ViewBag.HangSX_List = new HangSXController().timkiem("", "", "1");
             return View();
         }
         public ActionResult Index4()

@@ -22,6 +22,16 @@ namespace CuaHangDTDD.Models
         public Boolean macdinh { get; set; }//đường dẫn tương đối
         //external
         public virtual SanPham sanpham { get; set; }
+        public String _get_full_duongdan()
+        {
+            String path = "/_Upload/HinhAnh/";//absolute
+            return path + this.duongdan;
+        }
+        public String _get_full_duongdan_thumb()
+        {
+            String path = "/_Upload/HinhAnh/";//absolute
+            return path + this.duongdan_thumb;
+        }
     }
     public class SanPham_ChiTiet
     {
@@ -76,6 +86,16 @@ namespace CuaHangDTDD.Models
         public virtual List<HinhAnh> ds_hinhanh { get; set; }
         public virtual HangSX hangsx { get; set; }
         public virtual List<SanPham_ChiTiet> ds_sanpham_chitiet { get; set; }
+        public HinhAnh _get_hinhanh_macdinh()
+        {
+            HinhAnh tmp = this.ds_hinhanh.Where(x => x.macdinh == true).FirstOrDefault();
+            if (tmp == null)
+            {
+                tmp = new HinhAnh();
+                tmp.duongdan =tmp.duongdan_thumb= "default.jpg";
+            }
+            return tmp;
+        }
     }
     
     public class HangSX

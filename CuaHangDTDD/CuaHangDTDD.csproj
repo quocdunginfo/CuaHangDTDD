@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminHinhAnhController.cs" />
     <Compile Include="Controllers\FrontAboutController.cs" />
     <Compile Include="Controllers\FrontCartController.cs" />
     <Compile Include="Controllers\FrontContactController.cs" />
@@ -484,9 +485,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\FrontHome\Index.cshtml" />
+    <Content Include="Views\FrontHome\Index_noslider.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
-    <Content Include="Views\FrontHome\Index3.cshtml" />
+    <Content Include="Views\FrontHome\Index.cshtml" />
     <Content Include="Views\FrontHome\Index4.cshtml" />
   </ItemGroup>
   <ItemGroup>

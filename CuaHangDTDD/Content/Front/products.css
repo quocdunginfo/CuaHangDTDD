@@ -50,7 +50,9 @@
 	overflow:hidden;
 }
 .lastProductImage img { width:70px; height:98px; background:#fff; margin:0;}
-
+/*quocdunginfo override*/
+.lastProductImage img { width:auto; height:auto; background:#fff; margin:0; max-height: 120px; max-width: 160px;}
+/*end quocdunginfo override*/
 
 .lastProductName{
 	text-align:left;
