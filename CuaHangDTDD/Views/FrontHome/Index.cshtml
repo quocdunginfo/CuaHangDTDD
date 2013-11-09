@@ -156,7 +156,7 @@
                                             <div class="ProductBox item_01  last special">
                                                 <div class="fleft">
                                                     <div class="lastProductDetail" style="padding:0px">
-                                                        <input type="submit" class="add_to_cart_button" value="@item.ten" title="Xem chi tiết" />
+                                                        <button type="button" class="add_to_cart_button" title="Xem" onclick="document.location='@Url.Action("Index", "FrontProducts", new { hangsx_id=item.id })'">@item.ten</button>
                                                     </div>
                                                 </div>
                                             </div>
