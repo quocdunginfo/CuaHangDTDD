@@ -1,5 +1,5 @@
-﻿using CuaHangDTDD.ModelController;
-using CuaHangDTDD.Models;
+﻿using BaseClass.ModelController;
+using BaseClass.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,7 +39,6 @@ namespace CuaHangDTDD.Controllers
             pg.update();
             ViewBag.SanPham_List = ctr.timkiem("","","","",-1,-1,search_hangsx,"1","id",true,pg.start_point,max_item_per_page);
             ViewBag.pagination = pg;
-            ViewBag.HangSX_List = ctr_hangsx.timkiem("","","1");
             ViewBag.hangsx = hangsx;
             return View();
         }

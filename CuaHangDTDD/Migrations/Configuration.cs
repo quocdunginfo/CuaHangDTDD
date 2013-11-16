@@ -5,14 +5,14 @@ namespace CuaHangDTDD.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CuaHangDTDD.Models.DTDDDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BaseClass.Models.DTDDDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(CuaHangDTDD.Models.DTDDDbContext context)
+        protected override void Seed(BaseClass.Models.DTDDDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

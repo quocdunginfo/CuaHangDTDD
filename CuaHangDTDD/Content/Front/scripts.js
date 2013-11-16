@@ -36,6 +36,7 @@ $j(window).load(function(){
 
 // Pretty Photo
 
+
 $j(document).ready(function(){
 	/*$j("#vmMainPage h3 , #vmMainPage h2 ").wrapInner("<span />").wrapInner("<span />");
 		$j('.module_new h3').each(function() {
@@ -60,7 +61,8 @@ $j(document).ready(function(){
 	if ($j('.vmCartDetails > div').hasClass('vmRowTwo')) {
 			$j('.vmCartContainer1').css({width:'100%'})
 		} else {
-			$j('.vmCartContainer1').css({width:'135px'})	
+	    //$j('.vmCartContainer1').css({width:'135px'})	
+	    $j('.vmCartContainer1').css({ width: 'auto' })//quocdunginfo
 		}									
 $j("#product_list a[rel^='prettyPhoto']").prettyPhoto({
 			slideshow:false,

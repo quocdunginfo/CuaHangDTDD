@@ -1,0 +1,489 @@
+﻿@{
+    Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
+    //var HangSX_List = (List<BaseClass.Models.HangSX>)ViewBag.HangSX_List;
+    var sanpham = (BaseClass.Models.SanPham)ViewBag.sanpham;
+    var giohang = (BaseClass.Models.DonHang)ViewBag.giohang;
+}
+@{
+    //xử lý tồn kho TEMP    
+    foreach(var item in sanpham.ds_sanpham_chitiet)
+    {
+        //lấy sanpham chi tiet trong giohang trung voi item dang xet
+        var tmp = giohang.ds_chitiet_donhang.Where(x => x.sanpham_chitiet.id == item.id).FirstOrDefault();
+        //mếu đã có trong giỏ hàng thì phải trừ bớt tồn kho
+        if(tmp!=null)
+        {
+            item.tonkho -= tmp.soluong;
+            if (item.tonkho <= 0)
+            {
+                item.tonkho = 0;
+            }
+        }
+    }
+    string frontcart_link = Url.Action("Index","FrontCart");
+}
+<script type="text/javascript">
+    var chitietsp_list = new Array();
+    var chitietsp;
+    @if(sanpham.ds_sanpham_chitiet.Count==0) 
+    {
+        <text>
+        chitietsp=new Object();
+        chitietsp.id="0";
+        chitietsp.mausac_ten="(Chưa có)";
+        chitietsp.tonkho = 0;
+        chitietsp.sl_trong_giohang = 0;
+        chitietsp_list.push(chitietsp);
+        </text>
+    }
+    @foreach(var item in sanpham.ds_sanpham_chitiet)
+    {
+        var tmp = giohang.ds_chitiet_donhang.Where(x => x.sanpham_chitiet.id == item.id).FirstOrDefault();
+        int sl_trong_giohang = tmp== null ? 0 : tmp.soluong;
+        <text>
+        chitietsp=new Object();
+        chitietsp.id=@item.id ;
+        chitietsp.mausac_ten="@item.mausac.giatri" ;
+        chitietsp.tonkho = @item.tonkho ;
+        chitietsp.sl_trong_giohang = @sl_trong_giohang ;
+        chitietsp_list.push(chitietsp);
+        </text>
+    }
+			 
+    $j(document).ready(function() {
+    
+        for (var i=0; i<chitietsp_list.length; i++)
+        {
+            $j('#qd_chitietsp').append('<option value="'+chitietsp_list[i].id+'">'+chitietsp_list[i].mausac_ten+'</option>');
+        }
+        validate_on_submit();
+    });
+    
+    function validate_on_submit()
+    {
+        var value = $j("#qd_sanpham_soluong").val();
+        var obj = get_current_selected_chitietsp_obj();
+        if(obj.id==0)
+        {
+            $j('#qd_message').html("Sản phẩm chưa cho phép đặt hàng");
+            return false;
+        }
+        else if(value<=0 || isNaN(value))
+        {
+            //action for hết hàng rồi pa
+            $j('#qd_message').html("Số lượng đặt không hợp lệ");
+            $j('#qd_dathang').attr("disabled", "disabled");
+            return false;
+        }
+        else if(value>obj.tonkho && obj.tonkho>0)
+        {
+            $j('#qd_message').html("Màu sắc đang chọn hiện cho phép đặt tối đa "+obj.tonkho+" sản phẩm");
+            if(obj.sl_trong_giohang>0)
+            {
+                $j('#qd_message').html($j('#qd_message').html() +"<br>(Trong <a href="+"@frontcart_link"+">giỏ hàng</a> hiện đã có "+obj.sl_trong_giohang+" sản phẩm màu này rồi)");
+            }
+            $j('#qd_dathang').attr("disabled", "disabled");
+            return false;
+        }
+        else if(obj.tonkho==0)
+        {
+            $j('#qd_message').html("Màu sắc đang chọn hiện đã hết hàng");
+            if(obj.sl_trong_giohang>0)
+            {
+                $j('#qd_message').html($j('#qd_message').html() +"<br>(Trong <a href="+"@frontcart_link"+">giỏ hàng</a> hiện đã có "+obj.sl_trong_giohang+" sản phẩm màu này rồi)");
+            }
+            $j('#qd_dathang').attr("disabled", "disabled");
+            return false;
+        }
+        else
+        {
+            $j('#qd_message').html("");
+            $j('#qd_dathang').removeAttr('disabled');
+            return true;
+        }
+        return false;
+    }
+    function get_current_selected_chitietsp_id()
+    {
+        var selectBox = document.getElementById("qd_chitietsp");
+        var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+        return selectedValue;
+    }
+    function get_current_selected_chitietsp_obj()
+    {
+        var chitietsp_id = get_current_selected_chitietsp_id();
+        var obj;
+        for (var i=0; i<chitietsp_list.length; i++)
+        {
+            if(chitietsp_list[i].id==chitietsp_id)
+            {
+                obj = chitietsp_list[i];
+            }
+        }
+        return obj;
+    }
+</script>
+
+<div class="container">
+    <div class="content-indent">
+        <div id="vmMainPage">
+            <div class="Product-border">
+                <div class="Product-border-conent">
+                    <div class="wrapper">
+                        <div class="float-left">
+                            <div class="browseProductImageContainer">
+                                <div class="browseProductImage Fly">
+                                    <a href="@sanpham._get_hinhanh_macdinh()._get_full_duongdan()" title="dolor" rel="prettyPhoto">
+                                        <img src="@sanpham._get_hinhanh_macdinh()._get_full_duongdan_thumb()" style="max-width:220px;; max-height:308px; width:auto; height:auto;" alt="dolor" border="0"><br>
+                                        Xem hình lớn hơn
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="floatElement">
+                            <h2 class="browseProductTitle">
+                                <span href="#" title="dolor" class="product_name">@sanpham.ten</span> 				                        </h2>
+                            <div class="product-divider">
+                                <div class="browsePriceContainer">
+                                    <span class="productPrice">@sanpham.gia VNĐ			</span>
+
+                                </div>
+                                
+                                <div class="vmCartContainer1" style="width: 145px;">
+
+                                    <div class="vmCartContainer">
+
+                                        <form action="@Url.Action("Submit","FrontProductDetail")" method="post" name="addtocart" class="addtocart_form" onsubmit="return validate_on_submit()">
+                                            <!-- quocdunginfo -->
+                                            <div style="clear:both"></div>
+                                            <div style="float:left; margin-top:22px;">
+                                                <span title="dolor" class="product_name">Màu:</span>
+                                                <select id="qd_chitietsp" name="sanpham_chitietsp_id" onchange="validate_on_submit()">
+                                                    
+                                                </select>
+                                            </div>
+                                            <div style="clear:both"></div>
+                                            <!-- end quocdunginfo -->
+                                            <div class="vmCartDetails">
+                                                
+                                            </div>
+
+                                            <div style="width: auto;">
+                                                <span class="quantity" style="display: block;">
+                                                    <label for="qd_sanpham_soluong" class="quantity_box">Số lượng:&nbsp;</label>
+                                                    <input type="text" class="inputboxquantity" size="4" id="qd_sanpham_soluong" name="sanpham_soluong" value="1" onkeyup="validate_on_submit()" >
+                                                    <input type="button" class="quantity_box_button quantity_box_button_up png" onclick="var qty_el = document.getElementById('qd_sanpham_soluong'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++; validate_on_submit();return false;">
+                                                    <input type="button" class="quantity_box_button quantity_box_button_down png" onclick="var qty_el = document.getElementById('qd_sanpham_soluong'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) qty_el.value--;validate_on_submit();return false;"></span>
+                                            </div>
+
+                                            
+                                            <input id="qd_dathang" type="submit" value="Mua hàng" class="addtocart_button" title="Add to Cart">
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+                                <span id="qd_message" style="float:right;padding-top:10px; color:red"></span>
+                            </div>
+                            <div class="clear"></div>
+                            
+                            <div class="description">
+                                <div class="desc">
+                                    @sanpham._get_mota_lite(500)
+                                </div>
+                            </div>
+
+                            <div class="ask_seller nobutton" style="background: none;">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="Fly-tabs" style="visibility: visible;">
+                        <dl class="tabs" id="pane">
+                            <dt id="tab3" class="open" style="cursor: pointer;"><span><span>Chi tiết cấu hình</span></span></dt>
+                        </dl>
+                        <div class="current">
+                            <dd style="display: none;">
+                                <div>
+                                    <div class="related">
+                                        <div class="extra-releted">
+                                            <div style="background: none;">
+                                                <div style="width: 100%; background: none;">
+
+
+                                                    <div valign="top" style="float: left; width: 138px;">
+                                                        <div class="featuredIndent">
+                                                            <div class="featuredborder">
+                                                                <!-- The product image DIV. -->
+                                                                <div class="product_image_container" style="z-index: 0;">
+                                                                    <a title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=4&amp;flypage=flypage.tpl&amp;product_id=9&amp;option=com_virtuemart&amp;Itemid=29">
+                                                                        <img src="http://livedemo00.template-help.com/virtuemart_37317/components/com_virtuemart/shop_image/product/resized/Product09_resized.png" height="308" width="220" alt="Lorem ipsum dolor sit amet" border="0" style="height: 154px; width: 110px; left: 0px; top: 0px;">
+                                                                    </a>
+                                                                </div>
+                                                                <!-- The product name DIV. -->
+                                                                <div class="product_name">
+                                                                    <a class="product_name" title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=4&amp;flypage=flypage.tpl&amp;product_id=9&amp;option=com_virtuemart&amp;Itemid=29">Lorem ipsum dolor sit amet</a>
+                                                                    <a href="/virtuemart_37317/" title="" class="lastProductCategory"></a>
+                                                                </div>
+                                                                <!-- END The product name DIV. -->
+                                                                <!-- The product Description DIV. -->
+                                                                <!-- END The product Description DIV. -->
+                                                                <!-- END The product image DIV. -->
+                                                                <div class="bg">
+                                                                    <div class="product-options">
+                                                                        <!-- The product price DIV. -->
+                                                                        <div class="box_product_price">
+                                                                            <em>Price:</em>	<span class="productPrice">$ 167.98			</span>
+                                                                            <span class="product-Old-Price" style="text-decoration: line-through;">$ 175.00</span>
+                                                                        </div>
+                                                                        <!-- END The product price DIV. -->
+                                                                        <div class="wrapper">
+
+                                                                            <!-- The product details DIV. -->
+                                                                            <div class="product_details_container">
+                                                                                <a class="details" title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=4&amp;flypage=flypage.tpl&amp;product_id=9&amp;option=com_virtuemart&amp;Itemid=29">Details</a>
+                                                                            </div>
+                                                                            <!-- END The product details DIV. -->
+                                                                            <!-- The add to cart DIV. -->
+                                                                            <div class="product_buttons">
+                                                                                <form action="/virtuemart_37317/index.php?page=shop.product_details&amp;flypage=flypage.tpl&amp;product_id=3&amp;category_id=1&amp;option=com_virtuemart&amp;Itemid=29" method="post" name="addtocart" >
+                                                                                    <input type="hidden" name="option" value="com_virtuemart">
+                                                                                    <input type="hidden" name="page" value="shop.cart">
+                                                                                    <input type="hidden" name="Itemid" value="29">
+                                                                                    <input type="hidden" name="func" value="cartAdd">
+                                                                                    <input type="hidden" name="prod_id" value="9">
+                                                                                    <input type="hidden" name="product_id" value="9">
+                                                                                    <input type="hidden" name="quantity" value="1">
+                                                                                    <input type="hidden" name="set_price[]" value="">
+                                                                                    <input type="hidden" name="adjust_price[]" value="">
+                                                                                    <input type="hidden" name="master_product[]" value="">
+                                                                                    <input type="submit" class="addtocart_button" value="Add to Cart" title="Add to Cart">
+                                                                                </form>
+                                                                            </div>
+                                                                            <!-- END The add to cart DIV. -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div valign="top" style="float: left; width: 138px;">
+                                                        <div class="featuredIndent">
+                                                            <div class="featuredborder">
+                                                                <!-- The product image DIV. -->
+                                                                <div class="product_image_container" style="z-index: 0;">
+                                                                    <a title="Lorem ipsum " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=61&amp;option=com_virtuemart&amp;Itemid=29">
+                                                                        <img src="http://livedemo00.template-help.com/virtuemart_37317/components/com_virtuemart/shop_image/product/resized/Product61_resized.png" height="308" width="220" alt="Lorem ipsum " border="0" style="height: 154px; width: 110px; left: 0px; top: 0px;">
+                                                                    </a>
+                                                                </div>
+                                                                <!-- The product name DIV. -->
+                                                                <div class="product_name">
+                                                                    <a class="product_name" title="Lorem ipsum " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=61&amp;option=com_virtuemart&amp;Itemid=29">Lorem ipsum </a>
+                                                                    <a href="/virtuemart_37317/" title="" class="lastProductCategory"></a>
+                                                                </div>
+                                                                <!-- END The product name DIV. -->
+                                                                <!-- The product Description DIV. -->
+                                                                <!-- END The product Description DIV. -->
+                                                                <!-- END The product image DIV. -->
+                                                                <div class="bg">
+                                                                    <div class="product-options">
+                                                                        <!-- The product price DIV. -->
+                                                                        <div class="box_product_price">
+                                                                            <em>Price:</em>	<span class="productPrice">$ 291.98			</span>
+                                                                            <span class="product-Old-Price" style="text-decoration: line-through;">$ 299.00</span>
+                                                                        </div>
+                                                                        <!-- END The product price DIV. -->
+                                                                        <div class="wrapper">
+
+                                                                            <!-- The product details DIV. -->
+                                                                            <div class="product_details_container">
+                                                                                <a class="details" title="Lorem ipsum " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=61&amp;option=com_virtuemart&amp;Itemid=29">Details</a>
+                                                                            </div>
+                                                                            <!-- END The product details DIV. -->
+                                                                            <!-- The add to cart DIV. -->
+                                                                            <div class="product_buttons">
+                                                                                <form action="/virtuemart_37317/index.php?page=shop.product_details&amp;flypage=flypage.tpl&amp;product_id=3&amp;category_id=1&amp;option=com_virtuemart&amp;Itemid=29" method="post" name="addtocart" id="addtocart">
+                                                                                    <input type="hidden" name="option" value="com_virtuemart">
+                                                                                    <input type="hidden" name="page" value="shop.cart">
+                                                                                    <input type="hidden" name="Itemid" value="29">
+                                                                                    <input type="hidden" name="func" value="cartAdd">
+                                                                                    <input type="hidden" name="prod_id" value="61">
+                                                                                    <input type="hidden" name="product_id" value="61">
+                                                                                    <input type="hidden" name="quantity" value="1">
+                                                                                    <input type="hidden" name="set_price[]" value="">
+                                                                                    <input type="hidden" name="adjust_price[]" value="">
+                                                                                    <input type="hidden" name="master_product[]" value="">
+                                                                                    <input type="submit" class="addtocart_button" value="Add to Cart" title="Add to Cart">
+                                                                                </form>
+                                                                            </div>
+                                                                            <!-- END The add to cart DIV. -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div valign="top" style="float: left; width: 138px;">
+                                                        <div class="featuredIndent">
+                                                            <div class="featuredborder">
+                                                                <!-- The product image DIV. -->
+                                                                <div class="product_image_container" style="z-index: 0;">
+                                                                    <a title="Lorem ipsum dolor " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=63&amp;option=com_virtuemart&amp;Itemid=29">
+                                                                        <img src="http://livedemo00.template-help.com/virtuemart_37317/components/com_virtuemart/shop_image/product/resized/Product63_resized.png" height="308" width="220" alt="Lorem ipsum dolor " border="0" style="height: 154px; width: 110px; left: 0px; top: 0px;">
+                                                                    </a>
+                                                                </div>
+                                                                <!-- The product name DIV. -->
+                                                                <div class="product_name">
+                                                                    <a class="product_name" title="Lorem ipsum dolor " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=63&amp;option=com_virtuemart&amp;Itemid=29">Lorem ipsum dolor </a>
+                                                                    <a href="/virtuemart_37317/" title="" class="lastProductCategory"></a>
+                                                                </div>
+                                                                <!-- END The product name DIV. -->
+                                                                <!-- The product Description DIV. -->
+                                                                <!-- END The product Description DIV. -->
+                                                                <!-- END The product image DIV. -->
+                                                                <div class="bg">
+                                                                    <div class="product-options">
+                                                                        <!-- The product price DIV. -->
+                                                                        <div class="box_product_price">
+                                                                            <em>Price:</em>	<span class="productPrice">$ 180.98			</span>
+                                                                            <span class="product-Old-Price" style="text-decoration: line-through;">$ 188.00</span>
+                                                                        </div>
+                                                                        <!-- END The product price DIV. -->
+                                                                        <div class="wrapper">
+
+                                                                            <!-- The product details DIV. -->
+                                                                            <div class="product_details_container">
+                                                                                <a class="details" title="Lorem ipsum dolor " href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=18&amp;flypage=flypage.tpl&amp;product_id=63&amp;option=com_virtuemart&amp;Itemid=29">Details</a>
+                                                                            </div>
+                                                                            <!-- END The product details DIV. -->
+                                                                            <!-- The add to cart DIV. -->
+                                                                            <div class="product_buttons">
+                                                                                <form action="/virtuemart_37317/index.php?page=shop.product_details&amp;flypage=flypage.tpl&amp;product_id=3&amp;category_id=1&amp;option=com_virtuemart&amp;Itemid=29" method="post" name="addtocart" >
+                                                                                    <input type="hidden" name="option" value="com_virtuemart">
+                                                                                    <input type="hidden" name="page" value="shop.cart">
+                                                                                    <input type="hidden" name="Itemid" value="29">
+                                                                                    <input type="hidden" name="func" value="cartAdd">
+                                                                                    <input type="hidden" name="prod_id" value="63">
+                                                                                    <input type="hidden" name="product_id" value="63">
+                                                                                    <input type="hidden" name="quantity" value="1">
+                                                                                    <input type="hidden" name="set_price[]" value="">
+                                                                                    <input type="hidden" name="adjust_price[]" value="">
+                                                                                    <input type="hidden" name="master_product[]" value="">
+                                                                                    <input type="submit" class="addtocart_button" value="Add to Cart" title="Add to Cart">
+                                                                                </form>
+                                                                            </div>
+                                                                            <!-- END The add to cart DIV. -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div valign="top" style="float: left; width: 138px;">
+                                                        <div class="featuredIndent">
+                                                            <div class="featuredborder">
+                                                                <!-- The product image DIV. -->
+                                                                <div class="product_image_container">
+                                                                    <a title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=19&amp;flypage=flypage.tpl&amp;product_id=65&amp;option=com_virtuemart&amp;Itemid=29">
+                                                                        <img src="http://livedemo00.template-help.com/virtuemart_37317/components/com_virtuemart/shop_image/product/resized/Product65_resized.png" height="308" width="220" alt="Lorem ipsum dolor sit amet" border="0">
+                                                                    </a>
+                                                                </div>
+                                                                <!-- The product name DIV. -->
+                                                                <div class="product_name">
+                                                                    <a class="product_name" title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=19&amp;flypage=flypage.tpl&amp;product_id=65&amp;option=com_virtuemart&amp;Itemid=29">Lorem ipsum dolor sit amet</a>
+                                                                    <a href="/virtuemart_37317/" title="" class="lastProductCategory"></a>
+                                                                </div>
+                                                                <!-- END The product name DIV. -->
+                                                                <!-- The product Description DIV. -->
+                                                                <!-- END The product Description DIV. -->
+                                                                <!-- END The product image DIV. -->
+                                                                <div class="bg">
+                                                                    <div class="product-options">
+                                                                        <!-- The product price DIV. -->
+                                                                        <div class="box_product_price">
+                                                                            <em>Price:</em>	<span class="productPrice">$ 182.98			</span>
+                                                                            <span class="product-Old-Price" style="text-decoration: line-through;">$ 190.00</span>
+                                                                        </div>
+                                                                        <!-- END The product price DIV. -->
+                                                                        <div class="wrapper">
+
+                                                                            <!-- The product details DIV. -->
+                                                                            <div class="product_details_container">
+                                                                                <a class="details" title="Lorem ipsum dolor sit amet" href="/virtuemart_37317/index.php?page=shop.product_details&amp;category_id=19&amp;flypage=flypage.tpl&amp;product_id=65&amp;option=com_virtuemart&amp;Itemid=29">Details</a>
+                                                                            </div>
+                                                                            <!-- END The product details DIV. -->
+                                                                            <!-- The add to cart DIV. -->
+                                                                            <div class="product_buttons">
+                                                                                <form action="/virtuemart_37317/index.php?page=shop.product_details&amp;flypage=flypage.tpl&amp;product_id=3&amp;category_id=1&amp;option=com_virtuemart&amp;Itemid=29" method="post" name="addtocart" >
+                                                                                    <input type="hidden" name="option" value="com_virtuemart">
+                                                                                    <input type="hidden" name="page" value="shop.cart">
+                                                                                    <input type="hidden" name="Itemid" value="29">
+                                                                                    <input type="hidden" name="func" value="cartAdd">
+                                                                                    <input type="hidden" name="prod_id" value="65">
+                                                                                    <input type="hidden" name="product_id" value="65">
+                                                                                    <input type="hidden" name="quantity" value="1">
+                                                                                    <input type="hidden" name="set_price[]" value="">
+                                                                                    <input type="hidden" name="adjust_price[]" value="">
+                                                                                    <input type="hidden" name="master_product[]" value="">
+                                                                                    <input type="submit" class="addtocart_button" value="Add to Cart" title="Add to Cart">
+                                                                                </form>
+                                                                            </div>
+                                                                            <!-- END The add to cart DIV. -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </dd>
+                            <dd style="display: block;">
+                                <div>
+                                    <!-- List of product reviews -->
+                                    <h5 class="title"><span>Customer Reviews:</span></h5>
+                                    There are yet no reviews for this product.
+                                    <br>
+                                    Please log in to write a review.<br>
+                                </div>
+                            </dd>
+                            <dd style="display: none;">
+                                <div>
+                                    <!-- List of recent products -->
+                                    <div class="topSeparator">
+                                        <h5 class="title" style="padding-top: 0px; margin-bottom: -2px;">Recently Viewed Products</h5>
+                                        <ul class="vmRecentDetail">
+                                            <li>
+                                                <a href="/virtuemart_37317/index.php?page=shop.product_details&amp;product_id=79&amp;category_id=22&amp;flypage=flypage.tpl&amp;option=com_virtuemart&amp;Itemid=29">ipsum dolor</a>&nbsp;(Category:&nbsp;
+				<a href="/virtuemart_37317/index.php?page=shop.browse&amp;category_id=22&amp;option=com_virtuemart&amp;Itemid=29">In voluptate velit </a>)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                </div>
+                            </dd>
+                            <dd style="display: none;">
+                                <div class="for_video">
+                                    <div class="desc">The main reason of our success is that our commodities are the unique combination of original design and numerous useful options. We can satisfy most whimsical clients because we have a largest choice among the competitive stores.  Our phones are totally safe for your health because they have passed all tests without any failure. So don’t waste your time and purchase our products because our company cares about its clients. We often provide different promos and you can save some money in our store. </div>
+                                </div>
+                            </dd>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="statusBox" style="text-align: center; display: none; visibility: hidden;"></div>
+        </div>
+
+    </div>
+</div>

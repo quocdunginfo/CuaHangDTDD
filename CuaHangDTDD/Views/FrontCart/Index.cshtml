@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
+    var giohang = (BaseClass.Models.DonHang)ViewBag.giohang;
+}
+<div class="container">
+    <div class="content-indent">
+        <div id="vmMainPage">
+            <h2 class="title">Giỏ hàng</h2>
+            <div class="cart-top" style="padding: 20px 0px 0px 0px;">
+                <!-- Cart Begins here -->
+                <div class="basket">
+                    <table width="99%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr align="left" class="sectiontableheader">
+                                <td class="first"><span>Tên sản phẩm</span></td>
+                                <td class="second"><span>Màu</span></td>
+                                <td class="three"><span>Đơn giá</span></td>
+                                <td class="four"><span>Số lượng/Cập nhật</span></td>
+                                <td class="last"><span>Tổng tiền</span></td>
+                            </tr>
+                            @foreach(var item in giohang.ds_chitiet_donhang)
+                            {
+                            <tr valign="top" class="sectiontableentry1 png">
+                                <td class="first"><span><a href=""><strong>@item.sanpham_chitiet.sanpham.ten</strong></a><br>
+                                </span></td>
+                                <td class="second"><span>@item.sanpham_chitiet.mausac.giatri</span></td>
+                                <td class="three"><span>@item.dongia</span></td>
+                                <td class="four"><span>
+                                    <strong class="left1">
+                                        <form action="@Url.Action("Submit","FrontCart")" method="post" style="display: inline;">
+                                            <input type="text" title="Cập nhật số lượng trong giỏ hàng" class="inputbox" size="4" maxlength="4" name="giohang_chitietsp_soluong" value="@item.soluong">
+                                            <input type="hidden" name="giohang_chitietsp_id" value="@item.sanpham_chitiet.id">
+                                        
+                                            <input type="image" name="update" title="Update Quantity In Cart" src="update_quantity_cart.png" alt="Update" align="middle">
+                                        </form>
+                                    </strong>
+                                    <strong class="left2">
+                                    <form action="@Url.Action("Remove","FrontCart")" method="post" name="delete" style="display: inline;">
+                                        <input type="hidden" name="giohang_chitietsp_id" value="@item.sanpham_chitiet.id">
+                                        <input type="image" name="delete" title="Delete Product From Cart" src="remove_from_cart.png" alt="Delete Product From Cart" align="middle">
+                                    </form>
+                                </strong></span></td>
+                                <td class="last"><span>@item._get_total()</span></td>
+                            </tr>
+                            }
+                            <!--Begin of SubTotal, Tax, Shipping, Coupon Discount and Total listing -->
+                            <tr class="sectiontableentry1 aft">
+                                <td colspan="4" align="right"><span>Tổng cộng:</span></td>
+                                <td colspan="3" align="left" class="last"><span>@giohang._get_tongtien()</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="coupon_code">
+                    <table width="100%" style="margin-top: 10px;">
+                        <tbody>
+                            <tr class="sectiontableentry1">
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- End Cart -->
+                <br>
+            </div>
+            <div style="padding: 14px 0px 0px 0px; overflow: hidden; width: 235px;">
+                <div style="text-align: left; position: relative;">
+                    <a href="@Url.Action("Index","FrontHome")" class="continue_link png">
+                        <span>Tiếp tục mua hàng</span>
+                    </a>
+                    <span class="arrow"></span><a href="@Url.Action("CheckOut","FrontCart")" title="Checkout" class="checkout_link png">Thanh toán</a>
+                </div>
+
+            </div>
+
+            <div id="statusBox" style="text-align: center; display: none; visibility: hidden;"></div>
+        </div>
+
+    </div>
+
+
+</div>

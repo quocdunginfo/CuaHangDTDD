@@ -1,0 +1,263 @@
+﻿@{
+    var HangSX_List = (List<BaseClass.Models.HangSX>)ViewBag.HangSX_List;
+    var giohang = (BaseClass.Models.DonHang)ViewBag.giohang;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+<head>
+    <base href="@Url.Content("~/Content/Front/")" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="joomla, Joomla" />
+    <meta name="description" content="Joomla! - the dynamic portal engine and content management system" />
+    <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
+
+    <title>Welcome to the Frontpage</title>
+
+    <link rel="stylesheet" href="ddsmoothmenu.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/modules/mod_vm_cat_menu_specific/css/ddsmoothmenu.css" type="text/css" />
+    <script type="text/javascript" src="mootools.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/media/system/js/mootools.js"></script>
+    <script type="text/javascript" src="caption.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/media/system/js/caption.js"></script>
+
+    <link href="Oswaldv1.css" tppabs="http://fonts.googleapis.com/css?family=Oswald&v1" rel='stylesheet' type='text/css' />
+    <link href="Quattrocento_Sans.css" tppabs="http://fonts.googleapis.com/css?family=Quattrocento+Sans" rel='stylesheet' type='text/css' />
+    <link href="Open_Sans_400_600_700_italic_800.css" tppabs="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700italic,800" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="prettyPhoto.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/prettyPhoto.css" type="text/css" media="screen,projection" />
+    <link rel="stylesheet" href="constant.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/constant.css" type="text/css" />
+    <link rel="stylesheet" href="template.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/template.css" type="text/css" />
+    <link rel="stylesheet" href="virtuemart.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/virtuemart.css" type="text/css" />
+    <link rel="stylesheet" href="products.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/products.css" type="text/css" />
+    <link rel="stylesheet" href="ieonly.css" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/css/ieonly.css" type="text/css" />
+    <script type="text/javascript" src="jquery-1.4.2.min.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="kwicks-1.5.1.pack.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/kwicks-1.5.1.pack.js"></script>
+    <script type="text/javascript" src="jqtransform.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/jqtransform.js"></script>
+    <!-- Slider -->
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(function () {
+            $j('.kwicks').kwicks({ max: 780, spacing: 0, min: 40, event: 'click', sticky: true, easing: 'easeOutBack' })
+            $j('.kwicks_body').fadeOut(0)
+            $j('.active .kwicks_body').delay(500).fadeIn(500)
+        })
+        $j(document).ready(function () {
+            $j(function () {
+                $j('#select-form').jqTransform({ imgPath: '/virtuemart_37317/templates/theme222/images/' }).css('display', 'block');
+            });
+        });
+        $j(window).load(function () {
+            $j('.tab_container , .Fly-tabs').css('visibility', 'visible');
+        });
+    </script>
+    <script type="text/javascript" src="jquery.easing.1.3.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="jquery.prettyPhoto.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/jquery.prettyPhoto.js"></script>
+    <!-- Script.js gaay looxi hieern thij ProductDetail -->
+    <script type="text/javascript" src="scripts.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/scripts.js"></script>
+    <script type="text/javascript" src="imagepreloader.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/scripts/imagepreloader.js"></script>
+    <script type="text/javascript">
+        preloadImages([
+			'arrowUp-active.png'/*tpa=http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/images/arrowUp-active.png*/,
+			'arrowDown-active.png'/*tpa=http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/images/arrowDown-active.png*/
+        ]);
+    </script>
+    <!--[if lt IE 7]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="javascript:if(confirm(%27http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode%27" tppabs="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="index-1.htm" tppabs="http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
+		</div>
+	<![endif]-->
+    <!--[if IE]>
+		<link href="baseurl---templates-template---css-ieonly.css" tppabs="http://livedemo00.template-help.com/baseurl?>/templates/template?>/css/ieonly.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+    <style type="text/css">
+        .featuredBorder, .related .extra-releted, .moduletable-categories ul.level1 li a, .moduletable-categories ul.level2, .kwicks li.kwicks_1, .kwicks li.kwicks_5, .module_best h3, .module_best .boxIndent, .module_new h3, .module_new .boxIndent, .module h3, .module_text h3, .module_menu h3, .module .boxIndent, .module_text .boxIndent, .module_menu .boxIndent, .content-indent {
+            behavior: url(PIE.php); /*tpa=http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/PIE.php*/
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body id="body" class="first">
+    <div id="all">
+        <div class="main">
+            <!-- header -->
+            <div id="header">
+                <div id="search">
+                    <div class="moduletable">
+                        <form action="http://livedemo00.template-help.com/virtuemart_37317/index.php" method="post">
+                            <div class="search">
+                                <input name="searchword" id="mod_search_searchword" maxlength="80" alt="Search" class="inputbox" type="text" size="80" value="Enter search keywords here" onblur="if(this.value=='') this.value='Enter search keywords here';" onfocus="if(this.value=='Enter search keywords here') this.value='';" /><input type="submit" value="Search" class="button" onclick="this.form.searchword.focus();" />
+                            </div>
+                            <input type="hidden" name="task" value="search" />
+                            <input type="hidden" name="option" value="com_search" />
+                            <input type="hidden" name="Itemid" value="1" />
+                        </form>
+                    </div>
+
+                </div>
+                <div id="topmenu">
+                    <div class="moduletable-nav">
+                        <ul class="menu">
+                            <li class="item29"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29"><span>Online store</span></a></li>
+                            <li class="item18"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18"><span>About Us</span></a></li>
+                            <li class="item30"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30"><span>Delivery</span></a></li>
+                            <li class="item53"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53"><span>FAQs</span></a></li>
+                            <li class="item54"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54"><span>Contacts</span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div id="cart">
+                    <div class="moduletable">
+                        <h3>
+                            Giỏ hàng
+                        </h3>
+                        
+                        <div class="vmCartModule">
+                            <a href="@Url.Action("Index","FrontCart")" >hiện có @giohang.ds_chitiet_donhang.Count sản phẩm
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="logo">
+                    <a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317">
+                        <img alt="" src="logo.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/templates/theme222/images/logo.png" /></a>
+                </div>
+                <div class="moduletable-categories">
+                    <script type="text/javascript" src="ddsmoothmenu.js" tppabs="http://livedemo00.template-help.com/virtuemart_37317/modules/mod_vm_cat_menu_specific/js/ddsmoothmenu.js"></script>
+                    <div class='ddsmoothmenu' id='smoothmenu1'>
+                        <div id="relative_div" style="position: relative; z-index: 0"></div>
+                        <ul class="level1">
+                            <li class="level1 item1"><a class="level1 item1 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=1&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=1&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=1&Itemid=29" target="_self" title="Mobile phones "><span>Mobile phones </span></a></li>
+                            <li class="level1 item2 parent"><a class="level1 item2  parent" href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=2&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=2&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=2&Itemid=29" target="_self" title="Smartphones"><span>Smartphones</span></a><ul class="level2">
+                                <li class="level2 item1 parent"><a class="level2 item1  parent" href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=6&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=6&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=6&Itemid=29" target="_self" title="veniam quis "><span>veniam quis </span></a>
+                                    <ul class="level3">
+                                        <li class="level3 item1"><a class="level3 item1 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=9&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=9&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=9&Itemid=29" target="_self" title="Lorem ipsum dolor  "><span>Lorem ipsum dolor  </span></a></li>
+                                        <li class="level3 item2"><a class="level3 item2 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=10&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=10&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=10&Itemid=29" target="_self" title="Ctetur adipisicing elit"><span>Ctetur adipisicing elit</span></a></li>
+                                        <li class="level3 item3"><a class="level3 item3 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=11&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=11&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=11&Itemid=29" target="_self" title="Do eiusmod tempor incididunt"><span>Do eiusmod tempor incididunt</span></a></li>
+                                        <li class="level3 item4"><a class="level3 item4 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=12&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=12&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=12&Itemid=29" target="_self" title="Labore et dolore"><span>Labore et dolore</span></a></li>
+                                        <li class="level3 item5"><a class="level3 item5 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=13&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=13&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=13&Itemid=29" target="_self" title="Ut enim ad minim"><span>Ut enim ad minim</span></a></li>
+                                        <li class="level3 item6"><a class="level3 item6 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=14&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=14&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=14&Itemid=29" target="_self" title="Veniam exercitation"><span>Veniam exercitation</span></a></li>
+                                        <li class="level3 item7"><a class="level3 item7 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=15&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=15&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=15&Itemid=29" target="_self" title="Ullamco"><span>Ullamco</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="level2 item2 parent"><a class="level2 item2  parent" href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=7&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=7&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=7&Itemid=29" target="_self" title="Ut enim ad minim  "><span>Ut enim ad minim  </span></a>
+                                    <ul class="level3">
+                                        <li class="level3 item1"><a class="level3 item1 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=16&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=16&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=16&Itemid=29" target="_self" title="Do eiusmod tempor incididunt ut"><span>Do eiusmod tempor incididunt ut</span></a></li>
+                                        <li class="level3 item2"><a class="level3 item2 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=17&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=17&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=17&Itemid=29" target="_self" title="Labore et dolore magna aliqua  "><span>Labore et dolore magna aliqua  </span></a></li>
+                                        <li class="level3 item3"><a class="level3 item3 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=18&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=18&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=18&Itemid=29" target="_self" title="Ut enim ad minim"><span>Ut enim ad minim</span></a></li>
+                                        <li class="level3 item4"><a class="level3 item4 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=19&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=19&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=19&Itemid=29" target="_self" title="Eiusmod tempor incididun"><span>Eiusmod tempor incididun</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="level2 item3 parent"><a class="level2 item3  parent" href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=8&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=8&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=8&Itemid=29" target="_self" title="ad minim "><span>ad minim </span></a>
+                                    <ul class="level3">
+                                        <li class="level3 item1"><a class="level3 item1 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=20&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=20&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=20&Itemid=29" target="_self" title="Commodo consequat"><span>Commodo consequat</span></a></li>
+                                        <li class="level3 item2"><a class="level3 item2 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=21&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=21&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=21&Itemid=29" target="_self" title="Duis aute irure dolor "><span>Duis aute irure dolor </span></a></li>
+                                        <li class="level3 item3"><a class="level3 item3 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=22&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=22&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=22&Itemid=29" target="_self" title="In voluptate velit "><span>In voluptate velit </span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            </li>
+                            <li class="level1 item3"><a class="level1 item3 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=3&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=3&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=3&Itemid=29" target="_self" title="Communicators "><span>Communicators </span></a></li>
+                            <li class="level1 item4"><a class="level1 item4 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=4&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=4&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=4&Itemid=29" target="_self" title="CDMA Phones "><span>CDMA Phones </span></a></li>
+                            <li class="level1 item5"><a class="level1 item5 " href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=5&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=5&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&page=shop.browse&category_id=5&Itemid=29" target="_self" title="Accessories"><span>Accessories</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END header -->
+            <div id="content">
+                <div class="wrapper">
+                    <div id="left">
+                        <div class="wrapper">
+                            <div class="extra-indent">
+                                <div class="module_best">
+                                    <!-- Left panel -->
+
+                                    <h3><span><span>Hãng sản xuất</span></span></h3>
+                                    <div class="boxIndent">
+                                        <div class="anythingSlider2">
+                                            <div class="wrapper qd_hangsx">
+                                                <!-- mark for custom css-->
+                                                <!-- hang sx list-->
+                                                <style type="text/css">
+                                                    .qd_hangsx .add_to_cart_button {
+                                                        width: auto;
+                                                        background: #242424;
+                                                        padding-left: 3px;
+                                                        padding-right: 3px;
+                                                        max-width: 190px;
+                                                        font: bold 12px Arial, Helvetica, sans-serif!important;
+                                                    }
+
+                                                    .qd_hangsx .ProductBox.last {
+                                                        min-height: 30px;
+                                                        margin-left: 10px;
+                                                    }
+
+                                                    .qd_hangsx .fleft {
+                                                        float: left;
+                                                        margin-top: 0px;
+                                                        width: auto;
+                                                    }
+                                                    /*HOVER DOI MAU*/
+                                                    .qd_hangsx .add_to_cart_button:hover {
+                                                        width: auto;
+                                                        background: #242424;
+                                                        padding-left: 3px;
+                                                        padding-right: 3px;
+                                                        max-width: 190px;
+                                                        font: bold 12px Arial, Helvetica, sans-serif!important;
+                                                        color: #a5a5a5;
+                                                    }
+                                                </style>
+                                                <ul>
+                                                    @foreach (var item in HangSX_List)
+                                                    {
+                                                        <li>
+                                                            <div class="ProductBox item_01  last special">
+                                                                <div class="fleft">
+                                                                    <div class="lastProductDetail" style="padding: 0px">
+                                                                        <button type="button" class="add_to_cart_button" title="Xem" onclick="document.location='@Url.Action("Index", "FrontProducts", new { hangsx_id = item.id })'">@item.ten</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- END AnythingSlider -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- Footer -->
+            <div id="footer">
+                <div class="space">
+                    <div class="wrapper">
+                        <div class="footerText">
+                            <ul class="menu">
+                                <li class="item29"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29"><span>Online store</span></a></li>
+                                <li class="item18"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18"><span>About Us</span></a></li>
+                                <li class="item30"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30"><span>Delivery</span></a></li>
+                                <li class="item53"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53"><span>FAQs</span></a></li>
+                                <li class="item54"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54"><span>Contacts</span></a></li>
+                            </ul>
+                            <div class="pad-top">Copyright &#169; 2013 Mobile. All Rights Reserved.&nbsp;<a href="javascript:if(confirm(%27http://www.joomla.org/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.joomla.org/%27" tppabs="http://www.joomla.org/">Joomla!</a> is Free Software released under the <a href="javascript:if(confirm(%27http://www.gnu.org/licenses/gpl-2.0.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.gnu.org/licenses/gpl-2.0.html%27" tppabs="http://www.gnu.org/licenses/gpl-2.0.html">GNU/GPL License.</a></div>
+                            <!--{%FOOTER_LINK} -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end footer -->
+        </div>
+        <p id="back-top">
+            <a href="#top"><span></span></a>
+        </p>
+    </div>
+</body>
+</html>

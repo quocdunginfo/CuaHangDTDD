@@ -1,5 +1,5 @@
-﻿using CuaHangDTDD.ModelController;
-using CuaHangDTDD.Models;
+﻿using BaseClass.ModelController;
+using BaseClass.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +14,6 @@ namespace CuaHangDTDD.Controllers
         public ActionResult Index()
         {
             ViewBag.SanPham_List = new SanPhamController().timkiem("","","","",-1,-1,null,"1","id",true,0,8);
-            ViewBag.HangSX_List = new HangSXController().timkiem("", "", "1");
-            return View();
-        }
-        public ActionResult Index4()
-        {
             return View();
         }
         protected override void OnActionExecuting(ActionExecutingContext filterContext)

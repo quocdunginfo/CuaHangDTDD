@@ -104,25 +104,11 @@
     <Compile Include="Controllers\FrontProductDetailController.cs" />
     <Compile Include="Controllers\FrontProductsController.cs" />
     <Compile Include="Controllers\FrontSearchController.cs" />
-    <Compile Include="Controllers\ModelController\DonHangController.cs" />
-    <Compile Include="Controllers\ModelController\HangSXController.cs" />
-    <Compile Include="Controllers\ModelController\HinhAnhController.cs" />
-    <Compile Include="Controllers\ModelController\NhapHangController.cs" />
-    <Compile Include="Controllers\ModelController\SanPhamController.cs" />
-    <Compile Include="Controllers\ModelController\SanPham_ChiTietController.cs" />
-    <Compile Include="Controllers\ModelController\TonKhoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Pagination.cs" />
-    <Compile Include="Models\TableModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_Library\CookieLibrary.cs" />
-    <Compile Include="_Library\GMailLibrary.cs" />
-    <Compile Include="_Library\ImageLibrary.cs" />
-    <Compile Include="_Library\TextLibrary.cs" />
-    <Compile Include="_Library\ValidateLibrary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Front\0.png" />
@@ -486,17 +472,24 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\FrontHome\Index_noslider.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
     <Content Include="Views\FrontHome\Index.cshtml" />
-    <Content Include="Views\FrontHome\Index4.cshtml" />
     <Content Include="Views\FrontProducts\Index.cshtml" />
+    <Content Include="Views\Shared\_FrontLayout_NoSlider.cshtml" />
+    <Content Include="Views\FrontProductDetail\Index.cshtml" />
+    <Content Include="Views\FrontCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Upload\HinhAnh\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseClass\BaseClass.csproj">
+      <Project>{c8255293-ebc6-48a6-8e7c-9969fa85d1b6}</Project>
+      <Name>BaseClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

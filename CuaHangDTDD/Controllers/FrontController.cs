@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BaseClass._Library;
+using BaseClass.ModelController;
+using BaseClass.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CuaHangDTDD.Models;
-using CuaHangDTDD._Library;
 
 namespace CuaHangDTDD.Controllers
 {
@@ -12,6 +14,13 @@ namespace CuaHangDTDD.Controllers
     {
         /*Để các trang Front kế thừa*/
         protected HttpCookie _timkiem_sanpham;
+        protected DonHang _giohang;
+        public FrontController()
+        {
+            this._giohang = new DonHang();
+            this._khoitao_cookie();
+        }
+        
         [NonAction]
         protected void _khoitao_cookie()
         {
@@ -54,7 +63,33 @@ namespace CuaHangDTDD.Controllers
                 }
             }
             ViewBag.timkiem_sanpham = this._timkiem_sanpham;
+            HangSXController ctr = new HangSXController();
+            ViewBag.HangSX_List = ctr.timkiem("", "", "1");
+            //CART section
+                try
+                {
+                    if (Session["giohang"] != null)
+                    {
+                        this._giohang = (DonHang)Session["giohang"];
+                    }
+                    else
+                    {
+                        this._giohang = new DonHang();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this._giohang = new DonHang();
+                }
+                //set session obj
+                this._save_cart_to_session();
+                ViewBag.giohang = this._giohang;
         }
-
+        [NonAction]
+        protected Boolean _save_cart_to_session()
+        {
+            Session["giohang"] = this._giohang;
+            return true;
+        }
     }
 }
