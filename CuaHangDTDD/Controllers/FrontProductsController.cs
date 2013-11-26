@@ -1,4 +1,5 @@
-﻿using BaseClass.ModelController;
+﻿using BaseClass._Library;
+using BaseClass.ModelControllers;
 using BaseClass.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace CuaHangDTDD.Controllers
             //pagination
             int max_item_per_page=4;//will get from setting
             //pagination
-                Pagination pg = new Pagination();
+                PaginationLibrary pg = new PaginationLibrary();
                 pg.set_current_page(page);
                 pg.set_max_item_per_page(max_item_per_page);
                 pg.set_total_item(

@@ -7,20 +7,20 @@ using System.Web.Mvc;
 
 namespace BaseClass.ModelControllers
 {
-    public class TonKhoController
+    public class ChiTiet_DonHangController
     {
         public DTDDDbContext _db;
-        public TonKhoController()
+        public ChiTiet_DonHangController()
         {
             this._db = new DTDDDbContext();
         }
-        public TonKhoController(DTDDDbContext db)
+        public ChiTiet_DonHangController(DTDDDbContext db)
         {
             this._db = db;
         }
-        public TonKho get_by_id(int obj_id)
+        public ChiTiet_DonHang get_by_id(int obj_id)
         {
-            return _db.ds_tonkho.FirstOrDefault(x => x.id == obj_id);
+            return _db.ds_chitiet_donhang.FirstOrDefault(x => x.id == obj_id);
         }
         public Boolean is_exist(int obj_id)
         {
@@ -31,20 +31,20 @@ namespace BaseClass.ModelControllers
             this.save();
             return true;
         }
-        public int add(TonKho obj)
+        public int add(ChiTiet_DonHang obj)
         {
-            this._db.ds_tonkho.Add(obj);
+            this._db.ds_chitiet_donhang.Add(obj);
             //commit
             this.save();
             //return ma moi nhat
-            return this._db.ds_tonkho.Max(x => x.id);
+            return this._db.ds_chitiet_donhang.Max(x => x.id);
         }
-        public Boolean delete(TonKho obj)
+        public Boolean delete(ChiTiet_DonHang obj)
         {
             //get entity
             obj = this.get_by_id(obj.id);
             //remove
-            this._db.ds_tonkho.Remove(obj);
+            this._db.ds_chitiet_donhang.Remove(obj);
             //commit
             return this.save();
         }

@@ -1,5 +1,5 @@
 ﻿using BaseClass._Library;
-using BaseClass.ModelController;
+using BaseClass.ModelControllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -41,13 +41,26 @@ namespace BaseClass.Models
             UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
             return helper.Content(path);
         }
+        
     }
     public class SanPham_ChiTiet
     {
         public SanPham_ChiTiet()
         {
+            this._ctr = new SanPham_ChiTietController();
+            this._Init();
+        }
+        public SanPham_ChiTiet(DTDDDbContext context)
+        {
+            this._ctr = new SanPham_ChiTietController(context);
+            this._Init();
+        }
+        private void _Init()
+        {
+            this.ds_tonkho = new List<TonKho>();
             this.id = 0;
             this.active = true;
+            this.tonkho = 0;
         }
         [Key]
         public int id { get; set; }
@@ -57,23 +70,75 @@ namespace BaseClass.Models
         public virtual MauSac mausac { get; set; }
         public virtual SanPham sanpham { get; set; }
         public virtual List<TonKho> ds_tonkho { get; set; }
+        //CRUD method
+        private SanPham_ChiTietController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     public class MauSac
     {
         public MauSac()
         {
+            this._ctr = new MauSacController();
+            this._Init();
+        }
+        public MauSac(DTDDDbContext context)
+        {
+            this._ctr = new MauSacController(context);
+            this._Init();
+        }
+        private void _Init()
+        {
             this.id = 0;
             this.giatri = "";
+            this.active = true;
             this.ds_sanpham_chitiet = new List<SanPham_ChiTiet>();
         }
         [Key]
         public int id { get; set; }
         public string giatri { get; set; }
+        public Boolean active { get; set; }
+        //external
         public virtual List<SanPham_ChiTiet> ds_sanpham_chitiet { get; set; }
+        //CRUD method
+        private MauSacController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
+
     }
     public class SanPham
     {
+        public SanPham(DTDDDbContext context)
+        {
+            _ctr = new SanPhamController(context);
+            this._Init();
+        }
         public SanPham()
+        {
+            _ctr = new SanPhamController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.ds_hinhanh = new List<HinhAnh>();
             this.masp = "";
@@ -120,16 +185,40 @@ namespace BaseClass.Models
                 tmp = TextLibrary.Unicode_Substring(tmp, max_length);
                 return tmp + "...";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return this.mota + "...";
             }
+        }
+        //CRUD method
+        private SanPhamController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
         }
     }
     
     public class HangSX
     {
+        public HangSX(DTDDDbContext context)
+        {
+            this._ctr = new HangSXController(context);
+            this._Init();
+        }
         public HangSX()
+        {
+            this._ctr = new HangSXController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.ds_sanpham = new List<SanPham>();
             this.id = 0;
@@ -142,11 +231,40 @@ namespace BaseClass.Models
         public Boolean active { get; set; }
         //external
         public virtual List<SanPham> ds_sanpham { get; set; }
+        //method
+        public override string ToString()
+        {
+            return this.ten;
+        }
+        //CRUD method
+        private HangSXController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
 
     public class NhapHang
     {
+        public NhapHang(DTDDDbContext context)
+        {
+            this._ctr = new NhapHangController(context);
+            this._Init();
+        }
         public NhapHang()
+        {
+            this._ctr = new NhapHangController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.ds_chitiet_nhaphang = new List<ChiTiet_NhapHang>();
             this.id = 0;
@@ -161,10 +279,34 @@ namespace BaseClass.Models
         public Boolean active { get; set; }
         //external
         public virtual List<ChiTiet_NhapHang> ds_chitiet_nhaphang { get; set; }
+        //CRUD method
+        private NhapHangController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     public class ChiTiet_NhapHang
     {
+        public ChiTiet_NhapHang(DTDDDbContext context)
+        {
+            this._ctr = new ChiTiet_NhapHangController(context);
+            this._Init();
+        }
         public ChiTiet_NhapHang()
+        {
+            this._ctr = new ChiTiet_NhapHangController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.id = 0;
             this.soluong = 0;
@@ -177,10 +319,34 @@ namespace BaseClass.Models
         //external
         public virtual NhapHang nhaphang { get; set; }
         public virtual SanPham_ChiTiet sanpham_chitiet { get; set; }
+        //CRUD method
+        private ChiTiet_NhapHangController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     public class DonHang
     {
+        public DonHang(DTDDDbContext context)
+        {
+            this._ctr = new DonHangController(context);
+            this._Init();
+        }
         public DonHang()
+        {
+            this._ctr = new DonHangController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.ds_chitiet_donhang = new List<ChiTiet_DonHang>();
             this.id = 0;
@@ -207,7 +373,7 @@ namespace BaseClass.Models
         //external
         public virtual List<ChiTiet_DonHang> ds_chitiet_donhang { get; set; }
         //method
-        private int _get_tongtien_int()
+        private int __get_tongtien()
         {
             int sum = 0;
             foreach (var item in this.ds_chitiet_donhang)
@@ -223,9 +389,9 @@ namespace BaseClass.Models
         }
         public String _get_tongtien()
         {
-            if (this._get_tongtien_int() != this.tongtien)
+            if (this.__get_tongtien() != this.tongtien)
             {
-                return TextLibrary.ToCommaStringNumber(this._get_tongtien_int());
+                return TextLibrary.ToCommaStringNumber(this.__get_tongtien());
             }
             return TextLibrary.ToCommaStringNumber(this.tongtien);
         }
@@ -238,7 +404,6 @@ namespace BaseClass.Models
             }
             this.ds_chitiet_donhang.Remove(obj);
             return true;
-
         }
         public Boolean _update_cart(int chitietsp_id = 0, int chitietsp_soluong = 0)
         {
@@ -278,10 +443,34 @@ namespace BaseClass.Models
             this.ds_chitiet_donhang.Add(obj);
             return true;
         }
+        //CRUD method
+        private DonHangController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     public class ChiTiet_DonHang
     {
+        public ChiTiet_DonHang(DTDDDbContext context)
+        {
+            this._ctr = new ChiTiet_DonHangController(context);
+            this._Init();
+        }
         public ChiTiet_DonHang()
+        {
+            this._ctr = new ChiTiet_DonHangController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.id = 0;
             this.soluong = 0;
@@ -299,11 +488,35 @@ namespace BaseClass.Models
         {
             return TextLibrary.ToCommaStringNumber(this.soluong * this.dongia);
         }
+        //CRUD method
+        private ChiTiet_DonHangController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     
     public class TonKho
     {
+        public TonKho(DTDDDbContext context)
+        {
+            this._ctr = new TonKhoController(context);
+            this._Init();
+        }
         public TonKho()
+        {
+            this._ctr = new TonKhoController();
+            this._Init();
+        }
+        private void _Init()
         {
             this.id = 0;
             this.soluong = 0;
@@ -315,6 +528,20 @@ namespace BaseClass.Models
         public DateTime ngay { get; set; }
         //external
         public virtual SanPham_ChiTiet sanpham_chitiet { get; set; }
+        //CRUD method
+        private TonKhoController _ctr;
+        public Boolean update()
+        {
+            return _ctr.save();
+        }
+        public Boolean delete()
+        {
+            return _ctr.delete(this);
+        }
+        public int add()
+        {
+            return _ctr.add(this);
+        }
     }
     public class DTDDDbContext : DbContext
     {
@@ -327,5 +554,6 @@ namespace BaseClass.Models
         public DbSet<ChiTiet_NhapHang> ds_chitiet_nhaphang { get; set; }
         public DbSet<NhapHang> ds_nhaphang { get; set; }
         public DbSet<TonKho> ds_tonkho { get; set; }
+        public DbSet<MauSac> ds_mausac { get; set; }
     }
 }

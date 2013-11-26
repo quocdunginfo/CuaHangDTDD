@@ -1,21 +1,21 @@
-﻿using qdtest.Models;
+﻿using BaseClass.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
-using qdtest._Library;
+using BaseClass._Library;
 
-namespace qdtest.Controllers.ModelController
+namespace BaseClass.ModelControllers
 {
     public class MauSacController
     {
-        public BanGiayDBContext _db = new BanGiayDBContext();
+        public DTDDDbContext _db;
         public MauSacController()
         {
-
+            this._db = new DTDDDbContext();
         }
-        public MauSacController(BanGiayDBContext db)
+        public MauSacController(DTDDDbContext db)
         {
             this._db = db;
         }
@@ -25,41 +25,39 @@ namespace qdtest.Controllers.ModelController
         }
         public Boolean is_exist(int obj_id)
         {
-            MauSac obj = (from obj_tmp in _db.ds_mausac
-                  where obj_tmp.id == obj_id
-                  select obj_tmp).FirstOrDefault();
-            return obj==null?false:true;
+            return this.get_by_id(obj_id)== null ? false : true;
+        }
+        public Boolean save()
+        {
+            this.save();
+            return true;
         }
         public int add(MauSac obj)
         {
             this._db.ds_mausac.Add(obj);
             //commit
-            this._db.SaveChanges();
+            this.save();
             //return ma moi nhat
             return this._db.ds_mausac.Max(x => x.id);
         }
-        public Boolean delete(int obj_id)
+        public Boolean delete(MauSac obj)
         {
             //get entity
-            MauSac obj = this.get_by_id(obj_id);
-            //check null
-            if (obj == null) return false;
+            obj = this.get_by_id(obj.id);
             //remove
             this._db.ds_mausac.Remove(obj);
             //commit
-            this._db.SaveChanges();
-            return true;
+            return this.save();
         }
-        public int timkiem_count(String id = "", String giatri = "", String mota="", String active = "")
+        public int timkiem_count(String id = "", String ten = "", String active = "")
         {
-            return timkiem(id, giatri, mota, active).Count;
+            return timkiem(id, ten, active).Count;
         }
-        public List<MauSac> timkiem(String id = "", String giatri = "", String mota="",String active = "", String order_by="id", Boolean order_desc=true, int start_point=0, int count=-1)
+        public List<MauSac> timkiem(String id = "", String giatri = "",String active = "", String order_by="id", Boolean order_desc=true, int start_point=0, int count=-1)
         {
             List<MauSac> obj_list = new List<MauSac>();
             //find by LIKE element
             obj_list = this._db.ds_mausac.Where(x => x.giatri.Contains(giatri)
-                && x.mota.Contains(mota)
                 ).ToList();
             //filter by id                
             if (!id.Equals(""))

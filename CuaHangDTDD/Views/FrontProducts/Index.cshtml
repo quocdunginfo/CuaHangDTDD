@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
-    var pagination = (BaseClass.Models.Pagination)ViewBag.pagination;
+    var pagination = (BaseClass._Library.PaginationLibrary)ViewBag.pagination;
     var SanPham_List = (List<BaseClass.Models.SanPham>)ViewBag.SanPham_List;
     var HangSX_List = (List<BaseClass.Models.HangSX>)ViewBag.HangSX_List;
     var hangsx = (BaseClass.Models.HangSX)ViewBag.hangsx;

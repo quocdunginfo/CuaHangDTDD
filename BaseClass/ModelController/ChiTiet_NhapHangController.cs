@@ -7,20 +7,20 @@ using System.Web.Mvc;
 
 namespace BaseClass.ModelControllers
 {
-    public class TonKhoController
+    public class ChiTiet_NhapHangController
     {
         public DTDDDbContext _db;
-        public TonKhoController()
+        public ChiTiet_NhapHangController()
         {
             this._db = new DTDDDbContext();
         }
-        public TonKhoController(DTDDDbContext db)
+        public ChiTiet_NhapHangController(DTDDDbContext db)
         {
             this._db = db;
         }
-        public TonKho get_by_id(int obj_id)
+        public ChiTiet_NhapHang get_by_id(int obj_id)
         {
-            return _db.ds_tonkho.FirstOrDefault(x => x.id == obj_id);
+            return _db.ds_chitiet_nhaphang.FirstOrDefault(x => x.id == obj_id);
         }
         public Boolean is_exist(int obj_id)
         {
@@ -31,20 +31,20 @@ namespace BaseClass.ModelControllers
             this.save();
             return true;
         }
-        public int add(TonKho obj)
+        public int add(ChiTiet_NhapHang obj)
         {
-            this._db.ds_tonkho.Add(obj);
+            this._db.ds_chitiet_nhaphang.Add(obj);
             //commit
             this.save();
             //return ma moi nhat
-            return this._db.ds_tonkho.Max(x => x.id);
+            return this._db.ds_chitiet_nhaphang.Max(x => x.id);
         }
-        public Boolean delete(TonKho obj)
+        public Boolean delete(ChiTiet_NhapHang obj)
         {
             //get entity
             obj = this.get_by_id(obj.id);
             //remove
-            this._db.ds_tonkho.Remove(obj);
+            this._db.ds_chitiet_nhaphang.Remove(obj);
             //commit
             return this.save();
         }

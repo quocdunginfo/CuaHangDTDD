@@ -6,13 +6,10 @@ using System.Web.Mvc;
 using BaseClass._Library;
 using BaseClass.Models;
 
-namespace BaseClass.ModelController
+namespace BaseClass.ModelControllers
 {
     public class SanPham_ChiTietController : Controller
     {
-        //
-        // GET: /SanPham_Tag/
-
         public DTDDDbContext _db;
         public SanPham_ChiTietController(DTDDDbContext _db)
         {
@@ -36,18 +33,20 @@ namespace BaseClass.ModelController
         public int add(SanPham_ChiTiet obj)
         {
             this._db.ds_sanpham_chitiet.Add(obj);
-            this._db.SaveChanges();
+            this.save();
             //return ma moi nhat
             return this._db.ds_sanpham_chitiet.Max(x => x.id);
         }
-        public Boolean delete(int id)
+        public Boolean save()
         {
-            //Xóa object có dính khóa ngoại trước
-            SanPham_ChiTiet obj = this._db.ds_sanpham_chitiet.Where(x => x.id == id).FirstOrDefault();
-            if (obj == null) return false;
-            this._db.ds_sanpham_chitiet.Remove(obj);
-            this._db.SaveChanges();
+            this.save();
             return true;
+        }
+        public Boolean delete(SanPham_ChiTiet obj)
+        {
+            obj = get_by_id(obj.id);
+            this._db.ds_sanpham_chitiet.Remove(obj);
+            return this.save();
         }
         public List<SanPham_ChiTiet> timkiem(String id = "", String mausac_id = "", String active = "",String id_sp="")
         {

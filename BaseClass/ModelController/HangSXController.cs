@@ -6,14 +6,14 @@ using System.Linq;
 using System.Web;
 using BaseClass._Library;
 
-namespace BaseClass.ModelController
+namespace BaseClass.ModelControllers
 {
     public class HangSXController
     {
-        public DTDDDbContext _db = new DTDDDbContext();
+        public DTDDDbContext _db;
         public HangSXController()
         {
-
+            this._db = new DTDDDbContext();
         }
         public HangSXController(DTDDDbContext db)
         {
@@ -27,25 +27,27 @@ namespace BaseClass.ModelController
         {
             return this.get_by_id(obj_id)== null ? false : true;
         }
+        public Boolean save()
+        {
+            this.save();
+            return true;
+        }
         public int add(HangSX obj)
         {
             this._db.ds_hangsx.Add(obj);
             //commit
-            this._db.SaveChanges();
+            this.save();
             //return ma moi nhat
             return this._db.ds_hangsx.Max(x => x.id);
         }
-        public Boolean delete(int obj_id)
+        public Boolean delete(HangSX obj)
         {
             //get entity
-            HangSX obj = this.get_by_id(obj_id);
-            //check null
-            if (obj == null) return false;
+            obj = this.get_by_id(obj.id);
             //remove
             this._db.ds_hangsx.Remove(obj);
             //commit
-            this._db.SaveChanges();
-            return true;
+            return this.save();
         }
         public int timkiem_count(String id = "", String ten = "", String active = "")
         {

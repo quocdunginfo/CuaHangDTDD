@@ -5,62 +5,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Diagnostics;
-using BaseClass.Models;
-using BaseClass._Library;
 
-namespace BaseClass.ModelController
+namespace BaseClass.ModelControllers
 {
     public class SanPhamController
     {
         public DTDDDbContext _db = new DTDDDbContext();
         public SanPhamController()
         {
-
+            this._db = new DTDDDbContext();
         }
         public SanPhamController(DTDDDbContext db)
         {
             this._db = db;
         }
-        
+        public Boolean save()
+        {
+            this._db.SaveChanges();
+            return true;
+        }
         public SanPham get_by_id(int obj_id)
         {
-            return _db.ds_sanpham.FirstOrDefault(x => x.id == obj_id);
+            return this._db.ds_sanpham.FirstOrDefault(x => x.id == obj_id);
         }
         public SanPham get_by_masp(String masp)
         {
-            return _db.ds_sanpham.FirstOrDefault(x => x.masp.ToUpper().Equals(masp.ToUpper()));
+            return this._db.ds_sanpham.FirstOrDefault(x => x.masp.ToUpper().Equals(masp.ToUpper()));
         }
 
         public Boolean is_exist(int obj_id)
         {
-            SanPham obj = this.get_by_id(obj_id);
+            SanPham obj = get_by_id(obj_id);
             return obj == null ? false : true;
         }
         public Boolean is_exist_masp(String masp)
         {
-            SanPham obj = this.get_by_masp(masp);
+            SanPham obj = get_by_masp(masp);
             return obj == null ? false : true;
         }
         public int add(SanPham obj)
         {
             //call add
             this._db.ds_sanpham.Add(obj);
-            //commit
-            this._db.SaveChanges();
-            //return ma moi nhat
+            save();
             return this._db.ds_sanpham.Max(x => x.id);
         }
-        public Boolean delete(int obj_id)
+        public Boolean delete(SanPham obj)
         {
-            //get entity
-            SanPham obj = this.get_by_id(obj_id);
-            //check null
-            if (obj == null) return false;
-            //remove
+            //reload again to prevent error
+            obj = get_by_id(obj.id);
+
             this._db.ds_sanpham.Remove(obj);
             //commit
-            this._db.SaveChanges();
-            return true;
+            return save();
         }
         public int timkiem_count(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = -1, int gia_to = -1, List<HangSX> hangsx_list = null, String active = "")
         {
@@ -124,7 +121,7 @@ namespace BaseClass.ModelController
         }
         public Boolean can_use_masp(int obj_id, String masp)
         {
-            SanPham u = (from obj in _db.ds_sanpham
+            SanPham u = (from obj in this._db.ds_sanpham
                           where obj.masp.ToUpper().Equals(masp.ToUpper())
                           && obj.id != obj_id
                           select obj).FirstOrDefault();
@@ -135,7 +132,7 @@ namespace BaseClass.ModelController
             //
             List<String> re = new List<string>();
             //check
-            if (!this.can_use_masp(obj.id, obj.masp))
+            if (!can_use_masp(obj.id, obj.masp))
             {
                 re.Add("masp_exist_fail");
             }

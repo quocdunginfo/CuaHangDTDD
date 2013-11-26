@@ -8,14 +8,12 @@ using BaseClass._Library;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
-using BaseClass.ModelController;
+using BaseClass.ModelControllers;
 
-namespace CuaHangDTDD.ModelController
+namespace BaseClass.ModelControllers
 {
     public class HinhAnhController : Controller
     {
-        //
-        // GET: /HinhAnh/
         private DTDDDbContext db;
         public HinhAnhController(DTDDDbContext db)
         {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BaseClass.Models
+namespace BaseClass._Library
 {
-    public class Pagination
+    public class PaginationLibrary
     {
         public int max_item_per_page = 1;
         public int current_page = 1;
@@ -28,7 +28,7 @@ namespace BaseClass.Models
         public Boolean can_first_page { get; set; }
         public Boolean can_last_page { get; set; }
         public int total_page { get; set; }
-        
+
         public Boolean update()
         {
             try
@@ -45,10 +45,10 @@ namespace BaseClass.Models
                 this.can_last_page = this.current_page == this.total_page ? false : true;
                 this.can_next_page = this.current_page < this.total_page ? true : false;
                 this.can_prev_page = this.current_page > 1 ? true : false;
-                
+
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
