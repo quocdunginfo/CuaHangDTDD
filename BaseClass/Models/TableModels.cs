@@ -359,6 +359,18 @@ namespace BaseClass.Models
             this.kh_email = "";
             this.kh_sdt = "";
         }
+        private void _Clone()
+        {
+            DonHang obj = new DonHang();
+            obj.id = this.id;
+            obj.kh_diachi = this.kh_diachi;
+            obj.kh_email = this.kh_email;
+            obj.kh_sdt = this.kh_sdt;
+            obj.kh_ten = this.kh_ten;
+            obj.ngay = this.ngay;
+            obj.tongtien = this.tongtien;
+            //...
+        }
         [Key]
         public int id { get; set; }
         public DateTime ngay { get; set; }
@@ -405,21 +417,24 @@ namespace BaseClass.Models
             this.ds_chitiet_donhang.Remove(obj);
             return true;
         }
-        public Boolean _update_cart(int chitietsp_id = 0, int chitietsp_soluong = 0)
+        public List<string> _update_cart(int chitietsp_id = 0, int chitietsp_soluong = 0)
         {
+            List<string> validate = new List<string>();
             ChiTiet_DonHang obj = this.ds_chitiet_donhang.Where(x => x.sanpham_chitiet.id == chitietsp_id).FirstOrDefault();
             if (obj == null)
             {
-                return false;
+                validate.Add("no_exist_fail");
+                return validate;
             }
             SanPham_ChiTietController ctr = new SanPham_ChiTietController();
             SanPham_ChiTiet in_system = ctr.get_by_id(chitietsp_id);
             if (in_system.tonkho < chitietsp_soluong || chitietsp_soluong<=0)
             {
-                return false;
+                validate.Add("soluong_fail");
+                return validate;
             }
             obj.soluong = chitietsp_soluong;
-            return true;
+            return validate;
         }
         public Boolean _add_to_cart(ChiTiet_DonHang obj)
         {
@@ -443,6 +458,10 @@ namespace BaseClass.Models
             this.ds_chitiet_donhang.Add(obj);
             return true;
         }
+        public List<string> validate()
+        {
+            return _ctr.validate(this);
+        }
         //CRUD method
         private DonHangController _ctr;
         public Boolean update()
@@ -455,7 +474,7 @@ namespace BaseClass.Models
         }
         public int add()
         {
-            return _ctr.add(this);
+            return this.id = _ctr.add(this);
         }
     }
     public class ChiTiet_DonHang

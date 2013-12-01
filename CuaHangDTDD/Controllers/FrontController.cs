@@ -56,7 +56,7 @@ namespace CuaHangDTDD.Controllers
                 {
                     this._timkiem_sanpham = CookieLibrary.Base64Decode(Request.Cookies.Get("timkiem_sanpham"));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     this._khoitao_cookie();
                     Response.Cookies.Add(CookieLibrary.Base64Encode(this._timkiem_sanpham));

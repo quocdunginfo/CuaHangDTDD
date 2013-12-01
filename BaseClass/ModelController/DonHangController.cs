@@ -48,6 +48,31 @@ namespace BaseClass.ModelControllers
             //commit
             return this.save();
         }
-        
+
+        public List<string> validate(DonHang obj)
+        {
+            List<string> re = new List<string>();
+            if (obj.ds_chitiet_donhang.Count == 0)
+            {
+                re.Add("rong");
+            }
+            if (obj.kh_diachi.Equals(""))
+            {
+                re.Add("kh_diachi_fail");
+            }
+            if (obj.kh_ten.Equals(""))
+            {
+                re.Add("kh_ten_fail");
+            }
+            if (obj.kh_email.Equals(""))
+            {
+                re.Add("kh_email_fail");
+            }
+            if (obj.kh_sdt.Equals(""))
+            {
+                re.Add("kh_sdt_fail");
+            }
+            return re;
+        }
     }
 }

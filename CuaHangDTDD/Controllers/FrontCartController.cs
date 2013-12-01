@@ -11,34 +11,81 @@ namespace CuaHangDTDD.Controllers
 {
     public class FrontCartController : FrontController
     {
-        //
-        // GET: /FrontCart/
-
         public ActionResult Index()
         {
             ViewBag.giohang = this._giohang;
+            ViewBag.state = TempData["state"] == null ? new List<string>() : (List<string>)TempData["state"];
             return View();
         }
         [HttpPost]
         public ActionResult Submit()
         {
+            //prepare
+            List<string> validate;
+            //get post value
             int chitietsp_id = TextLibrary.ToInt(Request["giohang_chitietsp_id"]);
             int chitietsp_soluong = TextLibrary.ToInt(Request["giohang_chitietsp_soluong"]);
-            this._giohang._update_cart(chitietsp_id,chitietsp_soluong);
-            //save to session
-            this._save_cart_to_session();
+            //do action and validate
+            validate = this._giohang._update_cart(chitietsp_id, chitietsp_soluong);
+            if (validate.Count == 0)
+            {
+                //save to session
+                this._save_cart_to_session();
+            }
+            //set temp state
+            TempData["state"] = validate;
+            //redirect
             return RedirectToAction("Index", "FrontCart");
         }
         [HttpPost]
         public ActionResult Remove()
         {
+            //get post value
             int chitietsp_id = TextLibrary.ToInt(Request["giohang_chitietsp_id"]);
+            //do action
             this._giohang._remove_from_cart(chitietsp_id);
-            //save to session
+            //save cart to session
             this._save_cart_to_session();
+            //redirect
             return RedirectToAction("Index", "FrontCart");
         }
-        
-
+        /*
+         * Hiện thông form nhập thông tin KH
+         */
+        [HttpGet]
+        public ActionResult CheckOut()
+        {
+            ViewBag.giohang = this._giohang;
+            ViewBag.state = TempData["state"] == null ? new List<string>() : (List<string>)TempData["state"];
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CheckOut_Submit()
+        {
+            //prepare material
+            List<String> validate;
+            //get post value
+            this._giohang.kh_ten = TextLibrary.ToString(Request["ten"]);
+            this._giohang.kh_diachi = TextLibrary.ToString(Request["diachi"]);
+            this._giohang.kh_email = TextLibrary.ToString(Request["email"]);
+            this._giohang.kh_sdt = TextLibrary.ToString(Request["sdt"]);
+            //validate
+            validate = this._giohang.validate();
+            //check stable
+            if (validate.Count == 0)
+            {
+                //ready
+                this._giohang.add();
+                //redirect
+                return RedirectToAction("Finish","FrontCart");
+            }
+            TempData["state"] = validate;
+            return RedirectToAction("CheckOut","FrontCart");
+        }
+        [HttpGet]
+        public ActionResult Finish()
+        {
+            return View();
+        }
     }
 }

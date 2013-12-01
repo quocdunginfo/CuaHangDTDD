@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
     var giohang = (BaseClass.Models.DonHang)ViewBag.giohang;
+    var state = (List<string>)ViewBag.state;
 }
 <div class="container">
     <div class="content-indent">
@@ -41,6 +42,14 @@
                                     </form>
                                 </strong></span></td>
                                 <td class="last"><span>@item._get_total()</span></td>
+                            </tr>
+                            <tr valign="top" class="sectiontableentry1 png">
+                                <td colspan="5">
+                                    @if (state.Contains(item.id + "_soluong_fail"))
+                                    {
+                                        @:Số lượng vượt tồn kho hoặc không hợp lệ
+                                    }
+                                </td>
                             </tr>
                             }
                             <!--Begin of SubTotal, Tax, Shipping, Coupon Discount and Total listing -->

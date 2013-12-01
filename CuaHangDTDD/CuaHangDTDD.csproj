@@ -478,6 +478,8 @@
     <Content Include="Views\Shared\_FrontLayout_NoSlider.cshtml" />
     <Content Include="Views\FrontProductDetail\Index.cshtml" />
     <Content Include="Views\FrontCart\Index.cshtml" />
+    <Content Include="Views\FrontCart\CheckOut.cshtml" />
+    <Content Include="Views\FrontCart\Finish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Upload\HinhAnh\" />
