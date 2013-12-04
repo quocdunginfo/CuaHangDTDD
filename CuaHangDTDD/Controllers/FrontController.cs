@@ -77,7 +77,7 @@ namespace CuaHangDTDD.Controllers
                         this._giohang = new DonHang();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     this._giohang = new DonHang();
                 }

@@ -2,67 +2,92 @@
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
     var giohang = (BaseClass.Models.DonHang)ViewBag.giohang;
+    var state = (List<string>)ViewBag.state;
 }
 <div class="container">
     <div class="content-indent">
         <div id="vmMainPage">
-            <h3>Checkout</h3>
+            <h3>Thông tin người nhận</h3>
             <div>
 
                 <div class="register-stretcher">
 
                     <div class="stretcher" id="register_stretcher" style="padding-top: 0px; border-top-style: none; padding-bottom: 0px; border-bottom-style: none; overflow: hidden; visibility: visible; zoom: 1; opacity: 1; height: auto;">
-
-
-                        <form action="@Url.Action("CheckOut_Submit","FrontCart")" method="post" name="adminForm">
+                        <form action="@Url.Action("CheckOut_Submit", "FrontCart")" method="post" name="adminForm">
                             <div style="width: 90%;">
-                                <div style="text-align: center; margin-left:222px"><strong>(* = Thông tin bắt buộc)</strong></div>
-                                <fieldset style="padding-left:200px">
+                                <div style="text-align: center; margin-left: 222px"><strong>(* = Thông tin bắt buộc)</strong></div>
+                                <fieldset style="padding-left: 200px">
                                     <legend class="sectiontableheader">Thông tin khách hàng</legend>
                                     <div id="email_div" class="formLabel ">
-                                        <label for="email_field">Họ và tên:</label><strong>* </strong></div>
+                                        <label for="email_field">Họ và tên:</label>
+                                        <strong>*
+                                            @if (state.Contains("kh_ten_fail"))
+                                            {
+                                                @: Không hợp lệ
+                                            }
+                                        </strong>
+
+                                    </div>
                                     <div class="formField" id="email_input">
-                                        <input type="text" name="ten" size="30" value="" class="inputbox" maxlength="100">
+                                        <input type="text" name="ten" size="30" value="@giohang.kh_ten" class="inputbox" maxlength="100">
                                         <br>
                                     </div>
                                     <br style="clear: both;">
-                                    <input type="hidden"  name="register_account" value="1"><div id="username_div" class="formLabel ">
-                                        <label for="username_field">Địa chỉ:</label><strong>* </strong></div>
+                                    <input type="hidden" name="register_account" value="1"><div id="username_div" class="formLabel ">
+                                        <label for="username_field">Địa chỉ:</label><strong>* 
+
+                                            @if (state.Contains("kh_diachi_fail"))
+                                            {
+                                                @: Không hợp lệ
+                                            }
+                                        </strong>
+                                    </div>
                                     <div class="formField">
-                                        <input type="text" name="diachi" size="30" value="" class="inputbox" maxlength="25">
+                                        <input type="text" name="diachi" size="30" value="@giohang.kh_diachi" class="inputbox" maxlength="25">
                                         <br>
                                     </div>
                                     <br style="clear: both;">
                                     <div class="formLabel ">
-                                        <label for="password_field">Email:</label><strong>* </strong></div>
+                                        <label for="password_field">Email:</label><strong>* 
+                                            @if (state.Contains("kh_email_fail"))
+                                            {
+                                                @: Không hợp lệ
+                                            }
+                                        </strong>
+                                    </div>
                                     <div class="formField" id="password_input">
-                                        <input type="text" name="email" size="30" class="inputbox">
+                                        <input type="text" name="email" size="30" class="inputbox" value="@giohang.kh_email">
                                         <br>
                                     </div>
                                     <br style="clear: both;">
                                     <div class="formLabel ">
-                                        <label for="password2_field">Số điện thoại:</label><strong>* </strong></div>
+                                        <label for="password2_field">Số điện thoại:</label><strong>*
+                                            @if (state.Contains("kh_sdt_fail"))
+                                            {
+                                                @: Không hợp lệ
+                                            }
+                                        </strong>
+                                    </div>
                                     <div class="formField" id="password2_input">
-                                        <input type="text" name="sdt" size="30" class="inputbox">
+                                        <input type="text" name="sdt" size="30" class="inputbox" value="@giohang.kh_sdt">
                                         <br>
                                     </div>
                                     <br style="clear: both;">
-                                    <input type="submit" value="Hoàn tất đặt hàng" class="button button02" style="margin:0px 0px 0px 0px; margin-left: 50px;">
+                                    <input type="submit" value="Hoàn tất đặt hàng" class="button button02" style="margin: 0px 0px 0px 0px; margin-left: 50px;">
                                 </fieldset>
 
 
                             </div>
                             <div align="center">
-                                
                             </div>
                         </form>
                     </div>
-                
+
+                </div>
+
+                <div id="statusBox" style="text-align: center; display: none; visibility: hidden;"></div>
             </div>
 
-            <div id="statusBox" style="text-align: center; display: none; visibility: hidden;"></div>
         </div>
-
     </div>
-</div>
 </div>

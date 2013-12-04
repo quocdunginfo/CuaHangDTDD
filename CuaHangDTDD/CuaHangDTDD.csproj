@@ -104,6 +104,7 @@
     <Compile Include="Controllers\FrontProductDetailController.cs" />
     <Compile Include="Controllers\FrontProductsController.cs" />
     <Compile Include="Controllers\FrontSearchController.cs" />
+    <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

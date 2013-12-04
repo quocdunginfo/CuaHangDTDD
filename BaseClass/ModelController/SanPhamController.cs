@@ -26,7 +26,9 @@ namespace BaseClass.ModelControllers
         }
         public SanPham get_by_id(int obj_id)
         {
-            return this._db.ds_sanpham.FirstOrDefault(x => x.id == obj_id);
+            var obj= this._db.ds_sanpham.FirstOrDefault(x => x.id == obj_id);
+            if (obj != null) obj._set_context(this._db);
+            return obj;
         }
         public SanPham get_by_masp(String masp)
         {

@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "Tìm kiếm";
+    Layout = "~/Views/Shared/_FrontLayout_NoSlider.cshtml";
+    var pagination = (BaseClass._Library.PaginationLibrary)ViewBag.pagination;
+    var SanPham_List = (List<BaseClass.Models.SanPham>)ViewBag.SanPham_List;
+    var HangSX_List = (List<BaseClass.Models.HangSX>)ViewBag.HangSX_List;
+    var hangsx = (BaseClass.Models.HangSX)ViewBag.hangsx;
+}
+
+<div class="container">
+    <div class="content-indent">
+        <div id="vmMainPage">
+
+            <div class="clear">
+
+                <div class="buttons_heading">
+                    <a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.pdf_output&showpage=shop.browse&pop=1&output=pdf&product_id=0&category_id=12&pop=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.pdf_output&showpage=shop.browse&pop=1&output=pdf&product_id=0&category_id=12&pop=1%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.pdf_output&amp;showpage=shop.browse&amp;pop=1&amp;output=pdf&amp;product_id=0&amp;category_id=12&amp;pop=1" title="PDF" onclick="void window.open('http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.pdf_output&amp;showpage=shop.browse&amp;pop=1&amp;output=pdf&amp;product_id=0&amp;category_id=12&amp;pop=1', '_blank', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');return false;">
+                        <img src="pdf_button.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/images/M_images/pdf_button.png" alt="PDF" name="PDF" align="middle" border="0"></a><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.browse&only_page=1&category_id=12&pop=1&tmpl=component&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.browse&only_page=1&category_id=12&pop=1&tmpl=component&%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.browse&amp;only_page=1&amp;category_id=12&amp;pop=1&amp;tmpl=component&amp;" title="Print" onclick="void window.open('http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.browse&amp;only_page=1&amp;category_id=12&amp;pop=1&amp;tmpl=component&amp;', '_blank', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');return false;"><img src="printButton.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/images/M_images/printButton.png" alt="Print" name="Print" align="middle" border="0"></a>
+                </div>
+                <h3 class="categoryName">@hangsx.ten</h3>
+
+                <div style="text-align: center;">
+                </div>
+            </div>
+            <div class="orderby_form">
+                <!-- ORDER BY .... FORM -->
+                <form action="" method="get" name="order" class="orderby_form">
+                    <style type="text/css">
+                        .orderby_form span {
+                            display:inline-block;
+                            width:100px;
+                        }
+                        .orderby_form .qd_br {
+                            height: 10px;
+                            clear:both;
+                        }
+                    </style>
+
+                    <span>Tên sản phẩm:</span>
+                    <input type="text" value="" style="width:200px"/>
+                    <div class="qd_br"></div>
+
+                    <span>Giá từ </span>
+                    <input type="text" value="" style="width:100px"/>
+                    <span style="text-align:center; width: 30px">đến </span>
+                    <input type="text" value="" style="width:100px"/>
+                    <div class="qd_br"></div>
+
+                    <span>Hãng sản xuất: </span>
+                    <select name="orderby" style="width: auto">
+                        <option value="product_list">Select</option>
+                        <option value="product_name" selected="selected">Product Name</option>
+                        <option value="product_price">Price</option>
+                        <option value="product_cdate">Latest Products</option>
+                    </select>
+                    
+                </form>
+            </div>
+
+            <div class="tabs-position">
+                <div class="wrapper">
+                </div>
+            </div>
+            <div class="tab_container" style="visibility: visible;">
+                <div id="tab1" class="tab_content" style="display: block;">
+                    <style>
+                        .odd {
+                            background: #ffffff;
+                        }
+
+                        .even {
+                            background: #f3f3f3;
+                        }
+
+                        .browseProductDescription {
+                            color: #696969;
+                        }
+                    </style>
+                    <div id="product_list">
+                        @{
+                            Boolean product_odd = false;   
+                        }
+                        @foreach (var item in SanPham_List)
+                        {
+                            product_odd = !product_odd;
+                            string link_to_this_product = Url.Action("Index", "FrontProductDetail", new {id=item.id });
+                            
+                            <div class="leftPosition @if (product_odd)
+                                                     {<text>odd</text>}
+                                                     else
+                                                     {<text>even</text>}" style="width: 100%;" id="row_5273afd5a38c2">
+                                <div class="browse_1" style="display: block;">
+                                    <div class="bottom_separator">
+                                        <div class="wrapper2">
+                                            <div class="browseProductImageContainer">
+                                                <!-- prettyphoto href = hình gốc-->
+                                                <a rel="prettyPhoto" href="@item._get_hinhanh_macdinh()._get_full_duongdan()" target="_blank" title="@item.ten">
+                                                    <!-- prettyphoto src = hình thumb-->
+                                                    <img src="@item._get_hinhanh_macdinh()._get_full_duongdan_thumb()" style="max-height:160px; max-width:110px; width:auto; height:auto;" class="browseProductImage" title="@item.ten" alt="@item.ten" border="0">
+                                                </a>
+                                            </div>
+                                            <div class="floatElement">
+                                                <h2 class="browseProductTitle">
+                                                    <a class="product_name" title="@item.ten" href="@link_to_this_product">@item.ten</a>
+                                                </h2>
+                                                <div class="browseProductDescription">
+                                                    @item.mota
+                                                </div>
+                                                <div class="browseRatingContainer">
+                                                    &nbsp;
+                                                </div>
+                                                <div class="productDetailsContainer">
+                                                    <a class="product_details" href="@link_to_this_product" title="Product Details">Xem chi tiết </a>
+                                                </div>
+                                            </div>
+                                            <div class="floatElementR">
+                                                <div class="browsePriceContainer">
+                                                    <span class="productPrice">@item.gia VNĐ</span>
+
+                                                </div>
+                                                <div class="browseAddToCartContainer">
+                                                    <button class="addtocart_button" type="button" value="Mua hàng" onclick="document.location='@link_to_this_product'">Mua hàng</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br class="clr" />
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- BEGIN PAGE NAVIGATION -->
+            <div class="wrapper">
+                <div align="center" style="padding: 0px 5px 10px 0px;">
+                    <style>
+                        .qd_pagination {
+                            //background: #f2f2f2;
+                            padding: 20px;
+                            margin-bottom: 20px;
+                            text-align: center;
+                        }
+
+                            .qd_pagination .page {
+                                display: inline-block;
+                                padding: 3px 9px; /**/
+                                margin-right: 4px;
+                                border-radius: 3px;
+                                border: solid 1px #c0c0c0;
+                                background: #e9e9e9;
+                                box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+                                font-size: .875em;
+                                font-weight: bold;
+                                text-decoration: none;
+                                color: #717171;
+                                text-shadow: 0px 1px 0px rgba(255,255,255, 1);
+                                height: 16px; /**/
+                            }
+
+                                .qd_pagination .page:hover {
+                                    background: #fefefe;
+                                    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FEFEFE), to(#f0f0f0));
+                                    background: -moz-linear-gradient(0% 0% 270deg,#FEFEFE, #f0f0f0);
+                                }
+
+                                .qd_pagination .page.active {
+                                    border: none;
+                                    background: #616161;
+                                    box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+                                    color: #f0f0f0;
+                                    text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+                                }
+                    </style>
+                    <div class="qd_pagination">
+                        @if (pagination.can_first_page)
+                        {
+                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = 1 })" class="page">Đầu</a>
+                        }
+                        @if (pagination.can_prev_page)
+                        {
+                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.current_page - 1 })" class="page">Trước</a>
+                        }
+                        @for (int tmp_pg = 1; tmp_pg <= pagination.total_page; tmp_pg++)
+                        {
+                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = tmp_pg })" class="page @if (tmp_pg == pagination.current_page)
+                                                                                                                                    {<text>active</text>}">@tmp_pg</a>
+                        }
+
+                        @if (pagination.can_next_page)
+                        {
+                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.current_page + 1 })" class="page">Kế</a>
+                        }
+                        @if (pagination.can_last_page)
+                        {
+                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.total_page })" class="page">Cuối</a>
+                        }
+                    </div>
+                </div>
+
+                <div class="cl">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <!-- END PAGE NAVIGATION -->
+    <div id="statusBox" style="text-align: center; display: none; visibility: hidden;"></div>
+</div>

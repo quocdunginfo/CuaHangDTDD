@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseClass.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace BaseClass._Library
 {
     public class GMailLibrary
     {
-        public String sender_email = "quocdunginfo@gmail.com";
-        public String sender_password = "doyohaanthtode77859";
+        public String sender_email = "cuahangbangiay@gmail.com";
+        public String sender_password = "kienkimkhung";
         public String receive_email = "quocdunginfo@gmail.com";
         public String receive_title = "Test email";
         public String receive_html = "Test body";
@@ -51,9 +52,10 @@ namespace BaseClass._Library
         /// <returns></returns>
         public void Generate_ForgotPassword_Html(String reset_link)
         {
-            this.receive_title = "Khôi phục mật khẩu Website CuaHangBanGiay";
-
-            this.receive_html = "Bạn hoặc một ai đó đã gửi yêu cầu khôi phục lại mật khẩu tại Website CuaHangBanGiay!";
+            this.receive_title = "Khôi phục mật khẩu Website Cửa hàng giày dép BigFoot";
+            this.receive_html = "<img src=\"https://lh6.googleusercontent.com/-P2R_CIG6H7E/Upzdb6dcFmI/AAAAAAAAABY/rJJOpMz5wJo/w680-h353-no/CHIEW.gif" + "\" alt=\"Cửa hàng BigFoot\" style=\"margin-bottom:20px;box-shadow: 0px 0px 3px 4px #a1a1a1;max-height:110px\">";
+            this.receive_html += "<br>";
+            this.receive_html += "Bạn hoặc một ai đó đã gửi yêu cầu khôi phục lại mật khẩu tại Website <a href=\"http://localhost:53655/" + "\" title=\"Cửa hàng BigFoot\" target=\"_blank\"> Cửa hàng giày dép BigFoot</a>!";
             this.receive_html += "<br>";
             this.receive_html += "Click vào đường dẫn sau để tiến hành khôi phục lại mật khẩu:";
             this.receive_html += "<br>";

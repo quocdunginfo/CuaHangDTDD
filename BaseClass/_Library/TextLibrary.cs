@@ -27,14 +27,21 @@ namespace BaseClass._Library
         }
         public static int ToInt(String input)
         {
-            input = input.Trim();
-            input = input.Replace(",", "");
-            int re=0;
-            if (Int32.TryParse(input, out re))
+            try
             {
-                return re;
+                input = input.Trim();
+                input = input.Replace(",", "");
+                int re = 0;
+                if (Int32.TryParse(input, out re))
+                {
+                    return re;
+                }
+                return 0;
             }
-            return 0;
+            catch (Exception)
+            {
+                return 0;
+            }
         }
         public static String ToString(String input)
         {
@@ -73,7 +80,7 @@ namespace BaseClass._Library
 
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return text;
             }

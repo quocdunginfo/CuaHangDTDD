@@ -2,9 +2,15 @@
 using BaseClass.ModelControllers;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,12 +18,27 @@ namespace BaseClass.Models
 {
     public class HinhAnh
     {
+        public HinhAnh(DTDDDbContext context)
+        {
+            this._ctr = new HinhAnhController(context);
+            this._Init();
+        }
         public HinhAnh()
+        {
+            this._ctr = new HinhAnhController();
+            this._Init();
+        }
+        private HinhAnhController _ctr;
+        private void _Init()
         {
             this.id = 0;
             this.duongdan = "";
             this.duongdan_thumb = "";
             this.macdinh = false;
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
         }
         public int id { get; set; }
         public String duongdan { get; set; }//đường dẫn tương đối
@@ -26,22 +47,37 @@ namespace BaseClass.Models
         //external
         public virtual SanPham sanpham { get; set; }
 
-        //method
-        public string _get_full_duongdan()
+        public string _get_full_duongdan(string path_to_website = null)
         {
-            string path = "~/_Upload/HinhAnh/";
-            path += this.duongdan;
-            UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            return helper.Content(path);
+            if (path_to_website == null)
+            {
+                path_to_website = Setting.get_by_key("path_to_website");
+            }
+            string host = path_to_website + "/_Upload/HinhAnh/";
+            return host + this.duongdan;
         }
-        public string _get_full_duongdan_thumb()
+        public string _get_full_duongdan_thumb(string path_to_website = null)
         {
-            string path = "~/_Upload/HinhAnh/";
-            path += this.duongdan_thumb;
-            UrlHelper helper = new UrlHelper(HttpContext.Current.Request.RequestContext);
-            return helper.Content(path);
+            if (path_to_website == null)
+            {
+                path_to_website = Setting.get_by_key("path_to_website");
+            }
+            string host = path_to_website + "/_Upload/HinhAnh/";
+            return host + this.duongdan_thumb;
         }
-        
+        public HinhAnh _upload_to_host_winform_use_only(string local_file_path="")
+        {
+            return this._ctr.upload_winform_use_only(local_file_path);
+        }
+        public HinhAnh _upload_to_host_mvc_use_only(HttpServerUtilityBase server_context, HttpFileCollectionBase file_list)
+        {
+            return this._ctr.upload_mvc_use_only(server_context, file_list);
+        }
+
+        public Boolean delete(HttpServerUtilityBase server_context)
+        {
+            return this._ctr.delete_mvc_use_only(this.id, server_context);
+        }
     }
     public class SanPham_ChiTiet
     {
@@ -61,6 +97,10 @@ namespace BaseClass.Models
             this.id = 0;
             this.active = true;
             this.tonkho = 0;
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
         }
         [Key]
         public int id { get; set; }
@@ -104,6 +144,10 @@ namespace BaseClass.Models
             this.active = true;
             this.ds_sanpham_chitiet = new List<SanPham_ChiTiet>();
         }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
         [Key]
         public int id { get; set; }
         public string giatri { get; set; }
@@ -137,6 +181,10 @@ namespace BaseClass.Models
         {
             _ctr = new SanPhamController();
             this._Init();
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
         }
         private void _Init()
         {
@@ -225,6 +273,10 @@ namespace BaseClass.Models
             this.ten = "";
             this.active = true;
         }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
         [Key]
         public int id { get; set; }
         public String ten { get; set; }
@@ -272,6 +324,10 @@ namespace BaseClass.Models
             this.tongtien = 0;
             this.active = true;
         }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
         [Key]
         public int id { get; set; }
         public DateTime ngay { get; set; }
@@ -311,6 +367,10 @@ namespace BaseClass.Models
             this.id = 0;
             this.soluong = 0;
             this.dongia = 0;
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
         }
         [Key]
         public int id { get; set; }
@@ -359,7 +419,11 @@ namespace BaseClass.Models
             this.kh_email = "";
             this.kh_sdt = "";
         }
-        private void _Clone()
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
+        private DonHang _Clone()
         {
             DonHang obj = new DonHang();
             obj.id = this.id;
@@ -369,7 +433,21 @@ namespace BaseClass.Models
             obj.kh_ten = this.kh_ten;
             obj.ngay = this.ngay;
             obj.tongtien = this.tongtien;
-            //...
+            obj.active = this.active;
+            obj.dagiaohang = this.dagiaohang;
+
+            ChiTiet_DonHang tmp;
+            SanPham_ChiTietController ctr_ = new SanPham_ChiTietController(this._ctr._db);
+            foreach (var item in this.ds_chitiet_donhang)
+            {
+                tmp = new ChiTiet_DonHang();
+                tmp.dongia = item.dongia;
+                tmp.id = item.id;
+                tmp.soluong = item.soluong;
+                tmp.sanpham_chitiet = ctr_.get_by_id(item.sanpham_chitiet.id);
+                obj.ds_chitiet_donhang.Add(tmp);
+            }
+            return obj;
         }
         [Key]
         public int id { get; set; }
@@ -430,7 +508,8 @@ namespace BaseClass.Models
             SanPham_ChiTiet in_system = ctr.get_by_id(chitietsp_id);
             if (in_system.tonkho < chitietsp_soluong || chitietsp_soluong<=0)
             {
-                validate.Add("soluong_fail");
+                validate.Add(chitietsp_id+ "_soluong_fail");
+                this.ds_chitiet_donhang.Where(x => x.sanpham_chitiet.id == chitietsp_id).FirstOrDefault().soluong = in_system.tonkho;
                 return validate;
             }
             obj.soluong = chitietsp_soluong;
@@ -474,7 +553,7 @@ namespace BaseClass.Models
         }
         public int add()
         {
-            return this.id = _ctr.add(this);
+            return this.id = _ctr.add(this._Clone());
         }
     }
     public class ChiTiet_DonHang
@@ -494,6 +573,10 @@ namespace BaseClass.Models
             this.id = 0;
             this.soluong = 0;
             this.dongia = 0;
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
         }
         [Key]
         public int id { get; set; }
@@ -541,6 +624,10 @@ namespace BaseClass.Models
             this.soluong = 0;
             this.ngay = DateTime.Now;
         }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
         [Key]
         public int id { get; set; }
         public int soluong { get; set; }
@@ -562,6 +649,38 @@ namespace BaseClass.Models
             return _ctr.add(this);
         }
     }
+    public class Setting
+    {
+        [Key]
+        public int id { get; set; }
+        public string key { get; set; }
+        public string value { get; set; }
+        public Setting(DTDDDbContext context)
+        {
+            this._ctr = new SettingController(context);
+            this._Init();
+        }
+        public Setting()
+        {
+            this._ctr = new SettingController();
+            this._Init();
+        }
+        public void _Init()
+        {
+            this.id = 0;
+            this.key = "";
+            this.value = "";
+        }
+        public void _set_context(DTDDDbContext context)
+        {
+            this._ctr._db = context;
+        }
+        private SettingController _ctr;
+        public static string get_by_key(string key="")
+        {
+            return SettingController.get_by_key(key).value;
+        }
+    }
     public class DTDDDbContext : DbContext
     {
         public DbSet<DonHang> ds_donhang { get; set; }
@@ -574,5 +693,6 @@ namespace BaseClass.Models
         public DbSet<NhapHang> ds_nhaphang { get; set; }
         public DbSet<TonKho> ds_tonkho { get; set; }
         public DbSet<MauSac> ds_mausac { get; set; }
+        public DbSet<Setting> ds_setting { get; set; }
     }
 }

@@ -14,7 +14,8 @@ namespace CuaHangDTDD.Controllers
         public ActionResult Index()
         {
             ViewBag.giohang = this._giohang;
-            ViewBag.state = TempData["state"] == null ? new List<string>() : (List<string>)TempData["state"];
+            List<string> validate = this._giohang.validate();
+            ViewBag.state = TempData["state"] == null ? validate : (List<string>)TempData["state"];
             return View();
         }
         [HttpPost]
@@ -34,6 +35,8 @@ namespace CuaHangDTDD.Controllers
             }
             //set temp state
             TempData["state"] = validate;
+            //save cart to session
+            this._save_cart_to_session();
             //redirect
             return RedirectToAction("Index", "FrontCart");
         }
@@ -56,6 +59,13 @@ namespace CuaHangDTDD.Controllers
         public ActionResult CheckOut()
         {
             ViewBag.giohang = this._giohang;
+            List<string> validate = this._giohang.validate();
+            if(validate.Contains("rong_fail"))
+            {
+                //đơn hàng rỗng không được phép thanh toán
+                TempData["state"] = validate;
+                return RedirectToAction("Index","FrontCart");
+            }
             ViewBag.state = TempData["state"] == null ? new List<string>() : (List<string>)TempData["state"];
             return View();
         }
@@ -85,6 +95,11 @@ namespace CuaHangDTDD.Controllers
         [HttpGet]
         public ActionResult Finish()
         {
+            //xóa đơn hàng khỏi session
+            this._giohang = new DonHang();
+            this._save_cart_to_session();
+            //cập nhật giohang cho View ngay lập tức
+            ViewBag.giohang = this._giohang;
             return View();
         }
     }

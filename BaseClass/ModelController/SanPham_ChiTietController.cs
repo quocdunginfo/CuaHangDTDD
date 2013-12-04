@@ -19,9 +19,11 @@ namespace BaseClass.ModelControllers
         {
             this._db = new DTDDDbContext();
         }
-        public SanPham_ChiTiet get_by_id(int id)
+        public SanPham_ChiTiet get_by_id(int obj_id)
         {
-            return _db.ds_sanpham_chitiet.FirstOrDefault(x => x.id == id);
+            var obj = this._db.ds_sanpham_chitiet.FirstOrDefault(x => x.id == obj_id);
+            if (obj != null) obj._set_context(this._db);
+            return obj;
         }
         public Boolean is_exist(int id)
         {
@@ -39,7 +41,7 @@ namespace BaseClass.ModelControllers
         }
         public Boolean save()
         {
-            this.save();
+            this._db.SaveChanges();
             return true;
         }
         public Boolean delete(SanPham_ChiTiet obj)

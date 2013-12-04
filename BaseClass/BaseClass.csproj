@@ -101,6 +101,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelController\ChiTiet_DonHangController.cs" />
     <Compile Include="ModelController\ChiTiet_NhapHangController.cs" />
+    <Compile Include="ModelController\SettingController.cs" />
     <Compile Include="ModelController\MauSacController.cs" />
     <Compile Include="ModelController\DonHangController.cs" />
     <Compile Include="ModelController\HangSXController.cs" />

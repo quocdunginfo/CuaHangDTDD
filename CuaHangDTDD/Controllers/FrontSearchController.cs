@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BaseClass._Library;
+using BaseClass.ModelControllers;
+using BaseClass.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +16,11 @@ namespace CuaHangDTDD.Controllers
          */
         public ActionResult Index()
         {
+            SanPhamController ctr=new SanPhamController();
+            HangSXController ctr_hangsx = new HangSXController();
+            ViewBag.SanPham_List = ctr.timkiem();
+            ViewBag.pagination = new PaginationLibrary();
+            ViewBag.hangsx = new HangSX();
             return View();
         }
 

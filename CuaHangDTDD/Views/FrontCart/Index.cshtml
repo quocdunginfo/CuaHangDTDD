@@ -7,6 +7,10 @@
     <div class="content-indent">
         <div id="vmMainPage">
             <h2 class="title">Giỏ hàng</h2>
+            @if(state.Contains("rong_fail"))
+            {
+                <span style="color:red">Giỏ hàng chưa có sản phẩm</span>
+            }
             <div class="cart-top" style="padding: 20px 0px 0px 0px;">
                 <!-- Cart Begins here -->
                 <div class="basket">
@@ -45,7 +49,7 @@
                             </tr>
                             <tr valign="top" class="sectiontableentry1 png">
                                 <td colspan="5">
-                                    @if (state.Contains(item.id + "_soluong_fail"))
+                                    @if (state.Contains(item.sanpham_chitiet.id + "_soluong_fail"))
                                     {
                                         @:Số lượng vượt tồn kho hoặc không hợp lệ
                                     }

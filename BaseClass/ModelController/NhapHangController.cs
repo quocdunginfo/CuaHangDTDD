@@ -20,7 +20,9 @@ namespace BaseClass.ModelControllers
         }
         public NhapHang get_by_id(int obj_id)
         {
-            return _db.ds_nhaphang.FirstOrDefault(x => x.id == obj_id);
+            var obj = this._db.ds_nhaphang.FirstOrDefault(x => x.id == obj_id);
+            if (obj != null) obj._set_context(this._db);
+            return obj;
         }
         public Boolean is_exist(int obj_id)
         {
@@ -28,7 +30,7 @@ namespace BaseClass.ModelControllers
         }
         public Boolean save()
         {
-            this.save();
+            this._db.SaveChanges();
             return true;
         }
         public int add(NhapHang obj)
