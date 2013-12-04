@@ -481,6 +481,7 @@
     <Content Include="Views\FrontCart\Index.cshtml" />
     <Content Include="Views\FrontCart\CheckOut.cshtml" />
     <Content Include="Views\FrontCart\Finish.cshtml" />
+    <Content Include="Views\ImageUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_Upload\HinhAnh\" />

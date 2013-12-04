@@ -28,11 +28,11 @@ namespace CuaHangDTDD.Controllers
             if (obj == null)
             {
                 ViewBag.Message = "0";
-                return View();
+                return View("Index");
             }
-            obj.delete(Server);
+            obj.delete_mvc_use_only(Server);
             ViewBag.Message = "1";
-            return View();
+            return View("Index");
         }
 
     }

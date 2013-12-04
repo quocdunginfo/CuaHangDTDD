@@ -73,8 +73,11 @@ namespace BaseClass.Models
         {
             return this._ctr.upload_mvc_use_only(server_context, file_list);
         }
-
-        public Boolean delete(HttpServerUtilityBase server_context)
+        public Boolean delete_winform_use_only()
+        {
+            return this._ctr.delete_winform_use_only(this);
+        }
+        public Boolean delete_mvc_use_only(HttpServerUtilityBase server_context)
         {
             return this._ctr.delete_mvc_use_only(this.id, server_context);
         }

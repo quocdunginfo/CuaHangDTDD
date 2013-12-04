@@ -55,6 +55,13 @@ namespace BaseClass.ModelControllers
             _db.SaveChanges();
             return _db.ds_hinhanh.Max(x => x.id);
         }
+        public Boolean delete_winform_use_only(HinhAnh obj)
+        {
+            string url = Setting.get_by_key("path_to_website") + "/ImageUpload/Delete?hinhanh_id="+obj.id;
+            WebClient webClient = new WebClient();
+            string result = webClient.DownloadString(url);
+            return TextLibrary.ToBoolean(result);
+        }
         public Boolean delete_mvc_use_only(int id, HttpServerUtilityBase server_context)
         {
             HinhAnh kq = this.get_by_id(id);
