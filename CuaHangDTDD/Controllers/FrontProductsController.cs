@@ -34,13 +34,41 @@ namespace CuaHangDTDD.Controllers
                 pg.set_current_page(page);
                 pg.set_max_item_per_page(max_item_per_page);
                 pg.set_total_item(
-                    ctr.timkiem_count("", "", "", "", -1, -1, hangsx, "1")
+                    ctr.timkiem_count(
+                    "",
+                    "", 
+                    "", 
+                    "", 
+                    0, 
+                    0, 
+                    hangsx,
+                    "1")
                 );
             pg.update();
-            ViewBag.SanPham_List = ctr.timkiem("","","","",-1,-1,hangsx,"1","id",true,pg.start_point,max_item_per_page);
+            ViewBag.SanPham_List = ctr.timkiem(
+                "",
+                "",
+                "",
+                "",
+                -1,
+                -1,
+                hangsx,
+                "1",
+                _timkiem_sanpham["order_by"],
+                TextLibrary.ToBoolean(_timkiem_sanpham["order_desc"])
+                ,pg.start_point,
+                max_item_per_page);
             ViewBag.pagination = pg;
             ViewBag.hangsx = hangsx;
             return View();
+        }
+        [HttpGet]
+        public ActionResult OrderBy(string order_by = "id", string order_desc = "1", int page = 1, int hangsx_id=0)
+        {
+            this._timkiem_sanpham["order_by"] = order_by;
+            this._timkiem_sanpham["order_desc"] = order_desc;
+            this._luu_timkiem_cookie();
+            return RedirectToAction("Index", "FrontProducts", new { page = page, hangsx_id=hangsx_id });
         }
     }
 }

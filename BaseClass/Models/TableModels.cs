@@ -241,6 +241,10 @@ namespace BaseClass.Models
                 return this.mota + "...";
             }
         }
+        public string _get_gia()
+        {
+            return TextLibrary.ToCommaStringNumber(this.gia);
+        }
         //CRUD method
         private SanPhamController _ctr;
         public Boolean update()
@@ -592,6 +596,10 @@ namespace BaseClass.Models
         public string _get_total()
         {
             return TextLibrary.ToCommaStringNumber(this.soluong * this.dongia);
+        }
+        public string _get_dongia()
+        {
+            return TextLibrary.ToCommaStringNumber(this.dongia);
         }
         //CRUD method
         private ChiTiet_DonHangController _ctr;

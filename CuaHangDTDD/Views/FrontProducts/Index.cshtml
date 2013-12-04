@@ -22,39 +22,28 @@
                 </div>
             </div>
             <div class="orderby_form">
-                <!-- ORDER BY .... FORM -->
-                <form action="http://livedemo00.template-help.com/virtuemart_37317/index.php" method="get" name="order" class="orderby_form">
-                    Sort by: 
-                            <select class="inputbox" name="orderby" onchange="order.submit()">
-                                <option value="product_list">Select</option>
-                                <option value="product_name" selected="selected">Product Name</option>
-                                <option value="product_price">Price</option>
-                                <option value="product_cdate">Latest Products</option>
-                            </select>
-                    <script type="text/javascript">//<![CDATA[
-                        document.write('&nbsp;<input type="hidden" name="DescOrderBy" value="ASC" /><a href="javascript: document.order.DescOrderBy.value=\'DESC\'; document.order.submit()"><img src="sort_asc.png"/*tpa=http://livedemo00.template-help.com/virtuemart_37317/images/M_images/sort_asc.png*/ border="0" width="17" height="16" alt=""Ascending order" title="Ascending order" width="12" height="12" /></a>');
-                        //]]></script>
-                    &nbsp;<input type="hidden" name="DescOrderBy" value="ASC">
-                    <noscript>
-                        &lt;select class="inputbox" name="DescOrderBy"&gt;
-                                    &lt;option value="DESC"&gt;Descending order&lt;/option&gt;
-                                    &lt;option selected="selected" value="ASC"&gt;Ascending order&lt;/option&gt;
-                                &lt;/select&gt;
-                                &lt;input class="button" type="submit" value="Submit" /&gt;
-                    </noscript>
-                    <input type="hidden" name="Itemid" value="29">
-                    <input type="hidden" name="option" value="com_virtuemart">
-                    <input type="hidden" name="page" value="shop.browse">
-                    <input type="hidden" name="category_id" value="12">
-                    <input type="hidden" name="manufacturer_id" value="0">
-                    <input type="hidden" name="keyword" value="">
-                    <input type="hidden" name="keyword1" value="">
-                    <input type="hidden" name="keyword2" value="">
-                </form>
+                
             </div>
 
             <div class="tabs-position">
                 <div class="wrapper">
+                    <div style="float:right; width: auto;">
+                        <a href="@Url.Action("OrderBy", "FrontProducts", new { page=pagination.current_page, 
+                            order_by = "id", order_desc = "1" , hangsx_id=hangsx.id
+                            })" style="color:#242424">Mới nhất trước</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontProducts", new { page=pagination.current_page, 
+                            order_by = "id", order_desc = "0", hangsx_id=hangsx.id
+                            })" style="color:#242424">Cũ nhất trước</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontProducts", new { page=pagination.current_page, 
+                            order_by = "gia", order_desc = "0", hangsx_id=hangsx.id
+                            })" style="color:#242424">Giá tăng dần</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontProducts", new { page=pagination.current_page, 
+                            order_by = "gia", order_desc = "1", hangsx_id=hangsx.id
+                            })" style="color:#242424">Giá giảm dần</a>
+                    </div>
                 </div>
             </div>
             <div class="tab_container" style="visibility: visible;">
@@ -111,7 +100,7 @@
                                             </div>
                                             <div class="floatElementR">
                                                 <div class="browsePriceContainer">
-                                                    <span class="productPrice">@item.gia VNĐ</span>
+                                                    <span class="productPrice">@item._get_gia() VNĐ</span>
 
                                                 </div>
                                                 <div class="browseAddToCartContainer">
