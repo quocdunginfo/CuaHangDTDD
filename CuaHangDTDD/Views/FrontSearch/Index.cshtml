@@ -4,7 +4,7 @@
     var pagination = (BaseClass._Library.PaginationLibrary)ViewBag.pagination;
     var SanPham_List = (List<BaseClass.Models.SanPham>)ViewBag.SanPham_List;
     var HangSX_List = (List<BaseClass.Models.HangSX>)ViewBag.HangSX_List;
-    var hangsx = (BaseClass.Models.HangSX)ViewBag.hangsx;
+    var timkiem_sanpham = (HttpCookie)ViewBag.timkiem_sanpham;
 }
 
 <div class="container">
@@ -14,17 +14,16 @@
             <div class="clear">
 
                 <div class="buttons_heading">
-                    <a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.pdf_output&showpage=shop.browse&pop=1&output=pdf&product_id=0&category_id=12&pop=1  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.pdf_output&showpage=shop.browse&pop=1&output=pdf&product_id=0&category_id=12&pop=1%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.pdf_output&amp;showpage=shop.browse&amp;pop=1&amp;output=pdf&amp;product_id=0&amp;category_id=12&amp;pop=1" title="PDF" onclick="void window.open('http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.pdf_output&amp;showpage=shop.browse&amp;pop=1&amp;output=pdf&amp;product_id=0&amp;category_id=12&amp;pop=1', '_blank', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');return false;">
-                        <img src="pdf_button.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/images/M_images/pdf_button.png" alt="PDF" name="PDF" align="middle" border="0"></a><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.browse&only_page=1&category_id=12&pop=1&tmpl=component&  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&page=shop.browse&only_page=1&category_id=12&pop=1&tmpl=component&%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.browse&amp;only_page=1&amp;category_id=12&amp;pop=1&amp;tmpl=component&amp;" title="Print" onclick="void window.open('http://livedemo00.template-help.com/virtuemart_37317/index2.php?option=com_virtuemart&amp;page=shop.browse&amp;only_page=1&amp;category_id=12&amp;pop=1&amp;tmpl=component&amp;', '_blank', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');return false;"><img src="printButton.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/images/M_images/printButton.png" alt="Print" name="Print" align="middle" border="0"></a>
+                    
                 </div>
-                <h3 class="categoryName">@hangsx.ten</h3>
+                <h3 class="categoryName">Tìm kiếm nâng cao</h3>
 
                 <div style="text-align: center;">
                 </div>
             </div>
             <div class="orderby_form">
                 <!-- ORDER BY .... FORM -->
-                <form action="" method="get" name="order" class="orderby_form">
+                <form action="@Url.Action("Submit","FrontSearch")" method="post" name="order" class="orderby_form" style="height:180px">
                     <style type="text/css">
                         .orderby_form span {
                             display:inline-block;
@@ -37,28 +36,64 @@
                     </style>
 
                     <span>Tên sản phẩm:</span>
-                    <input type="text" value="" style="width:200px"/>
+                    <input name="ten" type="text" value="@timkiem_sanpham["ten"]" style="width:250px"/>
                     <div class="qd_br"></div>
 
                     <span>Giá từ </span>
-                    <input type="text" value="" style="width:100px"/>
+                    <input name="gia_from" type="text" value="@timkiem_sanpham["gia_from"]" style="width:100px"/>
                     <span style="text-align:center; width: 30px">đến </span>
-                    <input type="text" value="" style="width:100px"/>
+                    <input name="gia_to" type="text" value="@timkiem_sanpham["gia_to"]" style="width:100px"/>
                     <div class="qd_br"></div>
 
                     <span>Hãng sản xuất: </span>
-                    <select name="orderby" style="width: auto">
-                        <option value="product_list">Select</option>
-                        <option value="product_name" selected="selected">Product Name</option>
-                        <option value="product_price">Price</option>
-                        <option value="product_cdate">Latest Products</option>
+                    <select name="hangsx_id" style="width: auto">
+                        <option value="0" @if (timkiem_sanpham["hangsx_id"].Equals(""))
+                                         {<text>selected="selected"</text>}>(Tất cả)</option>
+                        @foreach(var item in HangSX_List)
+                        {
+                        <option value="@item.id" @if(item.id.ToString().Equals(timkiem_sanpham["hangsx_id"]))
+                                                 {<text>selected="selected"</text>}>@item.ten</option>
+                        }
                     </select>
-                    
+                    <div class="qd_br"></div>
+                    <span>Hiển thị : </span>
+                    <select name="max_item_per_page" style="width:auto">
+                        <option value="3" @if(pagination.max_item_per_page==3) {<text>selected="selected"</text>}>3</option>
+                        <option value="5" @if(pagination.max_item_per_page==5) {<text>selected="selected"</text>}>5</option>
+                        <option value="10" @if (pagination.max_item_per_page == 10)
+                                           {<text>selected="selected"</text>}>10</option>
+                        <option value="20" @if (pagination.max_item_per_page == 20)
+                                           {<text>selected="selected"</text>}>20</option>
+                        <option value="50" @if (pagination.max_item_per_page == 50)
+                                           {<text>selected="selected"</text>}>50</option>
+                    </select>
+                    sản phẩm / trang
+                    <div class="qd_br"></div>
+                    <input name="submit" type="submit" class="button" value="Tìm kiếm">
+                    <input name="submit_reset" type="submit" class="button" value="Reset" style="margin-left:20px">
                 </form>
+                
             </div>
 
             <div class="tabs-position">
                 <div class="wrapper">
+                    <div style="float:right; width: auto;">
+                        <a href="@Url.Action("OrderBy", "FrontSearch", new { page=pagination.current_page, 
+                            order_by = "id", order_desc = "1"
+                            })" style="color:#242424">Mới nhất trước</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontSearch", new { page=pagination.current_page, 
+                            order_by = "id", order_desc = "0"
+                            })" style="color:#242424">Cũ nhất trước</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontSearch", new { page=pagination.current_page, 
+                            order_by = "gia", order_desc = "0"
+                            })" style="color:#242424">Giá tăng dần</a>
+                        |
+                        <a href="@Url.Action("OrderBy", "FrontSearch", new { page=pagination.current_page, 
+                            order_by = "gia", order_desc = "1"
+                            })" style="color:#242424">Giá giảm dần</a>
+                    </div>
                 </div>
             </div>
             <div class="tab_container" style="visibility: visible;">
@@ -178,25 +213,25 @@
                     <div class="qd_pagination">
                         @if (pagination.can_first_page)
                         {
-                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = 1 })" class="page">Đầu</a>
+                            <a href="@Url.Action("Index", "FrontSearch", new { page = 1 })" class="page">Đầu</a>
                         }
                         @if (pagination.can_prev_page)
                         {
-                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.current_page - 1 })" class="page">Trước</a>
+                            <a href="@Url.Action("Index", "FrontSearch", new { page = pagination.current_page - 1 })" class="page">Trước</a>
                         }
                         @for (int tmp_pg = 1; tmp_pg <= pagination.total_page; tmp_pg++)
                         {
-                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = tmp_pg })" class="page @if (tmp_pg == pagination.current_page)
+                            <a href="@Url.Action("Index", "FrontSearch", new { page = tmp_pg })" class="page @if (tmp_pg == pagination.current_page)
                                                                                                                                     {<text>active</text>}">@tmp_pg</a>
                         }
 
                         @if (pagination.can_next_page)
                         {
-                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.current_page + 1 })" class="page">Kế</a>
+                            <a href="@Url.Action("Index", "FrontSearch", new { page = pagination.current_page + 1 })" class="page">Kế</a>
                         }
                         @if (pagination.can_last_page)
                         {
-                            <a href="@Url.Action("Index", "FrontProducts", new { hangsx_id = hangsx.id, page = pagination.total_page })" class="page">Cuối</a>
+                            <a href="@Url.Action("Index", "FrontSearch", new { page = pagination.total_page })" class="page">Cuối</a>
                         }
                     </div>
                 </div>

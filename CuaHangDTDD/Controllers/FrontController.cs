@@ -18,21 +18,26 @@ namespace CuaHangDTDD.Controllers
         public FrontController()
         {
             this._giohang = new DonHang();
-            this._khoitao_cookie();
+            this._khoitao_timkiem_cookie();
         }
         
         [NonAction]
-        protected void _khoitao_cookie()
+        protected void _khoitao_timkiem_cookie()
         {
-            _timkiem_sanpham = new HttpCookie("front_timkiem_sanpham");
+            _timkiem_sanpham = new HttpCookie("timkiem_sanpham");
             _timkiem_sanpham.Expires = DateTime.Now.AddDays(1);
             this._timkiem_sanpham["ten"] = "";
-            this._timkiem_sanpham["masp"] = "";
-            this._timkiem_sanpham["mota"] = "";
-            this._timkiem_sanpham["gia_from"] = "-1";
-            this._timkiem_sanpham["gia_to"] = "-1";
-            this._timkiem_sanpham["hangsx_ten"] = "";
-            this._timkiem_sanpham["max_item_per_page"] = "9";
+            this._timkiem_sanpham["gia_from"] = "0";
+            this._timkiem_sanpham["gia_to"] = "0";
+            this._timkiem_sanpham["hangsx_id"] = "0";
+            this._timkiem_sanpham["order_by"] = "id";
+            this._timkiem_sanpham["order_desc"] = "1";
+            this._timkiem_sanpham["max_item_per_page"] = "5";
+        }
+        [NonAction]
+        protected void _luu_timkiem_cookie()
+        {
+            Response.Cookies.Add(CookieLibrary.Base64Encode(this._timkiem_sanpham));
         }
         public ActionResult Index2()
         {
@@ -44,10 +49,10 @@ namespace CuaHangDTDD.Controllers
             ViewBag.Title = "Cửa hàng DTDD";
             //tim kiem
             //build timkiem_nhanvien
-            if (Request.Cookies.Get("front_timkiem_sanpham") == null)
+            if (Request.Cookies.Get("timkiem_sanpham") == null)
             {
                 //chưa set cookies trước => tiến hành set cookies
-                this._khoitao_cookie();
+                this._khoitao_timkiem_cookie();
                 Response.Cookies.Add(CookieLibrary.Base64Encode(this._timkiem_sanpham));
             }
             else
@@ -58,7 +63,7 @@ namespace CuaHangDTDD.Controllers
                 }
                 catch (Exception)
                 {
-                    this._khoitao_cookie();
+                    this._khoitao_timkiem_cookie();
                     Response.Cookies.Add(CookieLibrary.Base64Encode(this._timkiem_sanpham));
                 }
             }

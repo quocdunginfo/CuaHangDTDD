@@ -61,11 +61,11 @@ namespace BaseClass.ModelControllers
             //commit
             return save();
         }
-        public int timkiem_count(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = -1, int gia_to = -1, List<HangSX> hangsx_list = null, String active = "")
+        public int timkiem_count(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = 0, int gia_to = 0, HangSX hangsx = null, String active = "")
         {
-            return timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx_list,active).Count;
+            return timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx ,active).Count;
         }
-        public List<SanPham> timkiem(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = -1, int gia_to = -1, List<HangSX> hangsx_list = null, String active = "", String order_by = "id", Boolean order_desc = true, int start_point = 0, int count = -1)
+        public List<SanPham> timkiem(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = 0, int gia_to = 0, HangSX hangsx = null, String active = "", String order_by = "id", Boolean order_desc = true, int start_point = 0, int count = -1)
         {
             List<SanPham> obj_list = new List<SanPham>();
             //find by LIKE element
@@ -82,18 +82,14 @@ namespace BaseClass.ModelControllers
                 obj_list = obj_list.Where(x => x.id == id_i).ToList();
             }
             //Filter by gia
-            if (gia_from>-1 && gia_to>-1)
+            if (gia_from>0 || gia_to>0)
             {
                 obj_list = obj_list.Where(x => x.gia >= gia_from && x.gia<=gia_to).ToList();
             }
             //filter by HangSX List
-            if (hangsx_list != null)
+            if (hangsx != null)
             {
-                //build list id
-                List<int> hangsx_id_list = new List<int>();
-                hangsx_id_list= hangsx_list.Select(x => x.id).ToList();
-                //query
-                obj_list = obj_list.Where(x => hangsx_id_list.Contains(x.hangsx.id)).ToList();
+                obj_list = obj_list.Where(x => x.hangsx.id == hangsx.id).ToList();
             }
             
             //Filter again by by active
@@ -104,13 +100,27 @@ namespace BaseClass.ModelControllers
             }
 
             //order
-            if (order_desc)
+            if (order_by.Equals("id"))
             {
-                obj_list = obj_list.OrderByDescending(x => x.id).ToList();
+                if (order_desc)
+                {
+                    obj_list = obj_list.OrderByDescending(x => x.id).ToList();
+                }
+                else
+                {
+                    obj_list = obj_list.OrderBy(x => x.id).ToList();
+                }
             }
-            else
+            else if (order_by.Equals("gia"))
             {
-                obj_list = obj_list.OrderBy(x => x.id).ToList();
+                if (order_desc)
+                {
+                    obj_list = obj_list.OrderByDescending(x => x.gia).ToList();
+                }
+                else
+                {
+                    obj_list = obj_list.OrderBy(x => x.gia).ToList();
+                }
             }
 
             //limit

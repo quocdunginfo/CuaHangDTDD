@@ -22,7 +22,6 @@ namespace CuaHangDTDD.Controllers
             SanPhamController ctr = new SanPhamController();
             HangSXController ctr_hangsx = new HangSXController();
             HangSX hangsx = ctr_hangsx.get_by_id(hangsx_id);
-            List<HangSX> search_hangsx = ctr_hangsx.timkiem(hangsx_id.ToString(),"","1");
             //check
             if (hangsx==null || hangsx.active==false)
             {
@@ -35,14 +34,13 @@ namespace CuaHangDTDD.Controllers
                 pg.set_current_page(page);
                 pg.set_max_item_per_page(max_item_per_page);
                 pg.set_total_item(
-                    ctr.timkiem_count("", "", "", "", -1, -1, search_hangsx, "1")
+                    ctr.timkiem_count("", "", "", "", -1, -1, hangsx, "1")
                 );
             pg.update();
-            ViewBag.SanPham_List = ctr.timkiem("","","","",-1,-1,search_hangsx,"1","id",true,pg.start_point,max_item_per_page);
+            ViewBag.SanPham_List = ctr.timkiem("","","","",-1,-1,hangsx,"1","id",true,pg.start_point,max_item_per_page);
             ViewBag.pagination = pg;
             ViewBag.hangsx = hangsx;
             return View();
         }
-
     }
 }

@@ -71,25 +71,20 @@
             <div id="header">
                 <div id="search">
                     <div class="moduletable">
-                        <form action="" method="post">
+                        <form action="@Url.Action("Quick_Search","FrontSearch")" method="post">
                             <div class="search">
-                                <input name="searchword" id="mod_search_searchword" maxlength="80" alt="Search" class="inputbox" type="text" size="80" value="Enter search keywords here" onblur="if(this.value=='') this.value='Enter search keywords here';" onfocus="if(this.value=='Enter search keywords here') this.value='';" /><input type="submit" value="Search" class="button" onclick="this.form.searchword.focus();" />
+                                <input name="ten" id="mod_search_searchword" maxlength="80" alt="Search" class="inputbox" type="text" size="80" value="Nhập tên sản phẩm cần tìm" onblur="if(this.value=='') this.value='Nhập tên sản phẩm cần tìm';" onfocus="if(this.value=='Nhập tên sản phẩm cần tìm') this.value='';" />
+                                <input type="submit" value="Tìm kiếm" class="button" onclick="this.form.ten.focus();" />
                             </div>
-                            <input type="hidden" name="task" value="search" />
-                            <input type="hidden" name="option" value="com_search" />
-                            <input type="hidden" name="Itemid" value="1" />
                         </form>
                     </div>
 
                 </div>
-                <div id="topmenu">
+                <div id="topmenu" style="visibility:hidden">
                     <div class="moduletable-nav">
                         <ul class="menu">
-                            <li class="item29"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_virtuemart&Itemid=29"><span>Online store</span></a></li>
-                            <li class="item18"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=46&Itemid=18"><span>About Us</span></a></li>
-                            <li class="item30"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=47&Itemid=30"><span>Delivery</span></a></li>
-                            <li class="item53"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_content&view=article&id=48&Itemid=53"><span>FAQs</span></a></li>
-                            <li class="item54"><a href="javascript:if(confirm(%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a path excluded by the site\%27s Robot Exclusion parameters.  (Teleport Pro\%27s compliance with this system is optional; see the Project Properties, Netiquette page.)  \n\nDo you want to open it from the server?%27))window.location=%27http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54%27" tppabs="http://livedemo00.template-help.com/virtuemart_37317/index.php?option=com_contact&view=contact&id=2&Itemid=54"><span>Contacts</span></a></li>
+                            <li class="item29"><a href="javascript:void(0)"><span>Online store</span></a></li>
+                            
                         </ul>
                     </div>
 
@@ -120,40 +115,28 @@
                         <div id="relative_div" style="position: relative; z-index: 0"></div>
                         <ul class="level1">
                             <li class="level1 item1">
-                                <a class="level1 item1 " href="" target="_self" title="Mobile phones "><span>Mobile phones </span></a>
+                                <a class="level1 item1 " href="@Url.Action("Index","FrontHome")" target="_self" title="Mobile phones "><span>Trang chủ </span></a>
                             </li>
                             <li class="level1 item2 parent">
-                                <a class="level1 item2  parent" href="" target="_self" title="Smartphones">
-                                    <span>Smartphones</span>
+                                <a class="level1 item1  parent" href="javascript:void(0)" target="_self" title="Smartphones">
+                                    <span>Hãng sản xuất</span>
                                 </a>
-                                <ul class="level2" style="width:140px; left: 145px !important">
+                                <ul class="level2" style="width:140px; left: 120px !important">
                                 <li class="level2 item1">
-                                    <a class="level2 item1" href="" target="_self" title="veniam quis ">
+                                    @foreach(var item in HangSX_List)
+                                    {
+                                    <a class="level2 item1" href="@Url.Action("Index", "FrontProducts", new { hangsx_id=item.id , page=1 })" target="_self" title="@item.ten">
                                         <span>
-                                            Item 1
+                                            @item.ten
                                         </span>
                                     </a>
                                     <br />
-                                    <a class="level2 item1" href="" target="_self" title="veniam quis ">
-                                        <span>
-                                            Item 1
-                                        </span>
-                                    </a>
-                                    <br />
-                                    <a class="level2 item1" href="" target="_self" title="veniam quis ">
-                                        <span>
-                                            Item 1
-                                        </span>
-                                    </a>
-                                    <br />
-                                    <a class="level2 item1" href="" target="_self" title="veniam quis ">
-                                        <span>
-                                            Item 1
-                                        </span>
-                                    </a>
-                                    <br />
+                                    }
                                 </li>
                                 </ul>
+                            </li>
+                            <li class="level1 item3">
+                                <a class="level1 item1 " href="@Url.Action("Index","FrontSearch")" target="_self" title="Mobile phones "><span>Tìm kiếm sản phẩm</span></a>
                             </li>
                         </ul>
                     </div>
@@ -172,14 +155,14 @@
                                 <span class="kwicks_body">
                                     <span class="padding">
                                         <span class="wrapper">
-                                            <a href="#">
+                                            <a href="javascript:void(0)">
                                                 <img class="fleft" src="img1.png" alt=""></a>
                                             <div class="wrapper3">
                                                 <h2 class="title">Motorola <span>DEFY</span></h2>
                                                 <em>Lorem ipsum dolor sit amet</em>
                                                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                                                 <div class="shop">
-                                                    <a href="#">Shop now!</a>
+                                                    
 
                                                 </div>
 
@@ -194,14 +177,14 @@
                                 <span class="kwicks_body">
                                     <span class="padding">
                                         <div class="wrapper">
-                                            <a href="" title="">
+                                            <a href="javascript:void(0)" title="">
                                                 <img class="fleft" src="img2.png" alt=""></a>
                                             <div class="wrapper3">
                                                 <h2 class="title">Samsung <span>Galaxy S</span></h2>
                                                 <em>Lorem ipsum dolor sit amet</em>
                                                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                                                 <div class="shop">
-                                                    <a href="" title="">Shop now!</a>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -214,14 +197,14 @@
                                 <div class="kwicks_body">
                                     <div class="padding">
                                         <div class="wrapper">
-                                            <a href="" title="">
+                                            <a href="javascript:void(0)" title="">
                                                 <img class="fleft" src="img3.png" alt=""></a>
                                             <div class="wrapper3">
                                                 <h2 class="title">LG <span>Thrill 4G</span></h2>
                                                 <em>Lorem ipsum dolor sit amet</em>
                                                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                                                 <div class="shop">
-                                                    <a href="" title="">Shop now!</a>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -234,14 +217,14 @@
                                 <span class="kwicks_body">
                                     <span class="padding">
                                         <div class="wrapper">
-                                            <a href="" title="">
+                                            <a href="javascript:void(0)" title="">
                                                 <img class="fleft" src="img4.png" alt=""></a>
                                             <div class="wrapper3">
                                                 <h2 class="title">Samsung <span>I9100G Galaxy S II</span></h2>
                                                 <em>Lorem ipsum dolor sit amet</em>
                                                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                                                 <div class="shop">
-                                                    <a href="" title="">Shop now!</a>
+                                                    
                                                 </div>
 
                                             </div>
@@ -256,7 +239,7 @@
                                 <span class="kwicks_body">
                                     <span class="padding">
                                         <span class="wrapper">
-                                            <a href="" title="">
+                                            <a href="javascript:void(0)" title="">
                                                 <img class="fleft" src="img5.png" tppabs="http://livedemo00.template-help.com/virtuemart_37317/images/stories/gallery/img5.png" alt="">
                                             </a>
                                             <div class="wrapper3">
@@ -264,7 +247,7 @@
                                                 <em>Lorem ipsum dolor sit amet</em>
                                                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
                                                 <div class="shop">
-                                                    <a href="" title="">Shop now!</a>
+                                                    
                                                 </div>
                                             </div>
                                         </span>
@@ -349,9 +332,9 @@
                     <div class="wrapper">
                         <div class="footerText">
                             <ul class="menu">
-                                <li class="item29"><a href=""><span>Online store</span></a></li>
+                                <!-- <li class="item29"><a href="javascript:void(0)"><span>Online store</span></a></li> -->
                             </ul>
-                            <div class="pad-top">Copyright &#169; 2013 Mobile. All Rights Reserved.&nbsp;<a href="">Joomla!</a> is Free Software released under the <a href="">GNU/GPL License.</a></div>
+                            <div class="pad-top">Copyright &#169; 2013 Mobile. All Rights Reserved.&nbsp;</div>
                             <!--{%FOOTER_LINK} -->
                         </div>
                     </div>

@@ -44,7 +44,7 @@
                                                 <a href="@link_to_sanpham">@item.ten</a>
                                             </div>
                                             <div class="lastProductDesc">
-                                               @item.mota
+                                               @item._get_mota_lite(100)
                                             </div>
 
                                             <div class="wrapper">
@@ -53,10 +53,7 @@
                                                 </div>
                                             </div>
                                             <div class="lastProductDetail">
-                                                <form action="#" method="post" name="addtocart">
-                                                    <input type="hidden" name="option" value="com_virtuemart" />
-                                                    <input type="submit" class="add_to_cart_button" value="Mua hàng" title="Add to cart" />
-                                                </form>
+                                                <button class="add_to_cart_button" onclick="document.location='@Url.Action("Index", "FrontProductDetail", new { id = item.id })'">Mua hàng</button>
                                             </div>
                                         </div>
                                     </div>
@@ -67,12 +64,10 @@
                                         @:</li>
                                     }
                         }
-                        @{
-                            if (!end_li_tag)
+                        @if (!end_li_tag)
                             {
                             @:</li>
                             }
-                        }
                     </ul>
                 </div>
             </div>
