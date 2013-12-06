@@ -21,23 +21,29 @@ namespace CuaHangDTDD.Controllers
             SanPhamController ctr=new SanPhamController();
             HangSXController ctr_hangsx = new HangSXController();
             //varibles
+            int gia_from = TextLibrary.ToInt(_timkiem_sanpham["gia_from"]);
+            int gia_to = TextLibrary.ToInt(_timkiem_sanpham["gia_to"]);
+            Boolean order_desc = TextLibrary.ToBoolean(_timkiem_sanpham["order_desc"]);
+            int max_item_per_page= TextLibrary.ToInt(_timkiem_sanpham["max_item_per_page"]);
+            int hang_sx_id = TextLibrary.ToInt(_timkiem_sanpham["hangsx_id"]);
             HangSX hangsx = ctr_hangsx.get_by_id(
-                TextLibrary.ToInt(_timkiem_sanpham["hangsx_id"])
+                hang_sx_id
             );
             //pagination
             PaginationLibrary pagination = new PaginationLibrary();
             pagination.set_current_page(page);
             pagination.set_max_item_per_page(
-                TextLibrary.ToInt(_timkiem_sanpham["max_item_per_page"])   
+                max_item_per_page   
             );
+            
             pagination.set_total_item(
                 ctr.timkiem_count(
                 "",
                 "",
                 _timkiem_sanpham["ten"],
                 "",
-                TextLibrary.ToInt(_timkiem_sanpham["gia_from"]),
-                TextLibrary.ToInt(_timkiem_sanpham["gia_to"]),
+                gia_from,
+                gia_to,
                 hangsx,
                 "1"
                 )    
@@ -49,12 +55,12 @@ namespace CuaHangDTDD.Controllers
                 "",
                 _timkiem_sanpham["ten"],
                 "",
-                TextLibrary.ToInt(_timkiem_sanpham["gia_from"]),
-                TextLibrary.ToInt(_timkiem_sanpham["gia_to"]),
+                gia_from,
+                gia_to,
                 hangsx,
                 "1",
                 _timkiem_sanpham["order_by"],
-                TextLibrary.ToBoolean(_timkiem_sanpham["order_desc"]),
+                order_desc,
                 pagination.start_point,
                 pagination.max_item_per_page
             );

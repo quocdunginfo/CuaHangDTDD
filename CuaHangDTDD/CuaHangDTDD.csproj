@@ -44,6 +44,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -95,7 +97,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AdminHinhAnhController.cs" />
     <Compile Include="Controllers\FrontAboutController.cs" />
     <Compile Include="Controllers\FrontCartController.cs" />
     <Compile Include="Controllers\FrontContactController.cs" />
@@ -495,6 +496,9 @@
       <Project>{c8255293-ebc6-48a6-8e7c-9969fa85d1b6}</Project>
       <Name>BaseClass</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

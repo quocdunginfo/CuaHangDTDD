@@ -28,12 +28,7 @@ namespace CuaHangDTDD.Controllers
             int chitietsp_soluong = TextLibrary.ToInt(Request["giohang_chitietsp_soluong"]);
             //do action and validate
             validate = this._giohang._update_cart(chitietsp_id, chitietsp_soluong);
-            if (validate.Count == 0)
-            {
-                //save to session
-                this._save_cart_to_session();
-            }
-            //set temp state
+            //set temp data
             TempData["state"] = validate;
             //save cart to session
             this._save_cart_to_session();

@@ -10,7 +10,7 @@ namespace BaseClass.ModelControllers
 {
     public class SanPhamController
     {
-        public DTDDDbContext _db = new DTDDDbContext();
+        public DTDDDbContext _db;
         public SanPhamController()
         {
             this._db = new DTDDDbContext();
