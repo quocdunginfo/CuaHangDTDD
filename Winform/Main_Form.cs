@@ -33,5 +33,11 @@ namespace Winform
             obj.ten = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
             obj.update();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            HinhAnh vl=new HinhAnhController().get_by_id(3);
+            pictureBox1.Image = vl._get_image();
+        }
     }
 }

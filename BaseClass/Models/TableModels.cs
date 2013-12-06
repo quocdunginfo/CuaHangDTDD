@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -47,6 +48,40 @@ namespace BaseClass.Models
         //external
         public virtual SanPham sanpham { get; set; }
 
+        //method
+        public Image _get_image()
+        {
+            return _image_from_url(this._get_full_duongdan());
+        }
+        private Image _image_from_url(string url="")
+        {
+            try
+            {
+                var webClient = new WebClient();
+                byte[] imageBytes = webClient.DownloadData(url);
+                MemoryStream stream = new MemoryStream(imageBytes);
+                Image img = Image.FromStream(stream);
+                stream.Close();
+                return img;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return null;
+            }
+        }
+        public Bitmap _get_bitmap()
+        {
+            return new Bitmap(this._get_image());
+        }
+        public Image _get_image_thumb()
+        {
+            return _image_from_url(this._get_full_duongdan_thumb());
+        }
+        public Bitmap _get_bitmap_thumb()
+        {
+            return new Bitmap(this._get_image_thumb());
+        }
         public string _get_full_duongdan(string path_to_website = null)
         {
             if (path_to_website == null)
