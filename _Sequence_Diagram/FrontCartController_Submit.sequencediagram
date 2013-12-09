@@ -389,7 +389,7 @@
               <messageOccurrenceSpecificationMoniker Id="5122ddb7-32ea-41a8-914d-0219c41b04ae" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="3db74102-5e6c-4f55-acc2-d811cedd09e9" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="3db74102-5e6c-4f55-acc2-d811cedd09e9" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="6d269580-5f63-4a9c-a402-de7628e98ca5" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -409,7 +409,7 @@
               <messageOccurrenceSpecificationMoniker Id="490d5497-6dde-4f9c-85c3-f68acc862a53" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="02fe96c2-e7f8-4a93-9912-b32bd102aac4" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="02fe96c2-e7f8-4a93-9912-b32bd102aac4" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="7bb671b2-21b3-45b5-836b-a41187b43831" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -429,7 +429,7 @@
               <messageOccurrenceSpecificationMoniker Id="7e9e38a6-7f6b-495b-88db-fa2e230dd6b7" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="677b0295-cdd6-4981-bb18-16015564d1c4" name="LINQ" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="677b0295-cdd6-4981-bb18-16015564d1c4" name="Call LINQ Find ChiTiet_DonHang" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="2aeada11-89f6-4791-9e07-cf655e1f4aca" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -437,7 +437,7 @@
               <messageOccurrenceSpecificationMoniker Id="1c38d483-1b48-4984-abea-50469b08b8b8" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="33274cda-c5e0-4a92-b4a5-23abd2adf19e" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="33274cda-c5e0-4a92-b4a5-23abd2adf19e" name="&lt;&lt;returnChiTiet_DonHang&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="18511e0a-72c0-4cc4-8c5e-3538a18647e0" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -445,7 +445,7 @@
               <messageOccurrenceSpecificationMoniker Id="fa8471c0-bab7-4f3d-a045-7c8f97e80e8d" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="4c326423-57f8-432e-9239-075c2b14aa69" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="4c326423-57f8-432e-9239-075c2b14aa69" name="&lt;&lt;return List&lt;string&gt;()&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="502eb6d8-9ca1-48f3-a6f4-5477092aef96" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>

@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="d13f721c-db2a-4f5e-ac1a-f25858c4d2ab" name="UMLClassDiagram1" linkedPackageId="12d2a52a-e43b-4d43-8f99-7e1e4f638771" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="24513584-0e5a-40e8-837e-21fd88165e2c">
-      <profileInstance Id="3524657d-77a9-4c6c-b0cc-dcf439078895" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="8bde36ad-2378-4e72-9c9a-76ec8f5ba17f">
-      <profileInstance Id="756df11d-7c6e-495f-a94f-57cc9035adb5" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="fbc94bd9-b2d8-4eb2-9ba7-318579de7dd3">
-      <profileInstance Id="f6dee1e7-deec-4e7d-b790-865e48507d86" name="CSharpProfile">
-        <elementDefinition Id="c1dea8a9-04d7-4835-93d9-c73258ccde61" />
-      </profileInstance>
-      <elementDefinition Id="841e7f41-bf23-4168-84ae-d482240b7368" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="c636fb5a-6d2f-4c6d-a136-20c891b9c358" name="ChiTiet_DonHangController" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -8228,5 +8208,25 @@
   </packagedElements>
   <package Id="12d2a52a-e43b-4d43-8f99-7e1e4f638771" name="ModelingProject1">
     <elementDefinition Id="b440c6d0-8d4e-4480-a2d5-ceb570cb5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="24513584-0e5a-40e8-837e-21fd88165e2c">
+        <profileInstance Id="3524657d-77a9-4c6c-b0cc-dcf439078895" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="8bde36ad-2378-4e72-9c9a-76ec8f5ba17f">
+        <profileInstance Id="756df11d-7c6e-495f-a94f-57cc9035adb5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fbc94bd9-b2d8-4eb2-9ba7-318579de7dd3">
+        <profileInstance Id="f6dee1e7-deec-4e7d-b790-865e48507d86" name="CSharpProfile">
+          <elementDefinition Id="c1dea8a9-04d7-4835-93d9-c73258ccde61" />
+        </profileInstance>
+        <elementDefinition Id="841e7f41-bf23-4168-84ae-d482240b7368" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

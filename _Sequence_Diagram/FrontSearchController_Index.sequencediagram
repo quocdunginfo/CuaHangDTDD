@@ -152,14 +152,14 @@
               <lifelineMoniker Id="51e063e7-995f-4d42-a4f2-1042ccdc72f9" LastKnownName="ctr_hangsx : HangSXController" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="8926c4b4-f3f3-44d2-a667-3f032a6dd809" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="51e063e7-995f-4d42-a4f2-1042ccdc72f9" LastKnownName="ctr_hangsx : HangSXController" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="96745b3e-94d2-4efe-b6f2-2243ae074ea7" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="8926c4b4-f3f3-44d2-a667-3f032a6dd809" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="51e063e7-995f-4d42-a4f2-1042ccdc72f9" LastKnownName="ctr_hangsx : HangSXController" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="1341dbaa-ed08-4364-bc7c-bbfc2b6044c9" name="MessageOccurrenceSpecification">
@@ -268,14 +268,14 @@
               <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="9bdf93f6-729b-4f11-b661-af1179be67bf" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="8c7c7ef3-71eb-49b6-98e3-a06a8e3bbcfb" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9bdf93f6-729b-4f11-b661-af1179be67bf" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="20f415a7-7c0b-4f65-aa6f-29a7dde4c94b" name="MessageOccurrenceSpecification">
@@ -388,14 +388,14 @@
               <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="9f6ec05b-63c9-42ed-ba42-4497694272d7" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="3d25c532-257b-43ad-bb5b-bf8830e39430" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="9f6ec05b-63c9-42ed-ba42-4497694272d7" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="9929f1ee-d780-4815-9d00-17de2f6126e9" LastKnownName="TextLibrary" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="79fa9727-2d9e-43d2-9e10-09892a604181" name="ExecutionOccurrenceSpecification">
@@ -598,14 +598,14 @@
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="afd3c890-4fbc-4efa-bf22-d7682bf23e1f" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="48699118-cceb-4202-b645-5db5d0f72ebb" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="afd3c890-4fbc-4efa-bf22-d7682bf23e1f" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="a423a107-0ff7-4bc3-a73c-65586552887f" name="MessageOccurrenceSpecification">
@@ -653,24 +653,24 @@
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
             </covered>
           </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="e09d345a-f201-4bb1-a274-d0f5c354b144" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="cb4ec5e6-747b-4043-9e46-b5d0022c8723" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="aa9769df-2c73-4770-b05f-fc7eb4c1fa6a" name="MessageOccurrenceSpecification">
+          <messageOccurrenceSpecification Id="e09d345a-f201-4bb1-a274-d0f5c354b144" name="MessageOccurrenceSpecification">
             <covered>
-              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
+              <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
             </covered>
           </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="79e8e707-1441-47e7-a98c-66e509df80a0" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="aa9769df-2c73-4770-b05f-fc7eb4c1fa6a" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="a75dfe02-8215-475d-b22f-d01717f15455" name="ExecutionOccurrenceSpecification">
@@ -780,14 +780,14 @@
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
             </covered>
           </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="82897c60-e995-4fb4-a1f2-6a749936451b" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
-            </covered>
-          </messageOccurrenceSpecification>
           <messageOccurrenceSpecification Id="2ec0d681-03a8-4269-b885-28a1fafd1c65" name="MessageOccurrenceSpecification">
             <covered>
               <lifelineMoniker Id="0742b4e6-d033-4d05-b1fa-64028f284bf7" LastKnownName="pagination : PaginationLibrary" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="82897c60-e995-4fb4-a1f2-6a749936451b" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="dce505ff-75ea-4f7b-a5e5-074186ae1fae" LastKnownName="this : FrontSearchController" />
             </covered>
           </messageOccurrenceSpecification>
           <executionOccurrenceSpecification Id="2908df57-4e7b-4930-8e76-f7ccbfd4eef7" name="ExecutionOccurrenceSpecification">
@@ -868,8 +868,6 @@
             <nestedOccurrences>
               <messageOccurrenceSpecificationMoniker Id="458f2385-7f4f-4ff8-8796-5dabab6f7ba4" LastKnownName="MessageOccurrenceSpecification" />
               <messageOccurrenceSpecificationMoniker Id="4c14cd53-ad93-4d89-bebb-4c25d80b7059" LastKnownName="MessageOccurrenceSpecification" />
-              <messageOccurrenceSpecificationMoniker Id="7f80ab1c-0811-4461-81aa-e2d1910216fb" LastKnownName="MessageOccurrenceSpecification" />
-              <messageOccurrenceSpecificationMoniker Id="36f19587-6dc8-439d-9a5e-9d8ff305877b" LastKnownName="MessageOccurrenceSpecification" />
               <messageOccurrenceSpecificationMoniker Id="90555848-2cfe-4b56-90f1-6592246928f5" LastKnownName="MessageOccurrenceSpecification" />
               <messageOccurrenceSpecificationMoniker Id="9d105eef-f921-4d82-b71d-7e9026c0b6a4" LastKnownName="MessageOccurrenceSpecification" />
               <messageOccurrenceSpecificationMoniker Id="db07ffb7-51d5-4cbe-81b4-6de8c9b1fbc1" LastKnownName="MessageOccurrenceSpecification" />
@@ -901,61 +899,6 @@
               <lifelineMoniker Id="a5f83fab-123a-42bc-9688-d744ec644265" LastKnownName="ctr : SanPhamController" />
             </covered>
           </messageOccurrenceSpecification>
-          <behaviorExecutionSpecification Id="2c9c9de8-537c-43eb-aa22-2114df74f33e" name="BehaviorExecutionSpecification">
-            <coveredLifelines>
-              <lifelineMoniker Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" LastKnownName="source : DbSet&lt;SanPham&gt;" />
-            </coveredLifelines>
-            <finish>
-              <executionOccurrenceSpecificationMoniker Id="b4be2db8-ab55-41fe-8f33-f2dfe9309258" LastKnownName="ExecutionOccurrenceSpecification" />
-            </finish>
-            <start>
-              <executionOccurrenceSpecificationMoniker Id="78b99579-5766-4dd8-859e-191e06eb4a31" LastKnownName="ExecutionOccurrenceSpecification" />
-            </start>
-            <nestedOccurrences>
-              <messageOccurrenceSpecificationMoniker Id="fed0f1fe-e4fb-4b15-8177-e857c5975ad1" LastKnownName="MessageOccurrenceSpecification" />
-              <messageOccurrenceSpecificationMoniker Id="896472c1-08d3-4d30-8341-8faa729a7fe8" LastKnownName="MessageOccurrenceSpecification" />
-            </nestedOccurrences>
-          </behaviorExecutionSpecification>
-          <executionOccurrenceSpecification Id="78b99579-5766-4dd8-859e-191e06eb4a31" name="ExecutionOccurrenceSpecification">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker Id="70893f1a-3b38-4b8c-84e8-35e26c83bcac" LastKnownName="ExecutionEvent" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" LastKnownName="source : DbSet&lt;SanPham&gt;" />
-            </covered>
-          </executionOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="fed0f1fe-e4fb-4b15-8177-e857c5975ad1" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" LastKnownName="source : DbSet&lt;SanPham&gt;" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="7f80ab1c-0811-4461-81aa-e2d1910216fb" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="a5f83fab-123a-42bc-9688-d744ec644265" LastKnownName="ctr : SanPhamController" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="896472c1-08d3-4d30-8341-8faa729a7fe8" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" LastKnownName="source : DbSet&lt;SanPham&gt;" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification Id="36f19587-6dc8-439d-9a5e-9d8ff305877b" name="MessageOccurrenceSpecification">
-            <covered>
-              <lifelineMoniker Id="a5f83fab-123a-42bc-9688-d744ec644265" LastKnownName="ctr : SanPhamController" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <executionOccurrenceSpecification Id="b4be2db8-ab55-41fe-8f33-f2dfe9309258" name="ExecutionOccurrenceSpecification">
-            <event>
-              <executionOccurrenceSpecificationReferencesEvent>
-                <executionEventMoniker Id="2e353328-405b-46c7-b643-77576ed61873" LastKnownName="ExecutionEvent" />
-              </executionOccurrenceSpecificationReferencesEvent>
-            </event>
-            <covered>
-              <lifelineMoniker Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" LastKnownName="source : DbSet&lt;SanPham&gt;" />
-            </covered>
-          </executionOccurrenceSpecification>
           <behaviorExecutionSpecification Id="7fb51586-556e-4034-beaa-0694ee4a6e20" name="BehaviorExecutionSpecification">
             <coveredLifelines>
               <lifelineMoniker Id="4437e61c-c15d-4b66-a48e-01801b7fce68" LastKnownName="obj_list : List&lt;SanPham&gt;" />
@@ -1115,16 +1058,6 @@
               <executionOccurrenceSpecificationMoniker Id="cbb1194f-c754-4070-9d38-eda045bae5e8" LastKnownName="ExecutionOccurrenceSpecification" />
             </topLevelOccurrences>
           </lifeline>
-          <lifeline Id="a314d655-8c8c-4242-ab53-61c9bd41c1cb" name="source : DbSet&lt;SanPham&gt;" isActor="false" lifelineDisplayName="source : DbSet&lt;SanPham&gt;" referencedInstance="(Assembly=&quot;$(c8255293-ebc6-48a6-8e7c-9969fa85d1b6.OutputPathUri)&quot; Namespace=BaseClass.ModelControllers Type=SanPhamController Member=(Name=timkiem OverloadingParameters=[(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=Int32),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=Int32),(Assembly=&quot;$(c8255293-ebc6-48a6-8e7c-9969fa85d1b6.OutputPathUri)&quot; Namespace=BaseClass.Models Type=HangSX),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=String),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=Boolean),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=Int32),(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System Type=Int32)]) Statement=[1,2,2,1,1,1,1] ObjectInstance=&quot;Object instance 123&quot;)" referencedType="System‎.Data‎.Entity‎.DbSet‎&lt;SanPham‎&gt;">
-            <referencesInternal>
-              <reference Id="fe01fa1c-0a04-4697-afc7-833395db8251" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=System.Data.Entity)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(VsSolutionUri)/packages/EntityFramework.5.0.0/lib/net45/EntityFramework.dll&amp;quot; Namespace=System.Data.Entity Type=(Name=DbSet GenericParameterCount=1))&quot;)" tag="DGQL" />
-              <reference Id="43c05463-e193-4eb7-91c2-e47b76b73a5d" handle="(Assembly=&quot;$(VsSolutionUri)/packages/EntityFramework.5.0.0/lib/net45/EntityFramework.dll&quot; Namespace=System.Data.Entity Type=(Name=DbSet GenericParameterCount=1))" tag="DGML" />
-            </referencesInternal>
-            <topLevelOccurrences>
-              <executionOccurrenceSpecificationMoniker Id="78b99579-5766-4dd8-859e-191e06eb4a31" LastKnownName="ExecutionOccurrenceSpecification" />
-              <executionOccurrenceSpecificationMoniker Id="b4be2db8-ab55-41fe-8f33-f2dfe9309258" LastKnownName="ExecutionOccurrenceSpecification" />
-            </topLevelOccurrences>
-          </lifeline>
           <lifeline Id="4437e61c-c15d-4b66-a48e-01801b7fce68" name="obj_list : List&lt;SanPham&gt;" isActor="false" lifelineDisplayName="obj_list : List&lt;SanPham&gt;" referencedInstance="(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/System.Core.dll&quot; Namespace=System.Linq Type=Enumerable Member=(Name=ToList GenericParameterCount=1 OverloadingParameters=[(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System.Collections.Generic Type=(Name=IEnumerable GenericParameterCount=1 GenericArguments=[(ParameterIdentifier=0)]))]) ObjectInstance=&quot;Object instance 128&quot;)" referencedType="System‎.Collections‎.Generic‎.List‎&lt;SanPham‎&gt;">
             <referencesInternal>
               <reference Id="39774bac-8ef1-423a-ae00-ee6033e15ef7" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=System.Collections.Generic)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1))&quot;)" tag="DGQL" />
@@ -1177,7 +1110,7 @@ new DTDDDbContext()</generationState>
               <lostFoundTargetMoniker Id="0e525de4-64a8-44e1-8580-0841739b6342" LastKnownName="LostFoundTarget" />
             </receiveEvent>
           </message>
-          <message Id="b081bcfb-0d8c-4c57-ac6d-18ed15d7fe59" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="b081bcfb-0d8c-4c57-ac6d-18ed15d7fe59" name="&lt;&lt;return SanPhamController&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="8b76388c-10e4-4a8c-8c4c-6bb465cc568b" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1213,7 +1146,7 @@ new DTDDDbContext()</generationState>
               <lostFoundTargetMoniker Id="dae782c9-bcd4-4dac-8e5f-59a3f44a002a" LastKnownName="LostFoundTarget" />
             </receiveEvent>
           </message>
-          <message Id="22354699-11db-4f70-8e7b-f76acb8df81f" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="22354699-11db-4f70-8e7b-f76acb8df81f" name="&lt;&lt;return HangSXController&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="1006a349-1292-4bb7-b746-4daef6a9d0c9" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1233,7 +1166,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="20937229-1aba-42f7-8510-92d7dbf6aeb0" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="c11e1a8f-1fba-4089-a5a9-439269379a12" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="c11e1a8f-1fba-4089-a5a9-439269379a12" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="447273a3-b608-43eb-949a-8a8c97bc7226" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1253,7 +1186,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="9bdf93f6-729b-4f11-b661-af1179be67bf" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="0f8b0b9c-fecf-48d8-9388-24fa3afc0065" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="0f8b0b9c-fecf-48d8-9388-24fa3afc0065" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="20f415a7-7c0b-4f65-aa6f-29a7dde4c94b" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1273,7 +1206,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="8a1924ba-04ce-4f30-8627-b5920e44c09f" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="8d966aa0-c0ed-45c8-b961-c28a6f45336f" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="8d966aa0-c0ed-45c8-b961-c28a6f45336f" name="&lt;&lt;return Boolean&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="0951a4c6-191b-47ba-80a0-2bde749673df" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1293,7 +1226,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="d8f04cb8-2de3-436b-9360-f8c16b476c2a" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="e0ba50ca-882a-4d17-9843-684d2879d5a6" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="e0ba50ca-882a-4d17-9843-684d2879d5a6" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="9f6ec05b-63c9-42ed-ba42-4497694272d7" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1313,7 +1246,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="95b871f3-b4da-4e9d-bb32-102803344cad" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="5abd1dbd-748d-4b1f-ae63-9db133991b9e" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="5abd1dbd-748d-4b1f-ae63-9db133991b9e" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="88911630-faf0-4579-926b-a70aaf3ca7a5" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1333,7 +1266,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="224f2f4b-946d-4cee-92cb-1199e34c670b" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="d4c0dd46-6199-412c-882b-5fc69ba50a18" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="d4c0dd46-6199-412c-882b-5fc69ba50a18" name="&lt;&lt;return HangSX&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="618a33fd-41e5-4d47-902c-0582c8ea8a4e" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1353,7 +1286,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="01922452-72f2-44ed-aa3f-906844c604aa" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="d9edd9dd-345c-4d4d-b975-5162d6ad0d58" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="d9edd9dd-345c-4d4d-b975-5162d6ad0d58" name="&lt;&lt;return PaginationLibrary&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="a635149d-764e-4caf-9c77-ce9d37bb8d6d" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1373,7 +1306,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="48699118-cceb-4202-b645-5db5d0f72ebb" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="d1d60f61-6622-4986-8ee3-16ab3c295d1b" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="d1d60f61-6622-4986-8ee3-16ab3c295d1b" name="&lt;&lt;return Boolean&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="a423a107-0ff7-4bc3-a73c-65586552887f" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1393,7 +1326,7 @@ new DTDDDbContext()</generationState>
               <messageOccurrenceSpecificationMoniker Id="e09d345a-f201-4bb1-a274-d0f5c354b144" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="9c11646f-cfed-428e-b288-0ab94a978e54" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="9c11646f-cfed-428e-b288-0ab94a978e54" name="&lt;&lt;return Boolean&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="79e8e707-1441-47e7-a98c-66e509df80a0" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1429,7 +1362,7 @@ timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx ,active)</generationState>
               <lostFoundTargetMoniker Id="e4075bbf-f41a-4475-9989-ce718758e5d0" LastKnownName="LostFoundTarget" />
             </receiveEvent>
           </message>
-          <message Id="9e6c2c83-feca-44c8-8e61-db4eeeea0dba" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="9e6c2c83-feca-44c8-8e61-db4eeeea0dba" name="&lt;&lt;return Int&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="27d5542d-33ac-4a9a-9eb9-729cb781ccc2" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1449,7 +1382,7 @@ timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx ,active)</generationState>
               <messageOccurrenceSpecificationMoniker Id="9c16f6a4-db91-46a3-86fd-1112f12061e2" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="a1779786-8149-4a7e-b5f5-923e6b7f9645" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="a1779786-8149-4a7e-b5f5-923e6b7f9645" name="&lt;&lt;return Boolean&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="2ec0d681-03a8-4269-b885-28a1fafd1c65" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1469,7 +1402,7 @@ timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx ,active)</generationState>
               <messageOccurrenceSpecificationMoniker Id="2e094c7c-1e5b-4458-9858-4ac3d6717dd3" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="bf0562da-6b9c-4c9e-8ecf-7d69ba7395f3" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="bf0562da-6b9c-4c9e-8ecf-7d69ba7395f3" name="&lt;&lt;return Boolean&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="1fe09fe2-d95a-433f-b796-181398e95e36" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1489,7 +1422,7 @@ timkiem(id, masp, ten, mota, gia_from, gia_to, hangsx ,active)</generationState>
               <messageOccurrenceSpecificationMoniker Id="458f2385-7f4f-4ff8-8796-5dabab6f7ba4" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="69aad100-23f8-426a-a1d5-095360fbb37e" name="Create List‎&lt;SanPham‎&gt;" messageKind="Lost" messageSort="AsynchCall" createSelfMessage="false">
+          <message Id="69aad100-23f8-426a-a1d5-095360fbb37e" name="Create List‎&lt;SanPham‎&gt;()" messageKind="Lost" messageSort="AsynchCall" createSelfMessage="false">
             <referencesInternal>
               <reference Id="b4dc20cb-c581-4c0b-b401-c070ccea4315" handle="+ Id.Equals(&quot;Microsoft.Solution.ClassView&quot;) /&#xD;&#xA;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Namespace=System.Collections.Generic)&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1))&quot;)/&#xD;&#xA;&quot;Microsoft.Contains&quot;/&#xD;&#xA;+ Id.EqualsIgnoreCase(&quot;(Assembly=&amp;quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&amp;quot; Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1) Member=.ctor)&quot;)" tag="DGQL" />
               <reference Id="924b24a1-47f1-4b95-8222-3173e18b9b7d" handle="(Assembly=&quot;$(FxReferenceAssembliesUri)/.NETFramework/v4.5/mscorlib.dll&quot; Namespace=System.Collections.Generic Type=(Name=List GenericParameterCount=1) Member=.ctor)" tag="DGML" />
@@ -1505,23 +1438,7 @@ new List&lt;SanPham&gt;()</generationState>
               <lostFoundTargetMoniker Id="8969097f-0f1f-4abb-97a5-18955e395b0c" LastKnownName="LostFoundTarget" />
             </receiveEvent>
           </message>
-          <message Id="e6f75328-f8b2-47f9-a808-f209f6a14bfb" name="LINQ" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker Id="7f80ab1c-0811-4461-81aa-e2d1910216fb" LastKnownName="MessageOccurrenceSpecification" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker Id="fed0f1fe-e4fb-4b15-8177-e857c5975ad1" LastKnownName="MessageOccurrenceSpecification" />
-            </receiveEvent>
-          </message>
-          <message Id="59813934-82d8-454b-bef7-b5452ccca516" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
-            <sendEvent>
-              <messageOccurrenceSpecificationMoniker Id="896472c1-08d3-4d30-8341-8faa729a7fe8" LastKnownName="MessageOccurrenceSpecification" />
-            </sendEvent>
-            <receiveEvent>
-              <messageOccurrenceSpecificationMoniker Id="36f19587-6dc8-439d-9a5e-9d8ff305877b" LastKnownName="MessageOccurrenceSpecification" />
-            </receiveEvent>
-          </message>
-          <message Id="b42929f9-617b-40f9-83e6-b118576196ea" name="LINQ" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="b42929f9-617b-40f9-83e6-b118576196ea" name="Call LINQ Search Filter" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="90555848-2cfe-4b56-90f1-6592246928f5" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1529,7 +1446,7 @@ new List&lt;SanPham&gt;()</generationState>
               <messageOccurrenceSpecificationMoniker Id="470b71d8-3b0f-4ea4-aa61-40311b09f15f" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="a278392f-4538-4be1-9e1e-91d15bd2b76b" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="a278392f-4538-4be1-9e1e-91d15bd2b76b" name="&lt;&lt;return List&lt;SanPham&gt;()&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="419e50d2-dd6c-4c09-af70-4c7c009f4261" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1537,7 +1454,7 @@ new List&lt;SanPham&gt;()</generationState>
               <messageOccurrenceSpecificationMoniker Id="9d105eef-f921-4d82-b71d-7e9026c0b6a4" LastKnownName="MessageOccurrenceSpecification" />
             </receiveEvent>
           </message>
-          <message Id="dd155563-014e-494b-8215-e14ffbf227d5" name="&lt;&lt;return&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+          <message Id="dd155563-014e-494b-8215-e14ffbf227d5" name="&lt;&lt;return List&lt;SanPham&gt;()&gt;&gt;" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="db07ffb7-51d5-4cbe-81b4-6de8c9b1fbc1" LastKnownName="MessageOccurrenceSpecification" />
             </sendEvent>
@@ -1643,12 +1560,6 @@ new List&lt;SanPham&gt;()</generationState>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent Id="fc6b9f8c-407c-4383-acd9-0d13bd493dff" name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent Id="70893f1a-3b38-4b8c-84e8-35e26c83bcac" name="ExecutionEvent" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <executionEvent Id="2e353328-405b-46c7-b643-77576ed61873" name="ExecutionEvent" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <executionEvent Id="95ccdad8-ef0b-48cd-9732-f230fe5ae3f2" name="ExecutionEvent" />

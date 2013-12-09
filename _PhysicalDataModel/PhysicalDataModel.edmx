@@ -389,7 +389,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="giatri" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" >
+          </Property>
           <NavigationProperty Name="SanPham_ChiTiet" Relationship="CuaHangDTDDModel.FK_dbo_SanPham_ChiTiet_dbo_MauSacs_mausac_id" FromRole="MauSacs" ToRole="SanPham_ChiTiet" />
         </EntityType>
         <EntityType Name="NhapHang">

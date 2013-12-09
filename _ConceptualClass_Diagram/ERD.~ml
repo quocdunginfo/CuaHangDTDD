@@ -881,7 +881,7 @@
 <XPD:ATTR name="Alpha" type="real">0.523598775598299</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">25</XPD:ATTR>
 <XPD:ATTR name="EdgePosition" type="EdgePositionKind">epHead</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">1..*</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">0..*</XPD:ATTR>
 <XPD:REF name="Model">AVSq78RMzEyq3A8p1adNCgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="TailMultiplicityLabel" type="EdgeLabelView" guid="BYrV+9OZTk6FxivmpfZDLQAA">
@@ -1255,7 +1255,7 @@
 <XPD:REF name="Views[3]">E3ktKaF2W06OHGNaYzqo8gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="AVSq78RMzEyq3A8p1adNCgAA">
-<XPD:ATTR name="Multiplicity" type="string">1..*</XPD:ATTR>
+<XPD:ATTR name="Multiplicity" type="string">0..*</XPD:ATTR>
 <XPD:REF name="Association">DOV2lOagc0mQifyCk9pjhgAA</XPD:REF>
 <XPD:REF name="Participant">qNveitkk00aU8P5vLtF9NQAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>

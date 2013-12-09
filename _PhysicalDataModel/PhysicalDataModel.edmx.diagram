@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="daed99d0cf3e495daad8894e5de83d6b" Name="Diagram1" ZoomLevel="100">
-        <EntityTypeShape EntityType="CuaHangDTDDModel.ChiTiet_DonHang" Width="1.75" PointX="0.5" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.ChiTiet_NhapHang" Width="1.75" PointX="5.25" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.DonHang" Width="1.75" PointX="0.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.HangSX" Width="1.75" PointX="5.125" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.HinhAnh" Width="1.75" PointX="7.625" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.MauSac" Width="1.75" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.NhapHang" Width="1.75" PointX="7.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.SanPham_ChiTiet" Width="1.75" PointX="3" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.SanPham" Width="1.75" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.Setting" Width="1.5" PointX="2.875" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangDTDDModel.TonKho" Width="1.75" PointX="2.875" PointY="4.125" IsExpanded="true" />
+      <Diagram DiagramId="daed99d0cf3e495daad8894e5de83d6b" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="CuaHangDTDDModel.ChiTiet_DonHang" Width="1.75" PointX="2.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.ChiTiet_NhapHang" Width="1.75" PointX="7.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.DonHang" Width="1.75" PointX="0.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.HangSX" Width="1.75" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.HinhAnh" Width="1.75" PointX="10" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.MauSac" Width="1.75" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.NhapHang" Width="1.75" PointX="10" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.SanPham_ChiTiet" Width="1.75" PointX="5.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.SanPham" Width="1.75" PointX="7.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.Setting" Width="1.75" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangDTDDModel.TonKho" Width="1.75" PointX="5.25" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_DonHang_dbo_DonHangs_donhang_id" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_DonHang_dbo_SanPham_ChiTiet_sanpham_chitiet_id" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_NhapHang_dbo_NhapHangs_nhaphang_id" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_NhapHang_dbo_SanPham_ChiTiet_sanpham_chitiet_id" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_SanPhams_dbo_HangSXes_hangsx_id" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_HinhAnhs_dbo_SanPhams_sanpham_id" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_SanPham_ChiTiet_dbo_MauSacs_mausac_id" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_NhapHang_dbo_NhapHangs_nhaphang_id" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_ChiTiet_NhapHang_dbo_SanPham_ChiTiet_sanpham_chitiet_id" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_SanPhams_dbo_HangSXes_hangsx_id" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_HinhAnhs_dbo_SanPhams_sanpham_id" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_SanPham_ChiTiet_dbo_MauSacs_mausac_id" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_SanPham_ChiTiet_dbo_SanPhams_sanpham_id" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangDTDDModel.FK_dbo_TonKhoes_dbo_SanPham_ChiTiet_sanpham_chitiet_id" ManuallyRouted="false" />
       </Diagram>
