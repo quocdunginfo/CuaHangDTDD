@@ -7,27 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winform", "Winform\Winform.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClass", "BaseClass\BaseClass.csproj", "{C8255293-EBC6-48A6-8E7C-9969FA85D1B6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_PhysicalData_Model", "_PhysicalData_Model", "{19748D7A-D3BE-49EB-BDAA-F7F13BEB166D}"
-	ProjectSection(SolutionItems) = preProject
-		_PhysicalDataModel\Main.PNG = _PhysicalDataModel\Main.PNG
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_ConceptualClass_Diagram", "_ConceptualClass_Diagram", "{E808A736-2899-4B2D-B850-9764734BE776}"
-	ProjectSection(SolutionItems) = preProject
-		_ConceptualClass_Diagram\ERD.uml = _ConceptualClass_Diagram\ERD.uml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_DesignClass_Diagram", "_DesignClass_Diagram", "{86B02023-E3E3-4D70-B43B-A9480C0130FC}"
-EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "_TableModels_Diagram", "_DesignClass_Diagram\_TableModels_Diagram.modelproj", "{567047E6-6320-4869-A773-FDC24F89821E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Sequence_Diagram", "_Sequence_Diagram", "{83918767-F53C-4750-A839-EF6C2CAA49D7}"
-	ProjectSection(SolutionItems) = preProject
-		_Sequence_Diagram\FrontCartController_Submit.sequencediagram = _Sequence_Diagram\FrontCartController_Submit.sequencediagram
-		_Sequence_Diagram\FrontProductsController_Index.sequencediagram = _Sequence_Diagram\FrontProductsController_Index.sequencediagram
-		_Sequence_Diagram\FrontSearchController_Index.sequencediagram = _Sequence_Diagram\FrontSearchController_Index.sequencediagram
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,15 +25,8 @@ Global
 		{C8255293-EBC6-48A6-8E7C-9969FA85D1B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8255293-EBC6-48A6-8E7C-9969FA85D1B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8255293-EBC6-48A6-8E7C-9969FA85D1B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{567047E6-6320-4869-A773-FDC24F89821E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{567047E6-6320-4869-A773-FDC24F89821E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{567047E6-6320-4869-A773-FDC24F89821E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{567047E6-6320-4869-A773-FDC24F89821E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{567047E6-6320-4869-A773-FDC24F89821E} = {86B02023-E3E3-4D70-B43B-A9480C0130FC}
 	EndGlobalSection
 EndGlobal

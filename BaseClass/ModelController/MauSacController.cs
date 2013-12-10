@@ -11,6 +11,8 @@ namespace BaseClass.ModelControllers
     public class MauSacController
     {
         public DTDDDbContext _db;
+
+        public List<MauSac> ds_mausac;
         public MauSacController()
         {
             this._db = new DTDDDbContext();
@@ -19,6 +21,7 @@ namespace BaseClass.ModelControllers
         {
             this._db = db;
         }
+
         public MauSac get_by_id(int obj_id)
         {
             var obj = this._db.ds_mausac.FirstOrDefault(x => x.id == obj_id);
@@ -101,6 +104,11 @@ namespace BaseClass.ModelControllers
                 re.Add("giatri_fail");
             }
             return re;
+        }
+
+        public void Binding_DB_To_ListTemp()
+        {
+            ds_mausac = _db.ds_mausac.ToList<MauSac>();
         }
     }
 }

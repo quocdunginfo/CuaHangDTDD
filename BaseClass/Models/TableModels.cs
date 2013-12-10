@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
@@ -29,13 +30,13 @@ namespace BaseClass.Models
             this._ctr = new HinhAnhController();
             this._Init();
         }
-        private HinhAnhController _ctr;
         private void _Init()
         {
             this.id = 0;
             this.duongdan = "";
             this.duongdan_thumb = "";
             this.macdinh = false;
+            source_picture_from_web = true;
         }
         public void _set_context(DTDDDbContext context)
         {
@@ -48,7 +49,37 @@ namespace BaseClass.Models
         //external
         public virtual SanPham sanpham { get; set; }
 
+        [NotMapped]
+        public bool source_picture_from_web;
+
+        [NotMapped]
+        public Image anh
+        {
+            get
+            {
+                try
+                {
+                    if (source_picture_from_web) return this._get_image();
+                    else
+                    {
+                        Image img = Image.FromFile(duongdan);
+                        return img;
+                    }
+                }
+                catch (Exception) { return null; }
+            }
+        }
+        private HinhAnhController _ctr;
+
         //method
+        public void change(HinhAnh ha)
+        {
+            duongdan = ha.duongdan;
+            duongdan_thumb = ha.duongdan_thumb;
+            macdinh = ha.macdinh;
+            if(ha.sanpham != null) sanpham = ha.sanpham;
+        }
+
         public Image _get_image()
         {
             return _image_from_url(this._get_full_duongdan());
@@ -148,6 +179,28 @@ namespace BaseClass.Models
         public virtual MauSac mausac { get; set; }
         public virtual SanPham sanpham { get; set; }
         public virtual List<TonKho> ds_tonkho { get; set; }
+
+
+        //method
+        public void change(SanPham_ChiTiet spct)
+        {
+            this.active = spct.active;
+            this.tonkho = spct.tonkho;
+            this.mausac = spct.mausac;
+        }
+
+        public void update_tonkho(int quantity, DateTime ngay)
+        {
+            //set so luong
+            this.tonkho = quantity;
+            //them lich su ton kho
+            TonKho tk = new TonKho();
+            tk.soluong = quantity;
+            tk.ngay = ngay;
+            this.ds_tonkho.Add(tk);
+           
+        }
+
         //CRUD method
         private SanPham_ChiTietController _ctr;
         public Boolean update()
@@ -192,6 +245,13 @@ namespace BaseClass.Models
         public Boolean active { get; set; }
         //external
         public virtual List<SanPham_ChiTiet> ds_sanpham_chitiet { get; set; }
+
+        //method
+        public override string ToString()
+        {
+            return this.giatri;
+        }
+
         //CRUD method
         private MauSacController _ctr;
         public Boolean update()
@@ -227,6 +287,7 @@ namespace BaseClass.Models
         private void _Init()
         {
             this.ds_hinhanh = new List<HinhAnh>();
+            this.ds_sanpham_chitiet = new List<SanPham_ChiTiet>();
             this.masp = "";
             this.ten = "";
             this.mota = "";
@@ -247,7 +308,49 @@ namespace BaseClass.Models
         public virtual List<HinhAnh> ds_hinhanh { get; set; }
         public virtual HangSX hangsx { get; set; }
         public virtual List<SanPham_ChiTiet> ds_sanpham_chitiet { get; set; }
+
+        [NotMapped]
+        public Image anhmacdinh
+        {
+            get
+            {
+                try
+                {
+                    return this._get_hinhanh_macdinh().anh;
+                }
+                catch (Exception) { return null; }
+            }
+        }
+
+        [NotMapped]
+        public string giasp
+        {
+            get
+            {
+                try
+                {
+                    return TextLibrary.ToCommaStringNumber(this.gia);
+                }
+                catch (Exception) { return null; }
+            }
+        }
+
         //method
+        public override string ToString()
+        {
+            return this.ten;
+        }
+
+        public void change(SanPham sp)
+        {
+            masp = sp.masp;
+            ten = sp.ten;
+            mota = sp.mota;
+            gia = sp.gia;
+            active = sp.active;
+            hangsx = sp.hangsx;
+        }
+
         public HinhAnh _get_hinhanh_macdinh()
         {
             HinhAnh tmp = this.ds_hinhanh.Where(x => x.macdinh == true).FirstOrDefault();
@@ -281,7 +384,7 @@ namespace BaseClass.Models
             return TextLibrary.ToCommaStringNumber(this.gia);
         }
         //CRUD method
-        private SanPhamController _ctr;
+        public SanPhamController _ctr;
         public Boolean update()
         {
             return _ctr.save();
@@ -375,6 +478,70 @@ namespace BaseClass.Models
         public DateTime ngay { get; set; }
         public int tongtien { get; set; }
         public Boolean active { get; set; }
+
+        [NotMapped]
+        public string ngay_to_string
+        {
+            get
+            {
+                return ngay.ToString("dd/MM/yyyy HH:mm:ss");
+            }
+        }
+
+        [NotMapped]
+        public string tongtien_change
+        {
+            get
+            {
+                return TextLibrary.ToCommaStringNumber(tongtien);
+            }
+            set
+            {
+                tongtien = TextLibrary.ToInt(value);
+            }
+        }
+
+        //method
+
+        public void change(NhapHang nh)
+        {
+            this.active = nh.active;
+            this.ngay = nh.ngay;
+            this.tongtien = nh.tongtien;
+        }
+
+        public Boolean check_exist_spct_in_donhang(int id_spct)
+        {
+            return (this.ds_chitiet_nhaphang.Where(ctdh => ctdh.sanpham_chitiet.id == id_spct).FirstOrDefault() == null) ? false : true;
+        }
+
+        public Boolean update_tonkho()
+        {
+            //get orginal
+            NhapHangController Or_ctr = new NhapHangController();
+            NhapHang Or_nh = Or_ctr.get_by_id(this.id);
+            List<ChiTiet_NhapHang> Or_list = Or_nh.ds_chitiet_nhaphang;
+
+            //get current
+            List<ChiTiet_NhapHang> Cur_list = this.ds_chitiet_nhaphang;
+
+            //get Added CTNH Items
+            List<ChiTiet_NhapHang> Added_list = Cur_list.Where(cur => Or_list.Where(or => or.sanpham_chitiet.id == cur.sanpham_chitiet.id).FirstOrDefault() == null).ToList();
+        
+            //do action
+            try
+            {
+                foreach (ChiTiet_NhapHang ctnh in Added_list)
+                {
+                    ctnh.sanpham_chitiet.update_tonkho(ctnh.sanpham_chitiet.tonkho + ctnh.soluong, this.ngay);
+                }
+            }
+            catch (Exception)
+            { return false; }
+            
+            return true;
+        }
+
         //external
         public virtual List<ChiTiet_NhapHang> ds_chitiet_nhaphang { get; set; }
         //CRUD method
@@ -421,6 +588,34 @@ namespace BaseClass.Models
         //external
         public virtual NhapHang nhaphang { get; set; }
         public virtual SanPham_ChiTiet sanpham_chitiet { get; set; }
+
+        [NotMapped]
+        public string dongia_to_string
+        {
+            get
+            {
+                return TextLibrary.ToCommaStringNumber(dongia);
+            }
+        }
+
+        [NotMapped]
+        public string ten_sanpham_chitiet
+        {
+            get
+            {
+                return sanpham_chitiet.sanpham.ToString();
+            }
+        }
+
+        [NotMapped]
+        public string mau_sanpham_chitiet
+        {
+            get
+            {
+                return sanpham_chitiet.mausac.ToString();
+            }
+        }
+
         //CRUD method
         private ChiTiet_NhapHangController _ctr;
         public Boolean update()

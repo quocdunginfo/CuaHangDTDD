@@ -55,6 +55,42 @@
   <ItemGroup>
     <Compile Include="Class\ComboBoxItem.cs" />
     <Compile Include="Global.cs" />
+    <Compile Include="GUI\FmQuanLyNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmQuanLyNhapHang.Designer.cs">
+      <DependentUpon>FmQuanLyNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmThongTinNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmThongTinNhapHang.Designer.cs">
+      <DependentUpon>FmThongTinNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmThongTinSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmThongTinSanPham.Designer.cs">
+      <DependentUpon>FmThongTinSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmQuanLySanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmQuanLySanPham.Designer.cs">
+      <DependentUpon>FmQuanLySanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmTrangChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmTrangChu.Designer.cs">
+      <DependentUpon>FmTrangChu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\testdt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\testdt.Designer.cs">
+      <DependentUpon>testdt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +99,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\FmQuanLyNhapHang.resx">
+      <DependentUpon>FmQuanLyNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmThongTinNhapHang.resx">
+      <DependentUpon>FmThongTinNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmThongTinSanPham.resx">
+      <DependentUpon>FmThongTinSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmQuanLySanPham.resx">
+      <DependentUpon>FmQuanLySanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmTrangChu.resx">
+      <DependentUpon>FmTrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\testdt.resx">
+      <DependentUpon>testdt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
