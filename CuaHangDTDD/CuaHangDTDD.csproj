@@ -113,6 +113,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Front\-g5pDUSRgvxvOl5u-a_WHw.woff" />
+    <Content Include="Content\Front\-WzdRTzRa5k6HlJK6-dK9Q.eot" />
     <Content Include="Content\Front\0.png" />
     <Content Include="Content\Front\2.png" />
     <Content Include="Content\Front\3.png" />
@@ -162,9 +164,12 @@
     <Content Include="Content\Front\cat20_resized.png" />
     <Content Include="Content\Front\cat21_resized.png" />
     <Content Include="Content\Front\cat22_resized.png" />
+    <Content Include="Content\Front\cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot" />
+    <Content Include="Content\Front\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
     <Content Include="Content\Front\close.gif" />
     <Content Include="Content\Front\closebox.png" />
     <Content Include="Content\Front\closelabel.gif" />
+    <Content Include="Content\Front\cloudflare.min.js_bk" />
     <Content Include="Content\Front\constant.css" />
     <Content Include="Content\Front\contentPattern.png" />
     <Content Include="Content\Front\contentPatternBottom.png" />
@@ -185,6 +190,8 @@
     <Content Include="Content\Front\down.gif" />
     <Content Include="Content\Front\down_small.gif" />
     <Content Include="Content\Front\e.gif" />
+    <Content Include="Content\Front\efd6FGWWGX5Z3ztwLBrG9b2aU247V0zTzydO4RoO9Ok.woff" />
+    <Content Include="Content\Front\efd6FGWWGX5Z3ztwLBrG9U2k4ogKuXZ6cvJ9G6hiscg.eot" />
     <Content Include="Content\Front\error.gif" />
     <Content Include="Content\Front\f.gif" />
     <Content Include="Content\Front\fi000002.js" />
@@ -220,6 +227,8 @@
     <Content Include="Content\Front\loader-4.gif" />
     <Content Include="Content\Front\loading.gif" />
     <Content Include="Content\Front\logo.png" />
+    <Content Include="Content\Front\logo_bk.png" />
+    <Content Include="Content\Front\logo_bk1.png" />
     <Content Include="Content\Front\log_critical.png" />
     <Content Include="Content\Front\log_debug.png" />
     <Content Include="Content\Front\modal.css" />
@@ -236,6 +245,7 @@
     <Content Include="Content\Front\Open_Sans_400_600_700_italic_800.css" />
     <Content Include="Content\Front\Oswaldv1.css" />
     <Content Include="Content\Front\pdf_button.png" />
+    <Content Include="Content\Front\PIE.php" />
     <Content Include="Content\Front\png.png" />
     <Content Include="Content\Front\poll_bars.css" />
     <Content Include="Content\Front\prettyPhoto.css" />
@@ -332,6 +342,7 @@
     <Content Include="Content\Front\product_details.gif" />
     <Content Include="Content\Front\product_link-span.gif" />
     <Content Include="Content\Front\Quattrocento_Sans.css" />
+    <Content Include="Content\Front\remove_from_cart.png" />
     <Content Include="Content\Front\scripts.js" />
     <Content Include="Content\Front\search-button.gif" />
     <Content Include="Content\Front\sectiontableheader_th.gif" />
@@ -374,6 +385,7 @@
     <Content Include="Content\Front\timeline.css" />
     <Content Include="Content\Front\title.gif" />
     <Content Include="Content\Front\transparent.gif" />
+    <Content Include="Content\Front\update_quantity_cart.png" />
     <Content Include="Content\Front\up_small.gif" />
     <Content Include="Content\Front\validate.js" />
     <Content Include="Content\Front\virtuemart.css" />
@@ -436,14 +448,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Front\-g5pDUSRgvxvOl5u-a_WHw.woff" />
-    <Content Include="Content\Front\-WzdRTzRa5k6HlJK6-dK9Q.eot" />
-    <Content Include="Content\Front\cJZKeOuBrn4kERxqtaUH3fY6323mHUZFJMgTvxaG2iE.eot" />
-    <Content Include="Content\Front\cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
-    <Content Include="Content\Front\cloudflare.min.js_bk" />
-    <Content Include="Content\Front\efd6FGWWGX5Z3ztwLBrG9b2aU247V0zTzydO4RoO9Ok.woff" />
-    <Content Include="Content\Front\efd6FGWWGX5Z3ztwLBrG9U2k4ogKuXZ6cvJ9G6hiscg.eot" />
-    <Content Include="Content\Front\PIE.php" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -477,7 +481,6 @@
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
     <Content Include="Views\FrontHome\Index.cshtml" />
     <Content Include="Views\FrontProducts\Index.cshtml" />
-    <Content Include="Views\Shared\_FrontLayout_NoSlider.cshtml" />
     <Content Include="Views\FrontProductDetail\Index.cshtml" />
     <Content Include="Views\FrontCart\Index.cshtml" />
     <Content Include="Views\FrontCart\CheckOut.cshtml" />

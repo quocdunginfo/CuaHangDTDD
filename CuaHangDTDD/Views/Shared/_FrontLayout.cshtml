@@ -118,7 +118,7 @@
                                 <a class="level1 item1 " href="@Url.Action("Index","FrontHome")" target="_self" title="Mobile phones "><span>Trang chủ </span></a>
                             </li>
                             <li class="level1 item2 parent">
-                                <a class="level1 item1  parent" href="javascript:void(0)" target="_self" title="Smartphones">
+                                <a class="level1 item1  parent" href="@Url.Action("ViewAllProducts","FrontSearch")" target="_self" title="Smartphones">
                                     <span>Hãng sản xuất</span>
                                 </a>
                                 <ul class="level2" style="width:140px; left: 120px !important">
@@ -145,6 +145,8 @@
             </div>
             <!-- END header -->
             <div id="content">
+                @if(ViewBag.slider==true)
+                {
                 <div class="moduletable_slider">
                     <div class="kwicks-wrapper">
                         <ul class="kwicks horizontal">
@@ -257,14 +259,16 @@
                         </ul>
                     </div>
                 </div>
+                }
                 <div class="wrapper">
                     <div id="left">
                         <div class="wrapper">
                             <div class="extra-indent">
                                 <div class="module_best">
                                     <!-- Left panel -->
-
+                                    <a href="@Url.Action("ViewAllProducts","FrontSearch")" style="text-decoration:none">
                                     <h3><span><span>Hãng sản xuất</span></span></h3>
+                                    </a>
                                     <div class="boxIndent">
                                         <div class="anythingSlider2">
                                             <div class="wrapper qd_hangsx">

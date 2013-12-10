@@ -67,6 +67,14 @@ namespace CuaHangDTDD.Controllers
             ViewBag.pagination = pagination;
             return View();
         }
+        [HttpGet]
+        public ActionResult ViewAllProducts()
+        {
+            this._khoitao_timkiem_cookie();
+            this._luu_timkiem_cookie();
+            //redirect
+            return RedirectToAction("Index", "FrontSearch");
+        }
         [HttpPost]
         public ActionResult Submit()
         {
