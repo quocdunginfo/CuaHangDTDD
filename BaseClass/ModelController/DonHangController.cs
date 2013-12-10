@@ -2,6 +2,7 @@
 using BaseClass.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -64,12 +65,20 @@ namespace BaseClass.ModelControllers
         }
         public Boolean delete(DonHang obj)
         {
-            //get entity
-            obj = this.get_by_id(obj.id);
-            //remove
-            this._db.ds_donhang.Remove(obj);
-            //commit
-            return this.save();
+            try
+            {
+                //get entity
+                obj = this.get_by_id(obj.id);
+                //remove
+                this._db.ds_donhang.Remove(obj);
+                //commit
+                return this.save();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return false;
+            }
         }
 
         public List<string> validate(DonHang obj)

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BaseClass._Library;
 using BaseClass.Models;
+using System.Diagnostics;
 
 namespace BaseClass.ModelControllers
 {
@@ -46,9 +47,17 @@ namespace BaseClass.ModelControllers
         }
         public Boolean delete(SanPham_ChiTiet obj)
         {
-            obj = get_by_id(obj.id);
-            this._db.ds_sanpham_chitiet.Remove(obj);
-            return this.save();
+            try
+            {
+                obj = get_by_id(obj.id);
+                this._db.ds_sanpham_chitiet.Remove(obj);
+                return this.save();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return false;
+            }
         }
         public List<SanPham_ChiTiet> timkiem(String id = "", String mausac_id = "", String active = "",String id_sp="")
         {

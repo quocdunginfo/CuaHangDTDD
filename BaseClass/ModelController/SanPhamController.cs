@@ -54,12 +54,20 @@ namespace BaseClass.ModelControllers
         }
         public Boolean delete(SanPham obj)
         {
-            //reload again to prevent error
-            obj = get_by_id(obj.id);
+            try
+            {
+                //reload again to prevent error
+                obj = get_by_id(obj.id);
 
-            this._db.ds_sanpham.Remove(obj);
-            //commit
-            return save();
+                this._db.ds_sanpham.Remove(obj);
+                //commit
+                return save();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return false;
+            }
         }
         public int timkiem_count(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = 0, int gia_to = 0, HangSX hangsx = null, String active = "")
         {

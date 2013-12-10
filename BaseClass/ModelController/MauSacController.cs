@@ -47,12 +47,20 @@ namespace BaseClass.ModelControllers
         }
         public Boolean delete(MauSac obj)
         {
-            //get entity
-            obj = this.get_by_id(obj.id);
-            //remove
-            this._db.ds_mausac.Remove(obj);
-            //commit
-            return this.save();
+            try
+            {
+                //get entity
+                obj = this.get_by_id(obj.id);
+                //remove
+                this._db.ds_mausac.Remove(obj);
+                //commit
+                return this.save();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return false;
+            }
         }
         public int timkiem_count(String id = "", String ten = "", String active = "")
         {

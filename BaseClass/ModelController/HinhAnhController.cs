@@ -57,30 +57,46 @@ namespace BaseClass.ModelControllers
         }
         public Boolean delete_winform_use_only(HinhAnh obj)
         {
-            string url = Setting.get_by_key("path_to_website") + "/ImageUpload/Delete?hinhanh_id="+obj.id;
-            WebClient webClient = new WebClient();
-            string result = webClient.DownloadString(url);
-            return TextLibrary.ToBoolean(result);
-        }
-        public Boolean delete_mvc_use_only(int id, HttpServerUtilityBase server_context)
-        {
-            HinhAnh kq = this.get_by_id(id);
-            if (kq == null) return false;
-            //first delete file
             try
             {
-                String directory = "~/_Upload/HinhAnh/";
-                System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan)));
-                System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan_thumb)));
+                string url = Setting.get_by_key("path_to_website") + "/ImageUpload/Delete?hinhanh_id=" + obj.id;
+                WebClient webClient = new WebClient();
+                string result = webClient.DownloadString(url);
+                return TextLibrary.ToBoolean(result);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
+                return false;
             }
-            //delete in database
-            _db.ds_hinhanh.Remove(kq);
-            _db.SaveChanges();
-            return true;
+        }
+        public Boolean delete_mvc_use_only(int id, HttpServerUtilityBase server_context)
+        {
+            try
+            {
+                HinhAnh kq = this.get_by_id(id);
+                if (kq == null) return false;
+                //first delete file
+                try
+                {
+                    String directory = "~/_Upload/HinhAnh/";
+                    System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan)));
+                    System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan_thumb)));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.ToString());
+                }
+                //delete in database
+                _db.ds_hinhanh.Remove(kq);
+                _db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                return false;
+            }
         }
         public Boolean set_default(int id)
         {
