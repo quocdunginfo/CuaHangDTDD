@@ -57,7 +57,7 @@ namespace BaseClass.ModelControllers
             {
                 Debug.WriteLine(ex.ToString());
                 return false;
-            }
+            }        
         }
         public int timkiem_count(String id = "", String ten = "", String active = "")
         {

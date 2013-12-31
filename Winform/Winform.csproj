@@ -36,6 +36,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -43,6 +45,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,13 +56,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\ComboBoxItem.cs" />
-    <Compile Include="Global.cs" />
+    <Compile Include="GUI\FmBaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmBaoCaoDoanhThu.Designer.cs">
+      <DependentUpon>FmBaoCaoDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmQuanLyDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmQuanLyDonHang.Designer.cs">
+      <DependentUpon>FmQuanLyDonHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmQuanLyHangSanXuat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmQuanLyHangSanXuat.Designer.cs">
+      <DependentUpon>FmQuanLyHangSanXuat.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FmQuanLyNhapHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\FmQuanLyNhapHang.Designer.cs">
       <DependentUpon>FmQuanLyNhapHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmThongKeTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmThongKeTonKho.Designer.cs">
+      <DependentUpon>FmThongKeTonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FmThongTinDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FmThongTinDonHang.Designer.cs">
+      <DependentUpon>FmThongTinDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\FmThongTinNhapHang.cs">
       <SubType>Form</SubType>
@@ -85,28 +116,37 @@
     <Compile Include="GUI\FmTrangChu.Designer.cs">
       <DependentUpon>FmTrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\testdt.cs">
+    <Compile Include="GUI\FmInBaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\testdt.Designer.cs">
-      <DependentUpon>testdt.cs</DependentUpon>
+    <Compile Include="GUI\FmInBaoCao.Designer.cs">
+      <DependentUpon>FmInBaoCao.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main_Form.cs">
+    <Compile Include="GUI\InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main_Form.Designer.cs">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <Compile Include="GUI\InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="GUI\FmBaoCaoDoanhThu.resx">
+      <DependentUpon>FmBaoCaoDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmQuanLyDonHang.resx">
+      <DependentUpon>FmQuanLyDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmQuanLyHangSanXuat.resx">
+      <DependentUpon>FmQuanLyHangSanXuat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FmQuanLyNhapHang.resx">
       <DependentUpon>FmQuanLyNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmThongKeTonKho.resx">
+      <DependentUpon>FmThongKeTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FmThongTinDonHang.resx">
+      <DependentUpon>FmThongTinDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\FmThongTinNhapHang.resx">
       <DependentUpon>FmThongTinNhapHang.cs</DependentUpon>
@@ -120,12 +160,13 @@
     <EmbeddedResource Include="GUI\FmTrangChu.resx">
       <DependentUpon>FmTrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\testdt.resx">
-      <DependentUpon>testdt.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\FmInBaoCao.resx">
+      <DependentUpon>FmInBaoCao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main_Form.resx">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\MauBaoCao.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -135,10 +176,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BaseClass.Models.ChiTiet_DonHang.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

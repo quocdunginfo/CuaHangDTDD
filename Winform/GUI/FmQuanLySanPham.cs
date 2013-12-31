@@ -16,7 +16,6 @@ namespace Winform.GUI
 {
     public partial class FmQuanLySanPham : Form
     {
-        bool _reload = false;
         SanPhamController SPCtr = new SanPhamController();
 
         public FmQuanLySanPham()
@@ -28,14 +27,13 @@ namespace Winform.GUI
 
         public void LoadDTGV_DSSanPham()
         {
- //           IBindingList te = new BindingList<SanPham>(list);
-  //          if (dtgvDSSanPham.Rows.Count > 0) dtgvDSSanPham.Rows.Clear();
             dtgvDSSanPham.DataSource = null;
             dtgvDSSanPham.DataSource = SPCtr.timkiem();
-            //foreach (SanPham sp in list)
-            //{
-            //    dtgvDSSanPham.Rows.Add(sp.id, sp.masp, sp.ten, sp._get_hinhanh_macdinh()._get_image(), sp._get_gia(), sp.active, sp.hangsx.ten);
-            //}
+        }
+
+        public void RefreshDTGV_DSSanPham()
+        {
+            dtgvDSSanPham.Refresh();
         }
 
         private void btThoat_Click(object sender, EventArgs e)
@@ -45,55 +43,42 @@ namespace Winform.GUI
 
         private void btXoa_Click(object sender, EventArgs e)
         {
-            if (dtgvDSSanPham.CurrentCell == null) return;
-            try
+            if (dtgvDSSanPham.SelectedRows.Count == 0) return;
+            SanPham sp = (SanPham)dtgvDSSanPham.SelectedRows[0].DataBoundItem;
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá sản phẩm " + sp.ten + "chứ?", "Xoá", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                SanPham sp = (SanPham)dtgvDSSanPham.SelectedRows[0].DataBoundItem;
-                //           DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá sản phẩm " + dtgvDSSanPham["ten",rowindex].Value, "Xoá", MessageBoxButtons.YesNo);
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá sản phẩm " + sp.ten, "Xoá", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                foreach (SanPham_ChiTiet spct in sp.ds_sanpham_chitiet)
                 {
-                    if (sp.delete())
+                    if (spct.check_relation_entities_exist())
                     {
-                        MessageBox.Show("Xoá thành công.");
-                        LoadDTGV_DSSanPham();
+                        MessageBox.Show("Không xoá được do có các hoá đơn chứa sản phẩm này.");
+                        return;
                     }
-                    else MessageBox.Show("Xoá thất bại.");
                 }
+                if (sp.delete())
+                {
+                    MessageBox.Show("Xoá thành công.");
+                    LoadDTGV_DSSanPham();
+                }
+                else MessageBox.Show("Xoá thất bại.");
             }
-            catch (Exception)
-            { MessageBox.Show("Lỗi khi xoá sp."); }
-            
         }
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            FmThongTinSanPham fm = new FmThongTinSanPham(null);
+            FmThongTinSanPham fm = new FmThongTinSanPham(null,SPCtr);
+            fm.DTGV_DSSanPham = new FmThongTinSanPham.callback(this.LoadDTGV_DSSanPham);
             fm.ShowDialog();
-  //          SPCtr = new SanPhamController();
-
-            LoadDTGV_DSSanPham();
         }
 
         private void btSua_Click(object sender, EventArgs e)
         {
-            if (dtgvDSSanPham.CurrentCell == null) return;
+            if (dtgvDSSanPham.SelectedRows.Count == 0) return;
             SanPham sp = (SanPham)dtgvDSSanPham.SelectedRows[0].DataBoundItem;
-            FmThongTinSanPham fm = new FmThongTinSanPham(sp);
+            FmThongTinSanPham fm = new FmThongTinSanPham(sp,SPCtr);
+            fm.DTGV_DSSanPham = new FmThongTinSanPham.callback(this.RefreshDTGV_DSSanPham);
             fm.ShowDialog();
-  //          SanPham sp1 = SPCtr.get_by_id(sp.id);
-            SPCtr = new SanPhamController();
-   //         dtgvDSSanPham.Refresh();
-  //          SPCtr._db.Entry<SanPham>(sp).Reload();
-  //          for (int i = 0; i < sp.ds_hinhanh.Count; i++)
-  //              SPCtr._db.Entry<HinhAnh>(sp.ds_hinhanh[i]).Reload();
-  //          dtgvDSSanPham.Refresh();
-    //        Image img = sp1.anhmacdinh;
-      //      foreach(HinhAnh ha in sp.ds_hinhanh)
-      //      {
-      //          SPCtr._db.Entry<HinhAnh>(ha).Reload();
-      //      }
-           LoadDTGV_DSSanPham();
         }
     }
 }

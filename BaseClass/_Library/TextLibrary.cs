@@ -106,7 +106,32 @@ namespace BaseClass._Library
         }
         public static string ToCommaStringNumber(int input)
         {
-           return input.ToString("#,#", CultureInfo.InvariantCulture);
+            if (input == 0) return "0";
+           else return input.ToString("#,#", CultureInfo.InvariantCulture);
+        }
+
+        public static string ToCommaStringNumber(long input)
+        {
+            if (input == 0) return "0";
+            else return input.ToString("#,#", CultureInfo.InvariantCulture);
+        }
+
+        public static string DateTime_To_String(DateTime dt)
+        {
+            string kq = "";
+            switch (dt.DayOfWeek.ToString())
+            {
+                case "Sunday": kq = "Chủ Nhật"; break;
+                case "Monday": kq = "Thứ 2"; break;
+                case "Tuesday": kq = "Thứ 3"; break;
+                case "Wednesday": kq = "Thứ 4"; break;
+                case "Thursday": kq = "Thứ 5"; break;
+                case "Friday": kq = "Thứ 6"; break;
+                case "Saturday": kq = "Thứ 7"; break;
+                default: break;
+            }
+
+            return kq + " Ngày " + dt.ToString("dd/MM/yyyy");
         }
     }
 }

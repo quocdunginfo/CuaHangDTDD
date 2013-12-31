@@ -69,6 +69,11 @@ namespace BaseClass.ModelControllers
             {
                 //get entity
                 obj = this.get_by_id(obj.id);
+
+                if (obj.dagiaohang) return false;
+                //remove relations
+                foreach (ChiTiet_DonHang ctdh in obj.ds_chitiet_donhang) ctdh.delete();
+
                 //remove
                 this._db.ds_donhang.Remove(obj);
                 //commit
@@ -79,6 +84,7 @@ namespace BaseClass.ModelControllers
                 Debug.WriteLine(ex.ToString());
                 return false;
             }
+            
         }
 
         public List<string> validate(DonHang obj)
@@ -113,6 +119,46 @@ namespace BaseClass.ModelControllers
                 }
             }
             return re;
+        }
+        public List<DonHang> get_list()
+        {
+            return _db.ds_donhang.ToList();
+        }
+        public List<ChiTiet_DonHang> Lay_ThongTin_BanHang(List<DateTime> thoigian)
+        {
+            List<ChiTiet_DonHang> list = new List<ChiTiet_DonHang>();
+
+            foreach (DonHang dh in get_list())
+            {
+                if (!dh.dagiaohang) continue;
+                if (thoigian.Where(tg => tg.Year == dh.ngay.Year && tg.Month == dh.ngay.Month && tg.Day == dh.ngay.Day).FirstOrDefault() == null) continue;
+
+                foreach (ChiTiet_DonHang ctdh in dh.ds_chitiet_donhang)
+                {
+                    ChiTiet_DonHang ctdh_in_list = list.Where(l => l.sanpham_chitiet.id == ctdh.sanpham_chitiet.id).FirstOrDefault();
+                    if (ctdh_in_list == null) list.Add(ctdh._clone());
+                    else
+                    {
+                        ctdh_in_list.soluong += ctdh.soluong;
+                        ctdh_in_list.thanhtien += ctdh.soluong * ctdh.dongia;
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        public void reload(DonHang dh)
+        {
+            
+            foreach (ChiTiet_DonHang ctdh in dh.ds_chitiet_donhang)
+            {
+                try
+                {
+                    _db.Entry<SanPham_ChiTiet>(ctdh.sanpham_chitiet).Reload();
+                }
+                catch (Exception) { continue; }
+            }
         }
     }
 }

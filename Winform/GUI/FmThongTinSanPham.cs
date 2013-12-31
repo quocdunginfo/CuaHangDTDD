@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using BaseClass.ModelControllers;
 using BaseClass.Models;
 using BaseClass._Library;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 
 namespace Winform.GUI
 {
@@ -17,20 +19,33 @@ namespace Winform.GUI
     {
         SanPham sp;
         bool IsSave = false;
+        bool IsChange = false;
         bool EditMode = false;
         SanPhamController SPCtr;
         HangSXController HSXCtr;
         MauSacController MSCtr;
-        public FmThongTinSanPham(SanPham sp = null)
+        HinhAnhController HACtr;
+        SanPham_ChiTietController SPCTCtr;
+//        List<MauSac> ds_mausac;
+
+        public delegate void callback();
+        public callback DTGV_DSSanPham;
+
+        public FmThongTinSanPham(SanPham sp = null, SanPhamController spc = null)
         {
             InitializeComponent();
             dtgvHinhAnh.AutoGenerateColumns = false;
             dtgvChiTietSanPham.AutoGenerateColumns = false;
- //           if (spc != null) SPCtr = SPCtr = spc;
- //           else 
-            SPCtr = new SanPhamController();
+            //set primary context
+            if (spc != null) SPCtr = spc;
+            else SPCtr = new SanPhamController();
+
             HSXCtr = new HangSXController(this.SPCtr._db);
             MSCtr = new MauSacController(this.SPCtr._db);
+            HACtr = new HinhAnhController(this.SPCtr._db);
+            SPCTCtr = new SanPham_ChiTietController(this.SPCtr._db);
+            MSCtr.timkiem();
+  //          ds_mausac = MSCtr.timkiem();
             LoadCb_HangSX();
             if (sp == null)
             {
@@ -39,9 +54,11 @@ namespace Winform.GUI
             }
             else
             {
-                this.sp = SPCtr.get_by_id(sp.id);
+                this.sp = sp;
+                this.sp._set_context(SPCtr._db);
                 EditMode = true;
                 ThongTinFormSanPham = this.sp;
+                if (sp.ds_hinhanh.Count > 0) LoadDTGV_HinhAnh();
                 LoadDTGV_HinhAnh();
                 LoadDTGV_ChiTietSP();
             }
@@ -63,9 +80,24 @@ namespace Winform.GUI
                 try
                 {
                     SanPham sp = new SanPham();
-                    sp.masp = tbMaSP.Text;
-                    sp.ten = tbTenSP.Text;
+                    sp.masp = tbMaSP.Text.Trim();
+                    if (sp.masp.Length == 0)
+                    {
+                        MessageBox.Show("Mã sản phẩm không được để trống.");
+                        return null;
+                    }
+                    sp.ten = tbTenSP.Text.Trim();
+                    if (sp.ten.Length == 0)
+                    {
+                        MessageBox.Show("Tên sản phẩm không được để trống.");
+                        return null;
+                    }
                     sp.gia = TextLibrary.ToInt(tbGia.Text);
+                    if (sp.gia == 0)
+                    {
+                        MessageBox.Show("Hãy nhập lại giá.");
+                        return null;
+                    }
                     sp.active = ckbKichHoat.Checked;
                     sp.mota = rtbMoTa.Text;
                     sp.hangsx = (HangSX)cbHangSX.SelectedItem;
@@ -82,7 +114,7 @@ namespace Winform.GUI
                 tbMaSP.Text = value.masp.ToString();
                 tbTenSP.Text = value.ten.Trim();
                 tbGia.Text = value.giasp.ToString();
-                cbHangSX.SelectedValue = value.hangsx.id;
+                cbHangSX.SelectedItem = value.hangsx;
                 ckbKichHoat.Checked = value.active;
                 rtbMoTa.Text = value.mota.Trim();
             }
@@ -90,16 +122,16 @@ namespace Winform.GUI
 
         void LoadDTGV_HinhAnh()
         {
-  //          IBindingList li = new BindingList<HinhAnh>(list);
             dtgvHinhAnh.DataSource = null;
-            dtgvHinhAnh.DataSource = sp.ds_hinhanh;
+            if(sp.ds_hinhanh.Count > 0) dtgvHinhAnh.DataSource = sp.ds_hinhanh;
         }
 
         void LoadDTGV_ChiTietSP()
         {
- //           IBindingList li = new BindingList<SanPham_ChiTiet>(list);
+
             dtgvChiTietSanPham.DataSource = null;
-            dtgvChiTietSanPham.DataSource = sp.ds_sanpham_chitiet;
+            if (sp.ds_sanpham_chitiet.Count > 0)  dtgvChiTietSanPham.DataSource = sp.ds_sanpham_chitiet;    
+           
         }
 
         private void btThemHinhAnh_Click(object sender, EventArgs e)
@@ -108,31 +140,40 @@ namespace Winform.GUI
             ofd.ShowDialog();
             if (ofd.FileName == "") return;
             HinhAnh ha = new HinhAnh();
-            if (sp.ds_hinhanh.Count > 0) ha.id = sp.ds_hinhanh.Max(tt => tt.id) + 1;
-            else ha.id = 1;
             ha.source_picture_from_web = false;
             ha.duongdan = ofd.FileName;
+            ha.duongdan_thumb = ofd.FileName;
             sp.ds_hinhanh.Add(ha);
-  //          dtgvHinhAnh.Refresh();
             LoadDTGV_HinhAnh();
+            MessageBox.Show("Thêm thành công.");
+            IsChange = true;
         }
 
         private void btDatLamAnhMacDinh_Click(object sender, EventArgs e)
         {
-            HinhAnh cur = sp.ds_hinhanh.Where(ha => ha.macdinh == true).FirstOrDefault();
-            if (cur != null) cur.macdinh = false;
-
-            HinhAnh after = (HinhAnh)dtgvHinhAnh.SelectedRows[0].DataBoundItem;
-            after.macdinh = true;
+            if (dtgvHinhAnh.SelectedRows.Count == 0) return;
+            HinhAnh a = (HinhAnh)dtgvHinhAnh.SelectedRows[0].DataBoundItem;
+            if (a.macdinh)
+            {
+                MessageBox.Show("Ảnh đã là mặc định rồi.");
+                return;
+            } 
+            sp._set_hinhanh_macdinh(a);
             dtgvHinhAnh.Refresh();
-  //          LoadDTGV_HinhAnh(sp.ds_hinhanh);
+            MessageBox.Show("Thay đổi thành công.");
+            IsChange = true;
         }
 
         private void btXoaHinhAnh_Click(object sender, EventArgs e)
         {
+            if (dtgvHinhAnh.SelectedRows.Count == 0) return;
+            DialogResult dr = MessageBox.Show("Xoá hình ảnh chứ ?", "Xoá", MessageBoxButtons.YesNo);
+            if (dr != DialogResult.Yes) return;
             HinhAnh ha = (HinhAnh)dtgvHinhAnh.SelectedRows[0].DataBoundItem;
             sp.ds_hinhanh.Remove(ha);
             LoadDTGV_HinhAnh();
+            MessageBox.Show("Xoá thành công.");
+            IsChange = true;
         }
 
         private void btThemChiTietSP_Click(object sender, EventArgs e)
@@ -146,9 +187,9 @@ namespace Winform.GUI
 
         void LoadCb_MauSac(string type = "")
         {
-            List<MauSac> list; 
-            if (type == "all") list = MSCtr.timkiem();
-            else list = MSCtr.timkiem().Where(ms => sp.ds_sanpham_chitiet.Where(spct => spct.mausac.id == ms.id).FirstOrDefault() == null).ToList();
+            List<MauSac> list;
+            if (type == "all") list = MSCtr.get_list_mausac_local_source(new List<MauSac>());
+            else list = MSCtr.get_list_mausac_local_source(sp.get_list_mausac());
             
             cbMauSac.DataSource = list;
             cbMauSac.DisplayMember = "giatri";
@@ -168,23 +209,29 @@ namespace Winform.GUI
             if (btThemChiTietSP.Enabled)
             {
                 if (cbMauSac.Items.Count == 0) return;
-                SanPham_ChiTiet spct = ThongTinFormMauSac;
-                if (sp.ds_sanpham_chitiet.Count > 0) spct.id = sp.ds_sanpham_chitiet.Max(tt => tt.id) + 1;
-                else spct.id = 1;
+                SanPham_ChiTiet spct = ThongTinFormSanPhamChiTiet;
+                if (spct == null || spct.mausac == null)
+                {
+                    MessageBox.Show("Hãy thêm màu.");
+                    return;
+                }
+
                 sp.ds_sanpham_chitiet.Add(spct);
+                dtgvChiTietSanPham.DataSource = sp.ds_sanpham_chitiet;
                 LoadDTGV_ChiTietSP();
-                MessageBox.Show("Thêm thành công");
                 gbThongTin.Enabled = false;
                 btSuaChiTietSP.Enabled = true;
                 btXoaChiTietSP.Enabled = true;
+                MessageBox.Show("Thêm thành công.");
+                IsChange = true;
             }
             else
             {
                 SanPham_ChiTiet spct = (SanPham_ChiTiet)dtgvChiTietSanPham.SelectedRows[0].DataBoundItem;
-                SanPham_ChiTiet infoform = ThongTinFormMauSac;
+                SanPham_ChiTiet infoform = ThongTinFormSanPhamChiTiet;
                 if (infoform != null)
                 {
-                    if (sp.ds_sanpham_chitiet.Where(spctt => spctt.mausac.id == infoform.mausac.id).FirstOrDefault() != null)
+                    if(sp.check_exist_mausac(infoform.mausac.id))
                     {
                         MessageBox.Show("Màu này đã có rồi, không thể đổi được.");
                         return;
@@ -195,21 +242,22 @@ namespace Winform.GUI
                     gbThongTin.Enabled = false;
                     btThemChiTietSP.Enabled = true;
                     btXoaChiTietSP.Enabled = true;
+                    IsChange = true;
                 }
             }
         }
 
         private void btSuaChiTietSP_Click(object sender, EventArgs e)
         {
-            if (dtgvChiTietSanPham.CurrentCell == null) return;
+            if (dtgvChiTietSanPham.SelectedRows.Count == 0) return;
             SanPham_ChiTiet spct = (SanPham_ChiTiet)dtgvChiTietSanPham.SelectedRows[0].DataBoundItem;
-            ThongTinFormMauSac = spct;
+            ThongTinFormSanPhamChiTiet = spct;
             gbThongTin.Enabled = true;
             btThemChiTietSP.Enabled = false;
             btXoaChiTietSP.Enabled = false;
         }
 
-        private SanPham_ChiTiet ThongTinFormMauSac
+        private SanPham_ChiTiet ThongTinFormSanPhamChiTiet
         {
             get
             {
@@ -223,7 +271,7 @@ namespace Winform.GUI
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Lỗi nhập trên form.");
+                    MessageBox.Show("Thông tin nhập không đúng.");
                     return null;
                 }
             }
@@ -232,7 +280,7 @@ namespace Winform.GUI
                 tbTonKho.Text = value.tonkho.ToString();
                 ckbKichHoatChiTietSP.Checked = value.active;
                 LoadCb_MauSac("all");
-                cbMauSac.SelectedValue = value.mausac.id;
+                cbMauSac.SelectedItem = value.mausac;
             }
         }
 
@@ -243,9 +291,14 @@ namespace Winform.GUI
                 if (dtgvChiTietSanPham.CurrentCell != null)
                 {
                     SanPham_ChiTiet spct = (SanPham_ChiTiet)dtgvChiTietSanPham.SelectedRows[0].DataBoundItem;
-                    DialogResult dialogResult = MessageBox.Show("Xoá thằng màu " + spct.mausac.giatri + " chớ ?", "Xoá", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Xoá sản phẩm có màu " + spct.mausac.giatri + " chứ ?", "Xoá", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
+                        if (spct.check_relation_entities_exist())
+                        {
+                            MessageBox.Show("Không xoá được do có các hoá đơn chứa sản phẩm này.");
+                            return;
+                        }
                         sp.ds_sanpham_chitiet.Remove(spct);
                         LoadDTGV_ChiTietSP();
                         MessageBox.Show("Xoá thành công.");
@@ -277,6 +330,12 @@ namespace Winform.GUI
                     if (EditMode) sp.update();
                     else sp.add();
 
+                    // clean db
+                    if (EditMode)
+                    {
+                        SPCTCtr.clean_db();
+                        HACtr.clean_db();
+                    }
 
                     MessageBox.Show("Lưu thành công.");
                     IsSave = true;
@@ -294,5 +353,36 @@ namespace Winform.GUI
             this.Close();
         }
 
+        private void FmThongTinSanPham_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //reload entity
+            if (EditMode)
+            {
+                if (IsSave) DTGV_DSSanPham();
+                else
+                {
+                    if (IsChange) SPCtr.reload(sp);
+                } 
+            }
+            else
+            {
+                if (IsSave) DTGV_DSSanPham();
+            }        
+        }
+        private void btThemMau_Click(object sender, EventArgs e)
+        {
+            InputDialog ip = new InputDialog();
+            if (ip.ShowDialog() == DialogResult.OK)
+            {
+                MauSac ms = new MauSac();
+                ms.giatri = ip.GiaTri;
+                ms.id = MSCtr.get_max_id_local_source() + 1;
+                MSCtr.add_without_save(ms);
+                MessageBox.Show("Thêm thành công.");
+                if (btThemChiTietSP.Enabled) LoadCb_MauSac();
+                else LoadCb_MauSac("all");
+                IsChange = true;
+            }
+        }
     }
 }

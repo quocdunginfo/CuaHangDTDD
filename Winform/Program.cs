@@ -17,7 +17,7 @@ namespace Winform
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FmQuanLyNhapHang());
+            Application.Run(new FmTrangChu());
         }
     }
 }

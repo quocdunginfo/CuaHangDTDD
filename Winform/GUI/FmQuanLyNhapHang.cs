@@ -26,48 +26,27 @@ namespace Winform.GUI
         void LoadDTGV_NhapHang()
         {
             dtgvDSNhapHang.DataSource = null;
-            dtgvDSNhapHang.DataSource = NHCtr._db.ds_nhaphang.ToList();
+            dtgvDSNhapHang.DataSource = NHCtr.get_list();
         }
 
         private void btThem_Click(object sender, EventArgs e)
         {
-            FmThongTinNhapHang fm = new FmThongTinNhapHang();
+            FmThongTinNhapHang fm = new FmThongTinNhapHang(null,NHCtr);
+            fm.DTGV_NhapHang = new FmThongTinNhapHang.callback(LoadDTGV_NhapHang);
             fm.ShowDialog();
-
-            LoadDTGV_NhapHang();
         }
 
-        private void btSua_Click(object sender, EventArgs e)
+        private void btXem_Click(object sender, EventArgs e)
         {
-            if (dtgvDSNhapHang.CurrentCell == null) return;
+            if (dtgvDSNhapHang.SelectedRows.Count == 0) return;
             NhapHang nh = (NhapHang)dtgvDSNhapHang.SelectedRows[0].DataBoundItem;
-
-            FmThongTinNhapHang fm = new FmThongTinNhapHang(nh);
+            FmThongTinNhapHang fm = new FmThongTinNhapHang(nh,NHCtr);
             fm.ShowDialog();
-            NHCtr._db.Entry(nh).Reload();
-            dtgvDSNhapHang.Refresh();
         }
 
-        private void btXoa_Click(object sender, EventArgs e)
+        private void btThoat_Click(object sender, EventArgs e)
         {
-            if (dtgvDSNhapHang.CurrentCell == null) return;
-
-            try
-            {
-                NhapHang nh = (NhapHang)dtgvDSNhapHang.SelectedRows[0].DataBoundItem;              
-                DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá đơn nhập hàng có tổng tiền " + TextLibrary.ToCommaStringNumber(nh.tongtien) + " chứ ?", "Xoá", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    if (nh.delete())
-                    {
-                        MessageBox.Show("Xoá thành công.");
-                        LoadDTGV_NhapHang();
-                    }
-                    else MessageBox.Show("Xoá thất bại.");
-                }
-            }
-            catch (Exception)
-            { MessageBox.Show("Lỗi khi xoá sp."); }
+            this.Close();
         }
     }
 }

@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.btThoat = new System.Windows.Forms.Button();
-            this.btXoa = new System.Windows.Forms.Button();
-            this.btSua = new System.Windows.Forms.Button();
+            this.btXem = new System.Windows.Forms.Button();
             this.btThem = new System.Windows.Forms.Button();
             this.dtgvDSNhapHang = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,36 +41,27 @@
             // 
             // btThoat
             // 
-            this.btThoat.Location = new System.Drawing.Point(427, 150);
+            this.btThoat.Location = new System.Drawing.Point(427, 104);
             this.btThoat.Name = "btThoat";
             this.btThoat.Size = new System.Drawing.Size(140, 40);
             this.btThoat.TabIndex = 10;
             this.btThoat.Text = "Thoát";
             this.btThoat.UseVisualStyleBackColor = true;
+            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
             // 
-            // btXoa
+            // btXem
             // 
-            this.btXoa.Location = new System.Drawing.Point(427, 104);
-            this.btXoa.Name = "btXoa";
-            this.btXoa.Size = new System.Drawing.Size(140, 40);
-            this.btXoa.TabIndex = 9;
-            this.btXoa.Text = "Xoá";
-            this.btXoa.UseVisualStyleBackColor = true;
-            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
-            // 
-            // btSua
-            // 
-            this.btSua.Location = new System.Drawing.Point(427, 58);
-            this.btSua.Name = "btSua";
-            this.btSua.Size = new System.Drawing.Size(140, 40);
-            this.btSua.TabIndex = 8;
-            this.btSua.Text = "Sửa";
-            this.btSua.UseVisualStyleBackColor = true;
-            this.btSua.Click += new System.EventHandler(this.btSua_Click);
+            this.btXem.Location = new System.Drawing.Point(427, 12);
+            this.btXem.Name = "btXem";
+            this.btXem.Size = new System.Drawing.Size(140, 40);
+            this.btXem.TabIndex = 8;
+            this.btXem.Text = "Xem Chi Tiết";
+            this.btXem.UseVisualStyleBackColor = true;
+            this.btXem.Click += new System.EventHandler(this.btXem_Click);
             // 
             // btThem
             // 
-            this.btThem.Location = new System.Drawing.Point(427, 12);
+            this.btThem.Location = new System.Drawing.Point(427, 58);
             this.btThem.Name = "btThem";
             this.btThem.Size = new System.Drawing.Size(140, 40);
             this.btThem.TabIndex = 7;
@@ -132,10 +122,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 303);
+            this.ClientSize = new System.Drawing.Size(572, 303);
             this.Controls.Add(this.btThoat);
-            this.Controls.Add(this.btXoa);
-            this.Controls.Add(this.btSua);
+            this.Controls.Add(this.btXem);
             this.Controls.Add(this.btThem);
             this.Controls.Add(this.dtgvDSNhapHang);
             this.Name = "FmQuanLyNhapHang";
@@ -148,8 +137,7 @@
         #endregion
 
         private System.Windows.Forms.Button btThoat;
-        private System.Windows.Forms.Button btXoa;
-        private System.Windows.Forms.Button btSua;
+        private System.Windows.Forms.Button btXem;
         private System.Windows.Forms.Button btThem;
         private System.Windows.Forms.DataGridView dtgvDSNhapHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;

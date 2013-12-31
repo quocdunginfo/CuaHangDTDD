@@ -58,6 +58,7 @@ namespace BaseClass.ModelControllers
                 Debug.WriteLine(ex.ToString());
                 return false;
             }
+
         }
         public List<SanPham_ChiTiet> timkiem(String id = "", String mausac_id = "", String active = "",String id_sp="")
         {
@@ -105,5 +106,25 @@ namespace BaseClass.ModelControllers
             return list;
         
     }
+        public void clean_db()
+        {
+            List<SanPham_ChiTiet> list = _db.ds_sanpham_chitiet.Where(spct => spct.sanpham == null || spct.mausac == null).ToList();
+            foreach (SanPham_ChiTiet spct in list) spct.delete();
+        }
+        public List<int> Lay_SoLuong_TonKho(List<SanPham_ChiTiet> dssp, List<DateTime> dsngay)
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < dssp.Count; i++)
+            {
+                SanPham_ChiTiet spct = get_by_id(dssp[i].id);
+                dssp[i] = spct;
+                foreach (DateTime ngay in dsngay)
+                {
+                    list.Add(spct.lay_tonkho_theo_ngay(ngay));
+                }
+            }
+
+            return list;
+        }
     }
 }

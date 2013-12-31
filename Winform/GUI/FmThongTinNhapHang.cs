@@ -15,35 +15,47 @@ namespace Winform.GUI
 {
     public partial class FmThongTinNhapHang : Form
     {
-        bool EditMode = false;
+        bool IsSave = false;
+        bool ViewMode = false;
         NhapHangController NHCtr;
         SanPham_ChiTietController SPCTCtr;
         NhapHang nh;
-        public FmThongTinNhapHang(NhapHang nh = null)
+
+        public delegate void callback();
+        public callback DTGV_NhapHang;
+        public FmThongTinNhapHang(NhapHang nh = null, NhapHangController nhctr = null)
         {
             InitializeComponent();
-            NHCtr = new NhapHangController();
+            if (nhctr == null) NHCtr = new NhapHangController();
+            else NHCtr = nhctr;
             SPCTCtr = new SanPham_ChiTietController(NHCtr._db);
             dtgvChiTietNH.AutoGenerateColumns = false;
             dtgvChiTietSP.AutoGenerateColumns = false;
             if (nh == null)
             {
                 this.nh = new NhapHang(NHCtr._db);
+                this.Text = "Thêm Mới Đơn Nhập Hàng";
+                LoadDTGV_ChiTietSP();
+                dtpkNgay.Value = DateTime.Now;
             }
             else
             {
-                EditMode = true;
-                this.nh = NHCtr.get_by_id(nh.id);
+                ViewMode = true;
+                this.nh = nh;
+                this.nh._set_context(NHCtr._db);
                 ThongTinFormNhapHang = this.nh;
-            }
-            LoadDTGV_ChiTietNH();
-            LoadDTGV_ChiTietSP();
+                btLuu.Enabled = false;
+                btThem.Enabled = false;
+                btXoa.Enabled = false;
+                gbDSSanPham.Enabled = false;
+                LoadDTGV_ChiTietNH();
+            }      
         }
 
         void LoadDTGV_ChiTietNH()
         {
             dtgvChiTietNH.DataSource = null;
-            dtgvChiTietNH.DataSource = nh.ds_chitiet_nhaphang;
+            if (nh.ds_chitiet_nhaphang.Count > 0) dtgvChiTietNH.DataSource = nh.ds_chitiet_nhaphang;
         }
 
         void LoadDTGV_ChiTietSP()
@@ -59,9 +71,8 @@ namespace Winform.GUI
                 try
                 {
                     NhapHang nh = new NhapHang(NHCtr._db);
-   //                 nh.id = Int32.Parse(tbID.Text);
                     nh.active = ckbKichHoat.Checked;
-                    nh.ngay = dtpNgay.Value;
+                    nh.ngay = dtpkNgay.Value;
                     nh.tongtien_change = tbTongTien.Text;
                     return nh;
                 }
@@ -75,7 +86,7 @@ namespace Winform.GUI
             {
                 tbID.Text = value.id.ToString();
                 ckbKichHoat.Checked = value.active;
-                dtpNgay.Value = value.ngay;
+                dtpkNgay.Value = value.ngay;
                 tbTongTien.Text = value.tongtien_change;
             }
         }
@@ -84,24 +95,33 @@ namespace Winform.GUI
         {
             SanPham_ChiTiet spct = (SanPham_ChiTiet)dtgvChiTietSP.SelectedRows[0].DataBoundItem;
 
-            if (nh.check_exist_spct_in_donhang(spct.id))
+            if (nh.check_exist_spct_in_donnhaphang(spct.id))
             {
-                MessageBox.Show("Đơn hàng đã có chứa sản phẩm này rồi.");
+                MessageBox.Show("Đơn nhập hàng đã có chứa sản phẩm này rồi.");
                 return;
             }
 
             ChiTiet_NhapHang ctnh = new ChiTiet_NhapHang(NHCtr._db);
             ctnh.soluong = Int32.Parse(tbSoLuong.Text);
+            if (ctnh.soluong == 0)
+            {
+                MessageBox.Show("Chỉ được nhập số lượng lớn hơn 0.");
+                return;
+            }
             ctnh.dongia = Int32.Parse(tbDonGia.Text);
+            if (ctnh.dongia == 0)
+            {
+                MessageBox.Show("Chỉ được nhập đơn giá lớn hơn 0.");
+                return;
+            }
             ctnh.sanpham_chitiet = spct;
 
             //set lai tong tien
             int num = TextLibrary.ToInt(tbTongTien.Text);
             num += ctnh.soluong * ctnh.dongia;
             tbTongTien.Text = TextLibrary.ToCommaStringNumber(num);
-
             nh.ds_chitiet_nhaphang.Add(ctnh);
-
+            MessageBox.Show("Thêm thành công.");
             LoadDTGV_ChiTietNH();
         }
 
@@ -119,10 +139,10 @@ namespace Winform.GUI
             try
             {
                 nh.update_tonkho();
-                if (EditMode) nh.update();
-                else nh.add();
+                nh.add();
 
                 MessageBox.Show("Lưu thành công.");
+                IsSave = true;
                 this.Close();
             }
             catch (Exception)
@@ -130,5 +150,33 @@ namespace Winform.GUI
                 MessageBox.Show("Lỗi khi lưu lại.");
             }
         }
+
+        private void btXoa_Click(object sender, EventArgs e)
+        {  
+            if (dtgvChiTietNH.CurrentCell != null)
+            {
+                ChiTiet_NhapHang ctnh = (ChiTiet_NhapHang)dtgvChiTietNH.SelectedRows[0].DataBoundItem;
+                DialogResult dialogResult = MessageBox.Show("Xoá sản phẩm " + ctnh.sanpham_chitiet.sanpham.ten + " chứ ?", "Xoá", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //set lai tong tien
+                    int num = TextLibrary.ToInt(tbTongTien.Text);
+                    num -= ctnh.soluong * ctnh.dongia;
+                    tbTongTien.Text = TextLibrary.ToCommaStringNumber(num);
+                    nh.ds_chitiet_nhaphang.Remove(ctnh);
+                    LoadDTGV_ChiTietNH();
+                    MessageBox.Show("Xoá thành công.");
+                }
+            }
+        }
+
+        private void FmThongTinNhapHang_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!ViewMode)
+            {
+                if (IsSave) DTGV_NhapHang();
+            }
+        }
+    
     }
 }

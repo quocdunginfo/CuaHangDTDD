@@ -55,6 +55,17 @@ namespace BaseClass.ModelControllers
             _db.SaveChanges();
             return _db.ds_hinhanh.Max(x => x.id);
         }
+        public Boolean save()
+        {
+            this._db.SaveChanges();
+            return true;
+        }
+        public void clean_db()
+        {
+            List<HinhAnh> list = _db.ds_hinhanh.Where(ha => ha.sanpham == null).ToList();
+            foreach (HinhAnh ha in list) ha.delete();
+        }
+
         public Boolean delete_winform_use_only(HinhAnh obj)
         {
             try
@@ -73,7 +84,7 @@ namespace BaseClass.ModelControllers
         public Boolean delete_mvc_use_only(int id, HttpServerUtilityBase server_context)
         {
             try
-            {
+             {
                 HinhAnh kq = this.get_by_id(id);
                 if (kq == null) return false;
                 //first delete file
@@ -91,12 +102,13 @@ namespace BaseClass.ModelControllers
                 _db.ds_hinhanh.Remove(kq);
                 _db.SaveChanges();
                 return true;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.ToString());
-                return false;
-            }
+             }
+             catch (Exception ex)
+             {
+                 Debug.WriteLine(ex.ToString());
+                 return false;
+             }
+
         }
         public Boolean set_default(int id)
         {

@@ -12,7 +12,6 @@ namespace BaseClass.ModelControllers
     {
         public DTDDDbContext _db;
 
-        public List<MauSac> ds_mausac;
         public MauSacController()
         {
             this._db = new DTDDDbContext();
@@ -45,6 +44,10 @@ namespace BaseClass.ModelControllers
             //return ma moi nhat
             return this._db.ds_mausac.Max(x => x.id);
         }
+        public void add_without_save(MauSac obj)
+        {
+            _db.ds_mausac.Add(obj);
+        }
         public Boolean delete(MauSac obj)
         {
             try
@@ -60,7 +63,7 @@ namespace BaseClass.ModelControllers
             {
                 Debug.WriteLine(ex.ToString());
                 return false;
-            }
+            }  
         }
         public int timkiem_count(String id = "", String ten = "", String active = "")
         {
@@ -104,6 +107,14 @@ namespace BaseClass.ModelControllers
             return obj_list;
         }
 
+        public List<MauSac> get_list_mausac_local_source(List<MauSac> exception_list)
+        {
+            List<MauSac> list = _db.ChangeTracker.Entries<MauSac>().Select(en => en.Entity).ToList();
+            list = list.Where(ms => exception_list.Where(ex => ex.id == ms.id).FirstOrDefault() == null).ToList();
+            return list;
+ //           return _db.ds_mausac.ToList<MauSac>().Where(ms => exception_list.Where(ex => ex.id == ms.id).FirstOrDefault() == null).ToList<MauSac>();
+        }
+
         public List<string> validate(MauSac obj)
         {
             List<String> re = new List<string>();
@@ -114,9 +125,10 @@ namespace BaseClass.ModelControllers
             return re;
         }
 
-        public void Binding_DB_To_ListTemp()
+        public int get_max_id_local_source()
         {
-            ds_mausac = _db.ds_mausac.ToList<MauSac>();
+            List<MauSac> list = _db.ChangeTracker.Entries<MauSac>().Select(en => en.Entity).ToList();
+            return list.Max(m => m.id);
         }
     }
 }

@@ -58,7 +58,16 @@ namespace BaseClass.ModelControllers
                 Debug.WriteLine(ex.ToString());
                 return false;
             }
+            
         }
-        
+
+        /*
+        public void clean_db()
+        {
+            List<ChiTiet_NhapHang> list = _db.ds_chitiet_nhaphang
+                .Where(ctnh => ctnh.nhaphang == null || ctnh.sanpham_chitiet == null).ToList();
+            foreach (ChiTiet_NhapHang ctnh in list) ctnh.delete();
+        }
+         */
     }
 }

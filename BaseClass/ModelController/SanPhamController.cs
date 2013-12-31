@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Diagnostics;
+using System.Data.Entity.Infrastructure;
+using System.Data;
+using System.Data.Objects;
 
 namespace BaseClass.ModelControllers
 {
@@ -59,6 +62,9 @@ namespace BaseClass.ModelControllers
                 //reload again to prevent error
                 obj = get_by_id(obj.id);
 
+                // remove relations
+                foreach (HinhAnh ha in obj.ds_hinhanh) ha.delete();
+                foreach (SanPham_ChiTiet spct in obj.ds_sanpham_chitiet) spct.delete();
                 this._db.ds_sanpham.Remove(obj);
                 //commit
                 return save();
@@ -68,6 +74,7 @@ namespace BaseClass.ModelControllers
                 Debug.WriteLine(ex.ToString());
                 return false;
             }
+
         }
         public int timkiem_count(String id = "", String masp = "", String ten = "", String mota = "", int gia_from = 0, int gia_to = 0, HangSX hangsx = null, String active = "")
         {
@@ -157,6 +164,68 @@ namespace BaseClass.ModelControllers
                 re.Add("masp_exist_fail");
             }
             return re;
+        }
+        public void reload(SanPham sp)
+        {
+            List<HinhAnh> Added_HA = new List<HinhAnh>();
+            List<HinhAnh> Deleted_HA = _db
+                .ChangeTracker.Entries<HinhAnh>()
+                .Where(en => en.Entity.sanpham == null && en.Entity.source_picture_from_web)
+                .Select(t => t.Entity).ToList<HinhAnh>();
+
+            List<SanPham_ChiTiet> Added_SPCT = new List<SanPham_ChiTiet>();
+            List<SanPham_ChiTiet> Deleted_SPCT = _db
+                .ChangeTracker.Entries<SanPham_ChiTiet>()
+                .Where(en => en.Entity.sanpham == null && en.Entity.id > 0).Select(t => t.Entity)
+                .ToList<SanPham_ChiTiet>();
+
+            List<MauSac> Added_MauSac = _db.ChangeTracker.Entries<MauSac>().Where(ms => ms.State == EntityState.Added).Select(t => t.Entity).ToList();
+
+            foreach (HinhAnh ha in sp.ds_hinhanh)
+            {
+                if (!ha.source_picture_from_web)
+                {
+                    Added_HA.Add(ha);
+                }
+                else
+                {
+                    //reload modified entity
+                    _db.Entry<HinhAnh>(ha).Reload();
+                }
+            }
+
+            foreach (SanPham_ChiTiet spct in sp.ds_sanpham_chitiet)
+            {
+                if (spct.id == 0)
+                {
+                    Added_SPCT.Add(spct);
+                }
+                else
+                {
+                    //reload modified entity
+                    _db.Entry<SanPham_ChiTiet>(spct).Reload();
+                }
+            }
+
+            //remove added entity
+            foreach (HinhAnh ha in Added_HA)
+            {
+                _db.Entry<HinhAnh>(ha).State = EntityState.Detached;
+                sp.ds_hinhanh.Remove(ha);
+            }
+
+            foreach (SanPham_ChiTiet spct in Added_SPCT)
+            {
+                _db.Entry<SanPham_ChiTiet>(spct).State = EntityState.Detached;
+                sp.ds_sanpham_chitiet.Remove(spct);
+            }
+
+            foreach (MauSac ms in Added_MauSac) _db.Entry<MauSac>(ms).State = EntityState.Detached;
+
+            //reload deleted entity
+            foreach (HinhAnh ha in Deleted_HA) _db.Entry<HinhAnh>(ha).Reload();
+            foreach (SanPham_ChiTiet spct in Deleted_SPCT) _db.Entry<SanPham_ChiTiet>(spct).Reload();
+            
         }
     }
 }

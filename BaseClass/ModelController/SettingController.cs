@@ -34,6 +34,14 @@ namespace BaseClass.ModelControllers
         {
             return this.get_by_id(obj_id)== null ? false : true;
         }
+
+        public int add(Setting st)
+        {
+            _db.ds_setting.Add(st);
+            save();
+            return _db.ds_setting.Max(x => x.id);
+        }
+
         public Boolean save()
         {
             this._db.SaveChanges();
