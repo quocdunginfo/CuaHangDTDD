@@ -96,7 +96,7 @@ namespace BaseClass.ModelControllers
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.ToString());
+                    Debug.WriteLine("qqqqqqqqqqqq"+ex.ToString());
                 }
                 //delete in database
                 _db.ds_hinhanh.Remove(kq);
@@ -147,12 +147,12 @@ namespace BaseClass.ModelControllers
             String server_path_thumb = "";
             foreach (string file_name in file_list)
             {
-                Debug.WriteLine("file name: " + file_name);
                 HttpPostedFileBase hpf = file_list[file_name];
-                String random_prefix = TextLibrary.GetSHA1HashData(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString()).Substring(0,5);
-                server_path = server_context.MapPath(Path.Combine(relative_directory, random_prefix + Path.GetFileName(hpf.FileName)));
+                string _ext = Path.GetExtension(hpf.FileName);
+                String random_prefix = TextLibrary.GetSHA1HashData(DateTime.Now.ToLongDateString() + DateTime.Now.ToLongTimeString() + file_name).Substring(0,20);
+                server_path = server_context.MapPath(Path.Combine(relative_directory, random_prefix + _ext /* + Path.GetFileName(hpf.FileName)*/));
 
-                server_path_thumb = server_context.MapPath(Path.Combine(relative_directory, "_thumb_" + random_prefix + Path.GetFileName(hpf.FileName)));
+                server_path_thumb = server_context.MapPath(Path.Combine(relative_directory, "_thumb_" + random_prefix + _ext /* + Path.GetFileName(hpf.FileName)*/));
                 if (hpf.ContentLength == 0)
                 {
                     continue;
@@ -160,14 +160,14 @@ namespace BaseClass.ModelControllers
                 HinhAnh hinhanh = new HinhAnh();
                 //save origin
                     hpf.SaveAs(server_path);
-                    hinhanh.duongdan = random_prefix+hpf.FileName;
+                    hinhanh.duongdan = random_prefix + _ext;
                 //save thumb
                     Image imgOriginal = Image.FromFile(server_path);
                     Image hinhanh_thumb = ImageLibrary.ScaleBySize(imgOriginal, max_width_height);
                     imgOriginal.Dispose();
                     hinhanh_thumb.Save(server_path_thumb);
                     hinhanh_thumb.Dispose();
-                    hinhanh.duongdan_thumb = "_thumb_" + random_prefix+hpf.FileName;
+                    hinhanh.duongdan_thumb = "_thumb_" + random_prefix + _ext;
                 //add to re
                 return hinhanh;
             }

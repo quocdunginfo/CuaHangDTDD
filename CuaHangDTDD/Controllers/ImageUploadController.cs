@@ -17,7 +17,7 @@ namespace CuaHangDTDD.Controllers
         {
             HinhAnhController ctr = new HinhAnhController();
             HinhAnh re = ctr.upload_mvc_use_only(Server, Request.Files);
-            ViewBag.Message = re.duongdan + "|" + re.duongdan_thumb;
+            ViewBag.Message = re.duongdan + "|" + re.duongdan_thumb + "|";
             return View();
         }
         [HttpGet]
