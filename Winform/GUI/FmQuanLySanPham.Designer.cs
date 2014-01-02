@@ -132,7 +132,7 @@
             // 
             // hinhanh
             // 
-            this.hinhanh.DataPropertyName = "anhmacdinh_thumb";
+            this.hinhanh.DataPropertyName = "anhmacdinh";
             this.hinhanh.HeaderText = "Hình ảnh";
             this.hinhanh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.hinhanh.Name = "hinhanh";

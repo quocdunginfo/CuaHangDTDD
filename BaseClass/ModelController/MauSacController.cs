@@ -112,7 +112,6 @@ namespace BaseClass.ModelControllers
             List<MauSac> list = _db.ChangeTracker.Entries<MauSac>().Select(en => en.Entity).ToList();
             list = list.Where(ms => exception_list.Where(ex => ex.id == ms.id).FirstOrDefault() == null).ToList();
             return list;
- //           return _db.ds_mausac.ToList<MauSac>().Where(ms => exception_list.Where(ex => ex.id == ms.id).FirstOrDefault() == null).ToList<MauSac>();
         }
 
         public List<string> validate(MauSac obj)
@@ -128,7 +127,8 @@ namespace BaseClass.ModelControllers
         public int get_max_id_local_source()
         {
             List<MauSac> list = _db.ChangeTracker.Entries<MauSac>().Select(en => en.Entity).ToList();
-            return list.Max(m => m.id);
+            if (list.Count == 0) return 0;
+            return list.Max(x => x.id);
         }
     }
 }

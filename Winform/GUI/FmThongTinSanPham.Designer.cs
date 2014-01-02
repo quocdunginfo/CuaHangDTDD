@@ -55,11 +55,6 @@
             this.btThemHinhAnh = new System.Windows.Forms.Button();
             this.btXoaHinhAnh = new System.Windows.Forms.Button();
             this.dtgvHinhAnh = new System.Windows.Forms.DataGridView();
-            this.hinhanh_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duongdan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duongdan_thumb = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.macdinh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hinhanh = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.gbThongTin = new System.Windows.Forms.GroupBox();
             this.btThemMau = new System.Windows.Forms.Button();
@@ -78,6 +73,11 @@
             this.active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tonkho = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giatri = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hinhanh_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duongdan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.duongdan_thumb = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.macdinh = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hinhanh = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -342,48 +342,6 @@
             this.dtgvHinhAnh.Size = new System.Drawing.Size(675, 225);
             this.dtgvHinhAnh.TabIndex = 4;
             // 
-            // hinhanh_id
-            // 
-            this.hinhanh_id.DataPropertyName = "id";
-            this.hinhanh_id.HeaderText = "ID";
-            this.hinhanh_id.Name = "hinhanh_id";
-            this.hinhanh_id.ReadOnly = true;
-            // 
-            // duongdan
-            // 
-            this.duongdan.DataPropertyName = "duongdan";
-            this.duongdan.HeaderText = "Đường dẫn";
-            this.duongdan.Name = "duongdan";
-            this.duongdan.ReadOnly = true;
-            // 
-            // duongdan_thumb
-            // 
-            this.duongdan_thumb.DataPropertyName = "duongdan_thumb";
-            this.duongdan_thumb.HeaderText = "Đường dẫn_thumb";
-            this.duongdan_thumb.Name = "duongdan_thumb";
-            this.duongdan_thumb.ReadOnly = true;
-            this.duongdan_thumb.Width = 150;
-            // 
-            // macdinh
-            // 
-            this.macdinh.DataPropertyName = "macdinh";
-            this.macdinh.HeaderText = "Mặc định";
-            this.macdinh.Name = "macdinh";
-            this.macdinh.ReadOnly = true;
-            this.macdinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.macdinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // hinhanh
-            // 
-            this.hinhanh.DataPropertyName = "anh_thumb";
-            this.hinhanh.HeaderText = "Hình ảnh";
-            this.hinhanh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.hinhanh.Name = "hinhanh";
-            this.hinhanh.ReadOnly = true;
-            this.hinhanh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.hinhanh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.hinhanh.Width = 150;
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.gbThongTin);
@@ -589,6 +547,48 @@
             this.giatri.Name = "giatri";
             this.giatri.ReadOnly = true;
             // 
+            // hinhanh_id
+            // 
+            this.hinhanh_id.DataPropertyName = "id";
+            this.hinhanh_id.HeaderText = "ID";
+            this.hinhanh_id.Name = "hinhanh_id";
+            this.hinhanh_id.ReadOnly = true;
+            // 
+            // duongdan
+            // 
+            this.duongdan.DataPropertyName = "duongdan";
+            this.duongdan.HeaderText = "Đường dẫn";
+            this.duongdan.Name = "duongdan";
+            this.duongdan.ReadOnly = true;
+            // 
+            // duongdan_thumb
+            // 
+            this.duongdan_thumb.DataPropertyName = "duongdan_thumb";
+            this.duongdan_thumb.HeaderText = "Đường dẫn_thumb";
+            this.duongdan_thumb.Name = "duongdan_thumb";
+            this.duongdan_thumb.ReadOnly = true;
+            this.duongdan_thumb.Width = 150;
+            // 
+            // macdinh
+            // 
+            this.macdinh.DataPropertyName = "macdinh";
+            this.macdinh.HeaderText = "Mặc định";
+            this.macdinh.Name = "macdinh";
+            this.macdinh.ReadOnly = true;
+            this.macdinh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.macdinh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // hinhanh
+            // 
+            this.hinhanh.DataPropertyName = "anh";
+            this.hinhanh.HeaderText = "Hình ảnh";
+            this.hinhanh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.hinhanh.Name = "hinhanh";
+            this.hinhanh.ReadOnly = true;
+            this.hinhanh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.hinhanh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.hinhanh.Width = 150;
+            // 
             // FmThongTinSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,11 +656,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tonkho;
         private System.Windows.Forms.DataGridViewTextBoxColumn giatri;
         private System.Windows.Forms.Button btHuyChiTietSP;
+        private System.Windows.Forms.Button btThemMau;
         private System.Windows.Forms.DataGridViewTextBoxColumn hinhanh_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn duongdan;
         private System.Windows.Forms.DataGridViewTextBoxColumn duongdan_thumb;
         private System.Windows.Forms.DataGridViewCheckBoxColumn macdinh;
         private System.Windows.Forms.DataGridViewImageColumn hinhanh;
-        private System.Windows.Forms.Button btThemMau;
     }
 }

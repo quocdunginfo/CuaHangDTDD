@@ -63,8 +63,20 @@ namespace BaseClass.ModelControllers
                 obj = get_by_id(obj.id);
 
                 // remove relations
-                foreach (HinhAnh ha in obj.ds_hinhanh) ha.delete();
-                foreach (SanPham_ChiTiet spct in obj.ds_sanpham_chitiet) spct.delete();
+                while (obj.ds_sanpham_chitiet.Count > 0)
+                {
+                    SanPham_ChiTiet spct = obj.ds_sanpham_chitiet[0];
+                    spct._set_context(obj._ctr._db);
+                    spct.delete();
+                }
+
+                while (obj.ds_hinhanh.Count > 0)
+                {
+                    HinhAnh ha = obj.ds_hinhanh[0];
+                    ha._set_context(obj._ctr._db);
+                    ha.delete();
+                }
+
                 this._db.ds_sanpham.Remove(obj);
                 //commit
                 return save();

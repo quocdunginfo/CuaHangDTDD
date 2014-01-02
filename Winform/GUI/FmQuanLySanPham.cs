@@ -45,7 +45,7 @@ namespace Winform.GUI
         {
             if (dtgvDSSanPham.SelectedRows.Count == 0) return;
             SanPham sp = (SanPham)dtgvDSSanPham.SelectedRows[0].DataBoundItem;
-            DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá sản phẩm " + sp.ten + "chứ?", "Xoá", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá sản phẩm " + sp.ten + " chứ?", "Xoá", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 foreach (SanPham_ChiTiet spct in sp.ds_sanpham_chitiet)
@@ -56,6 +56,7 @@ namespace Winform.GUI
                         return;
                     }
                 }
+                sp._set_context(SPCtr._db);
                 if (sp.delete())
                 {
                     MessageBox.Show("Xoá thành công.");

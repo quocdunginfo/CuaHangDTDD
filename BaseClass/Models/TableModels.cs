@@ -131,8 +131,19 @@ namespace BaseClass.Models
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
-                return null;
+                // không có ảnh trả về ảnh mặc định default.jpg
+                //try catch phòng trường hợp chưa có file default.jpg
+                try
+                {
+                    var webClient1 = new WebClient();
+                    byte[] imageBytes1 = webClient1.DownloadData(SettingController.get_by_key("path_to_website") + "/_Upload/HinhAnh/default.jpg");
+                    MemoryStream stream1 = new MemoryStream(imageBytes1);
+                    Image img1 = Image.FromStream(stream1);
+                    stream1.Close();
+                    Debug.WriteLine(ex.ToString());
+                    return img1;
+                }
+                catch (Exception) { return null; }
             }
         }
         public Bitmap _get_bitmap()
@@ -237,11 +248,11 @@ namespace BaseClass.Models
         }
 
         [NotMapped]
-        public Image anhmacdinh_thumb_spct
+        public Image anhmacdinh_spct
         {
             get
             {
-                return sanpham.anhmacdinh_thumb;
+                return sanpham.anhmacdinh;
             }
         }
 
@@ -930,27 +941,34 @@ namespace BaseClass.Models
         {
             return _ctr.validate(this);
         }
+
         public Boolean set_status()
         {
-
-            this.dagiaohang = true;
-            //set ton kho
-            foreach (ChiTiet_DonHang ctdh in ds_chitiet_donhang)
-            {
-                ctdh.sanpham_chitiet.update_tonkho(ctdh.sanpham_chitiet.tonkho - ctdh.soluong, DateTime.Now);
-            }
-            try
-            {
-                update();
-                return true;
-            }
-            catch(Exception)
-            {
-                // reload
-                _ctr.reload(this);
-                return false;
-            }
+            dagiaohang = true;
+            return update();
         }
+
+        //public Boolean set_status()
+        //{
+
+        //    this.dagiaohang = true;
+        //    //set ton kho
+        //    foreach (ChiTiet_DonHang ctdh in ds_chitiet_donhang)
+        //    {
+        //        ctdh.sanpham_chitiet.update_tonkho(ctdh.sanpham_chitiet.tonkho - ctdh.soluong, DateTime.Now);
+        //    }
+        //    try
+        //    {
+        //        update();
+        //        return true;
+        //    }
+        //    catch(Exception)
+        //    {
+        //        // reload
+        //        _ctr.reload(this);
+        //        return false;
+        //    }
+        //}
         //CRUD method
         private DonHangController _ctr;
         public Boolean update()

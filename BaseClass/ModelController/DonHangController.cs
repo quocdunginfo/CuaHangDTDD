@@ -72,7 +72,15 @@ namespace BaseClass.ModelControllers
 
                 if (obj.dagiaohang) return false;
                 //remove relations
-                foreach (ChiTiet_DonHang ctdh in obj.ds_chitiet_donhang) ctdh.delete();
+                while (obj.ds_chitiet_donhang.Count > 0)
+                {
+                    ChiTiet_DonHang ctdh = obj.ds_chitiet_donhang[0];
+                    ctdh._set_context(_db);
+                    // set lai so luong va ton kho
+                    ctdh.sanpham_chitiet.update_tonkho(ctdh.sanpham_chitiet.tonkho + ctdh.soluong, DateTime.Now); 
+
+                    ctdh.delete();
+                }
 
                 //remove
                 this._db.ds_donhang.Remove(obj);

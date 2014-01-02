@@ -77,7 +77,7 @@ namespace Winform.GUI
         private void btChinhDiaChiWeb_Click(object sender, EventArgs e)
         {
             Setting st = SettingController.get_by_key("path_to_website");
-            InputDialog ip = new InputDialog("Địa chỉ trang Web", "Giá trị: ", (st != null) ? st.value : "");
+            InputDialog ip = new InputDialog("Địa chỉ trang Web", "Giá trị: ", (st != null) ? st.value : "http://");
             if (ip.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if(st == null)

@@ -73,7 +73,13 @@ namespace BaseClass.ModelControllers
                 string url = Setting.get_by_key("path_to_website") + "/ImageUpload/Delete?hinhanh_id=" + obj.id;
                 WebClient webClient = new WebClient();
                 string result = webClient.DownloadString(url);
-                return TextLibrary.ToBoolean(result);
+                if (TextLibrary.ToBoolean(result.Substring(0,1)))
+                {
+                    _db.Entry<HinhAnh>(obj).State = System.Data.EntityState.Detached;
+
+                    return true;
+                }
+                else return false;
             }
             catch (Exception ex)
             {
@@ -93,6 +99,7 @@ namespace BaseClass.ModelControllers
                     String directory = "~/_Upload/HinhAnh/";
                     System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan)));
                     System.IO.File.Delete(server_context.MapPath(Path.Combine(directory, kq.duongdan_thumb)));
+                    
                 }
                 catch (Exception ex)
                 {

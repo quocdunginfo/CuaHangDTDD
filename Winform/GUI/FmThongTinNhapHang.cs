@@ -153,7 +153,7 @@ namespace Winform.GUI
 
         private void btXoa_Click(object sender, EventArgs e)
         {  
-            if (dtgvChiTietNH.CurrentCell != null)
+            if (dtgvChiTietNH.SelectedRows.Count > 0)
             {
                 ChiTiet_NhapHang ctnh = (ChiTiet_NhapHang)dtgvChiTietNH.SelectedRows[0].DataBoundItem;
                 DialogResult dialogResult = MessageBox.Show("Xoá sản phẩm " + ctnh.sanpham_chitiet.sanpham.ten + " chứ ?", "Xoá", MessageBoxButtons.YesNo);

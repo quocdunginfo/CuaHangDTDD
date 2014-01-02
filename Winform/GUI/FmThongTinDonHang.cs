@@ -53,7 +53,7 @@ namespace Winform.GUI
         void LoadDTGV_ChiTietDonHang()
         {
             dtgvChiTietNH.DataSource = null;
-            dtgvChiTietNH.DataSource = dh.ds_chitiet_donhang;
+            if(dh.ds_chitiet_donhang.Count > 0) dtgvChiTietNH.DataSource = dh.ds_chitiet_donhang;
         }
     }
 }

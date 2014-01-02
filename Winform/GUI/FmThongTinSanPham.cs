@@ -26,7 +26,6 @@ namespace Winform.GUI
         MauSacController MSCtr;
         HinhAnhController HACtr;
         SanPham_ChiTietController SPCTCtr;
-//        List<MauSac> ds_mausac;
 
         public delegate void callback();
         public callback DTGV_DSSanPham;
@@ -45,7 +44,6 @@ namespace Winform.GUI
             HACtr = new HinhAnhController(this.SPCtr._db);
             SPCTCtr = new SanPham_ChiTietController(this.SPCtr._db);
             MSCtr.timkiem();
-  //          ds_mausac = MSCtr.timkiem();
             LoadCb_HangSX();
             if (sp == null)
             {
@@ -58,11 +56,9 @@ namespace Winform.GUI
                 this.sp._set_context(SPCtr._db);
                 EditMode = true;
                 ThongTinFormSanPham = this.sp;
-                if (sp.ds_hinhanh.Count > 0) LoadDTGV_HinhAnh();
                 LoadDTGV_HinhAnh();
                 LoadDTGV_ChiTietSP();
             }
-
         }
 
         void LoadCb_HangSX()
@@ -92,15 +88,25 @@ namespace Winform.GUI
                         MessageBox.Show("Tên sản phẩm không được để trống.");
                         return null;
                     }
-                    sp.gia = TextLibrary.ToInt(tbGia.Text);
+                    sp.gia = TextLibrary.ToInt(tbGia.Text.Trim());
                     if (sp.gia == 0)
                     {
                         MessageBox.Show("Hãy nhập lại giá.");
                         return null;
                     }
                     sp.active = ckbKichHoat.Checked;
-                    sp.mota = rtbMoTa.Text;
+                    sp.mota = rtbMoTa.Text.Trim();
+                    if (sp.mota.Length == 0)
+                    {
+                        MessageBox.Show("Hãy nhập mô tả.");
+                        return null;
+                    }
                     sp.hangsx = (HangSX)cbHangSX.SelectedItem;
+                    if (sp.hangsx == null)
+                    {
+                        MessageBox.Show("Hãy thêm hãng sản xuất thông qua Trang Quản Lý Hãng Sản Xuất.");
+                        return null;
+                    }
                     return sp;
                 }
                 catch (Exception)
@@ -137,16 +143,27 @@ namespace Winform.GUI
         private void btThemHinhAnh_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = true;
             ofd.ShowDialog();
-            if (ofd.FileName == "") return;
-            HinhAnh ha = new HinhAnh();
-            ha.source_picture_from_web = false;
-            ha.duongdan = ofd.FileName;
-            ha.duongdan_thumb = ofd.FileName;
-            sp.ds_hinhanh.Add(ha);
-            LoadDTGV_HinhAnh();
-            MessageBox.Show("Thêm thành công.");
-            IsChange = true;
+            bool file_ok = false;
+            foreach (string path in ofd.FileNames)
+            {
+                if (path.Trim() == "") continue;
+                HinhAnh ha = new HinhAnh();
+                ha.source_picture_from_web = false;
+                ha.duongdan = path;
+                ha.duongdan_thumb = path;
+                sp.ds_hinhanh.Add(ha);
+                file_ok = true;
+            }
+
+            if (file_ok)
+            {
+                LoadDTGV_HinhAnh();
+                MessageBox.Show("Thêm thành công.");
+                IsChange = true;
+            }
+            
         }
 
         private void btDatLamAnhMacDinh_Click(object sender, EventArgs e)
@@ -208,7 +225,6 @@ namespace Winform.GUI
         {
             if (btThemChiTietSP.Enabled)
             {
-                if (cbMauSac.Items.Count == 0) return;
                 SanPham_ChiTiet spct = ThongTinFormSanPhamChiTiet;
                 if (spct == null || spct.mausac == null)
                 {
@@ -288,7 +304,7 @@ namespace Winform.GUI
         {
             try
             {
-                if (dtgvChiTietSanPham.CurrentCell != null)
+                if (dtgvChiTietSanPham.SelectedRows.Count > 0)
                 {
                     SanPham_ChiTiet spct = (SanPham_ChiTiet)dtgvChiTietSanPham.SelectedRows[0].DataBoundItem;
                     DialogResult dialogResult = MessageBox.Show("Xoá sản phẩm có màu " + spct.mausac.giatri + " chứ ?", "Xoá", MessageBoxButtons.YesNo);

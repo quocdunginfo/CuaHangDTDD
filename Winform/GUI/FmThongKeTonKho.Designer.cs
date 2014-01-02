@@ -44,18 +44,19 @@
             this.btThongKe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckbThu6 = new System.Windows.Forms.CheckBox();
-            this.ckbThu3 = new System.Windows.Forms.CheckBox();
-            this.ckbThu7 = new System.Windows.Forms.CheckBox();
             this.ckbThu4 = new System.Windows.Forms.CheckBox();
             this.ckbChuNhat = new System.Windows.Forms.CheckBox();
+            this.ckbThu7 = new System.Windows.Forms.CheckBox();
+            this.ckbThu3 = new System.Windows.Forms.CheckBox();
             this.ckbThu5 = new System.Windows.Forms.CheckBox();
-            this.ckbThu2 = new System.Windows.Forms.CheckBox();
             this.dtpkTGDen = new System.Windows.Forms.DateTimePicker();
+            this.ckbThu2 = new System.Windows.Forms.CheckBox();
             this.dtpkTGTu = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvKetQua)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -84,7 +85,7 @@
             this.dtgvSanPham.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvSanPham.Size = new System.Drawing.Size(537, 379);
             this.dtgvSanPham.TabIndex = 7;
-            this.dtgvSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellContentClick);
+            this.dtgvSanPham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSanPham_CellClick);
             // 
             // id
             // 
@@ -119,7 +120,7 @@
             // 
             // Column4
             // 
-            this.Column4.DataPropertyName = "anhmacdinh_thumb_spct";
+            this.Column4.DataPropertyName = "anhmacdinh_spct";
             this.Column4.HeaderText = "Hình Ảnh";
             this.Column4.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Column4.Name = "Column4";
@@ -229,30 +230,6 @@
             this.ckbThu6.Text = "Thứ 6";
             this.ckbThu6.UseVisualStyleBackColor = true;
             // 
-            // ckbThu3
-            // 
-            this.ckbThu3.AutoSize = true;
-            this.ckbThu3.Checked = true;
-            this.ckbThu3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbThu3.Location = new System.Drawing.Point(239, 24);
-            this.ckbThu3.Name = "ckbThu3";
-            this.ckbThu3.Size = new System.Drawing.Size(54, 17);
-            this.ckbThu3.TabIndex = 20;
-            this.ckbThu3.Text = "Thứ 3";
-            this.ckbThu3.UseVisualStyleBackColor = true;
-            // 
-            // ckbThu7
-            // 
-            this.ckbThu7.AutoSize = true;
-            this.ckbThu7.Checked = true;
-            this.ckbThu7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbThu7.Location = new System.Drawing.Point(239, 50);
-            this.ckbThu7.Name = "ckbThu7";
-            this.ckbThu7.Size = new System.Drawing.Size(54, 17);
-            this.ckbThu7.TabIndex = 19;
-            this.ckbThu7.Text = "Thứ 7";
-            this.ckbThu7.UseVisualStyleBackColor = true;
-            // 
             // ckbThu4
             // 
             this.ckbThu4.AutoSize = true;
@@ -277,6 +254,30 @@
             this.ckbChuNhat.Text = "Chủ Nhật";
             this.ckbChuNhat.UseVisualStyleBackColor = true;
             // 
+            // ckbThu7
+            // 
+            this.ckbThu7.AutoSize = true;
+            this.ckbThu7.Checked = true;
+            this.ckbThu7.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbThu7.Location = new System.Drawing.Point(239, 50);
+            this.ckbThu7.Name = "ckbThu7";
+            this.ckbThu7.Size = new System.Drawing.Size(54, 17);
+            this.ckbThu7.TabIndex = 19;
+            this.ckbThu7.Text = "Thứ 7";
+            this.ckbThu7.UseVisualStyleBackColor = true;
+            // 
+            // ckbThu3
+            // 
+            this.ckbThu3.AutoSize = true;
+            this.ckbThu3.Checked = true;
+            this.ckbThu3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbThu3.Location = new System.Drawing.Point(239, 24);
+            this.ckbThu3.Name = "ckbThu3";
+            this.ckbThu3.Size = new System.Drawing.Size(54, 17);
+            this.ckbThu3.TabIndex = 20;
+            this.ckbThu3.Text = "Thứ 3";
+            this.ckbThu3.UseVisualStyleBackColor = true;
+            // 
             // ckbThu5
             // 
             this.ckbThu5.AutoSize = true;
@@ -289,6 +290,15 @@
             this.ckbThu5.Text = "Thứ 5";
             this.ckbThu5.UseVisualStyleBackColor = true;
             // 
+            // dtpkTGDen
+            // 
+            this.dtpkTGDen.CustomFormat = "dd/MM/yyyy";
+            this.dtpkTGDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpkTGDen.Location = new System.Drawing.Point(48, 45);
+            this.dtpkTGDen.Name = "dtpkTGDen";
+            this.dtpkTGDen.Size = new System.Drawing.Size(100, 20);
+            this.dtpkTGDen.TabIndex = 14;
+            // 
             // ckbThu2
             // 
             this.ckbThu2.AutoSize = true;
@@ -300,15 +310,6 @@
             this.ckbThu2.TabIndex = 15;
             this.ckbThu2.Text = "Thứ 2";
             this.ckbThu2.UseVisualStyleBackColor = true;
-            // 
-            // dtpkTGDen
-            // 
-            this.dtpkTGDen.CustomFormat = "dd/MM/yyyy";
-            this.dtpkTGDen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpkTGDen.Location = new System.Drawing.Point(48, 45);
-            this.dtpkTGDen.Name = "dtpkTGDen";
-            this.dtpkTGDen.Size = new System.Drawing.Size(100, 20);
-            this.dtpkTGDen.TabIndex = 14;
             // 
             // dtpkTGTu
             // 
@@ -357,11 +358,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Kết quả";
             // 
+            // btThoat
+            // 
+            this.btThoat.Location = new System.Drawing.Point(1024, 494);
+            this.btThoat.Name = "btThoat";
+            this.btThoat.Size = new System.Drawing.Size(113, 44);
+            this.btThoat.TabIndex = 13;
+            this.btThoat.Text = "Thoát";
+            this.btThoat.UseVisualStyleBackColor = true;
+            this.btThoat.Click += new System.EventHandler(this.btThoat_Click);
+            // 
             // FmThongKeTonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1152, 503);
+            this.ClientSize = new System.Drawing.Size(1152, 547);
+            this.Controls.Add(this.btThoat);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -397,16 +409,17 @@
         private System.Windows.Forms.DateTimePicker dtpkTGDen;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.Button btThoat;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewImageColumn Column4;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
     }
 }

@@ -91,6 +91,11 @@ namespace Winform.GUI
 
         private void btInBaoCao_Click(object sender, EventArgs e)
         {
+            if (ds_chitiet_donhang.Count == 0)
+            {
+                MessageBox.Show("Không có thông tin để xuất báo cáo.");
+                return;
+            }
             FmInBaoCao fm = new FmInBaoCao(ds_chitiet_donhang,TextLibrary.ToCommaStringNumber(tongcong));
             fm.ShowDialog();
         }

@@ -55,22 +55,16 @@ namespace Winform.GUI
             DialogResult dialogResult = MessageBox.Show(hoi, "Xoá", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                dh.set_status();
-                try
+                dh._set_context(DHCtr._db);
+                if (dh.set_status())
                 {
-                    if (dh.update())
-                    {
-                        MessageBox.Show("Đổi trạng thái thành công.");
-                        dtgvDSDonHang.Refresh();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Đổi thất bại.");
-                        dh.set_status();
-                    } 
+                    MessageBox.Show("Đổi trạng thái thành công.");
+                    dtgvDSDonHang.Refresh();
                 }
-                catch (Exception)
-                { MessageBox.Show("Lỗi khi lưu lại."); dh.set_status(); }
+                else
+                {
+                    MessageBox.Show("Đổi thất bại.");
+                } 
             }
         }
 
@@ -86,6 +80,7 @@ namespace Winform.GUI
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xoá đơn hàng có id  " + dh.id + " chứ ?", "Xoá", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                dh._set_context(DHCtr._db);
                 if (dh.delete())
                 {
                     MessageBox.Show("Xoá thành công.");

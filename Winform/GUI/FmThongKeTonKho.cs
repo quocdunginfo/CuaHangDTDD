@@ -26,7 +26,7 @@ namespace Winform.GUI
         void LoadDTGV_SanPham()
         {
             foreach (SanPham_ChiTiet spct in SPCTCtr.timkiem())
-                dtgvSanPham.Rows.Add(spct.id, spct.sanpham.masp, spct.sanpham.ten, spct.mausac.giatri, spct.sanpham.anhmacdinh_thumb, false);   
+                dtgvSanPham.Rows.Add(spct.id, spct.sanpham.masp, spct.sanpham.ten, spct.mausac.giatri, spct.sanpham.anhmacdinh, false);   
         }
 
         private void btThongKe_Click(object sender, EventArgs e)
@@ -41,6 +41,11 @@ namespace Winform.GUI
         void LoadDTGV_KetQua(List<SanPham_ChiTiet> dssp, List<DateTime> dsngay, List<int> dstonkho)
         {
             if(dtgvKetQua.Rows.Count > 0) dtgvKetQua.Rows.Clear();
+            if (dstonkho.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy kết quả.");
+                return;
+            }
             int i = 0;
             foreach(SanPham_ChiTiet spct in dssp)
                 foreach (DateTime dt in dsngay)
@@ -99,7 +104,12 @@ namespace Winform.GUI
             return list;
         }
 
-        private void dtgvSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dtgvSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             bool b = (bool)dtgvSanPham.SelectedRows[0].Cells["chon"].Value;
             dtgvSanPham.SelectedRows[0].Cells["chon"].Value = !b;

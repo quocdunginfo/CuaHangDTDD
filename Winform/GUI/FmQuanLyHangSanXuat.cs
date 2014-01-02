@@ -85,6 +85,7 @@ namespace Winform.GUI
             DialogResult dr = MessageBox.Show("Bạn có chắc là muốn xoá Hãng SX  " + hsx.ten + " chứ ?", "Xoá", MessageBoxButtons.YesNo);
             if (dr == System.Windows.Forms.DialogResult.Yes)
             {
+                hsx._set_context(HSXCtr._db);
                 if (hsx.delete())
                 {
                     MessageBox.Show("Xoá thành công.");
