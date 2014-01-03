@@ -188,10 +188,18 @@
                             </div>
                             <div class="clear"></div>
                             
-                            <div class="description" style="display:none">
-                                <div class="desc">
+                            <div class="description" style="display: @if(sanpham.ds_hinhanh.Count<=0) {<text>none</text>} else {<text>block</text>}">
+                                <div class="desc browseProductImage Fly" style="padding:5px">
+                                    @foreach(var item in sanpham.ds_hinhanh)
+                                    {
+                                    <a href="@item._get_full_duongdan()" title="dolor" rel="prettyPhoto" style="float:left; margin-left:30px">
+                                        <img src="@item._get_full_duongdan_thumb()" style="max-width:70px; max-height:70px; width:auto; height:auto;" alt="dolor" border="0"><br>
+                                    </a>
+                                    }
                                     
+                                    <div style="clear:both"></div>
                                 </div>
+                                
                             </div>
 
                             <div class="ask_seller nobutton" style="background: none;">
