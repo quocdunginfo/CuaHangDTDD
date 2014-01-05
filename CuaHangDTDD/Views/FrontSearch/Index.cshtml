@@ -126,19 +126,19 @@
                                 <div class="browse_1" style="display: block;">
                                     <div class="bottom_separator">
                                         <div class="wrapper2">
-                                            <div class="browseProductImageContainer">
+                                            <div class="browseProductImageContainer" style="text-align:center;padding: 5px 0 8px 25px;">
                                                 <!-- prettyphoto href = hình gốc-->
                                                 <a rel="prettyPhoto" href="@item._get_hinhanh_macdinh()._get_full_duongdan()" target="_blank" title="@item.ten">
                                                     <!-- prettyphoto src = hình thumb-->
                                                     <img src="@item._get_hinhanh_macdinh()._get_full_duongdan_thumb()" style="max-height:160px; max-width:110px; width:auto; height:auto;" class="browseProductImage" title="@item.ten" alt="@item.ten" border="0">
                                                 </a>
                                             </div>
-                                            <div class="floatElement">
+                                            <div class="floatElement" style="padding: 38px 5px 0 15px;">
                                                 <h2 class="browseProductTitle">
                                                     <a class="product_name" title="@item.ten" href="@link_to_this_product">@item.ten</a>
                                                 </h2>
                                                 <div class="browseProductDescription">
-                                                    @item.mota
+                                                    @item._get_mota_lite(150)
                                                 </div>
                                                 <div class="browseRatingContainer">
                                                     &nbsp;
