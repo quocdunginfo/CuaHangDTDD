@@ -524,6 +524,19 @@ namespace BaseClass.Models
         {
             return _ctr.add(this);
         }
+        //kiểm tra còn hàng có thể đặt
+        public Boolean is_instock()
+        {
+            if (this.ds_sanpham_chitiet.Count <= 0) return false;
+            foreach(var item in this.ds_sanpham_chitiet)
+            {
+                if (item.tonkho > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     
     public class HangSX

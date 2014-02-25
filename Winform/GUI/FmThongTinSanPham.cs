@@ -12,6 +12,7 @@ using BaseClass.Models;
 using BaseClass._Library;
 using System.Data.Entity.Infrastructure;
 using System.Data.Objects;
+using System.Threading;
 
 namespace Winform.GUI
 {
@@ -338,6 +339,10 @@ namespace Winform.GUI
                     {
                         if (ha.source_picture_from_web) continue;
                         HinhAnh haa = ha._upload_to_host_winform_use_only(ha.duongdan);
+                        //phải delay để hình upload thành công KHÔNG gây lỗi trùng tên hình ????????
+                        //vấn đề chưa hiểu rõ, nhưng nếu break point những chỗ này để hoãn thời gian thì hình chạy đúng
+                        Thread.Sleep(1000);
+
                         ha.duongdan = haa.duongdan;
                         ha.duongdan_thumb = haa.duongdan_thumb;
                         ha.source_picture_from_web = true;

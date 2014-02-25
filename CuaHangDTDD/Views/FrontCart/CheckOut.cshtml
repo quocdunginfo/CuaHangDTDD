@@ -28,11 +28,12 @@
 
                                     </div>
                                     <div class="formField" id="email_input">
-                                        <input type="text" name="ten" size="30" value="@giohang.kh_ten" class="inputbox" maxlength="100">
+                                        <input type="text" name="ten" size="30" value="@giohang.kh_ten" class="inputbox" maxlength="500">
                                         <br>
                                     </div>
                                     <br style="clear: both;">
-                                    <input type="hidden" name="register_account" value="1"><div id="username_div" class="formLabel ">
+                                    <input type="hidden" name="register_account" value="1">
+                                    <div id="username_div" class="formLabel ">
                                         <label for="username_field">Địa chỉ:</label><strong>* 
 
                                             @if (state.Contains("kh_diachi_fail"))
@@ -42,7 +43,7 @@
                                         </strong>
                                     </div>
                                     <div class="formField">
-                                        <input type="text" name="diachi" size="30" value="@giohang.kh_diachi" class="inputbox" maxlength="25">
+                                        <input type="text" name="diachi" size="30" value="@giohang.kh_diachi" class="inputbox" maxlength="500">
                                         <br>
                                     </div>
                                     <br style="clear: both;">

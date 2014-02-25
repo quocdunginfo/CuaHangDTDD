@@ -104,7 +104,7 @@
             this.btChinhDiaChiWeb.Name = "btChinhDiaChiWeb";
             this.btChinhDiaChiWeb.Size = new System.Drawing.Size(160, 46);
             this.btChinhDiaChiWeb.TabIndex = 6;
-            this.btChinhDiaChiWeb.Text = "Chỉnh Địa Chỉ Trang Web";
+            this.btChinhDiaChiWeb.Text = "Cấu hình địa chỉ Web để upload hình ảnh";
             this.btChinhDiaChiWeb.UseVisualStyleBackColor = true;
             this.btChinhDiaChiWeb.Click += new System.EventHandler(this.btChinhDiaChiWeb_Click);
             // 
@@ -133,7 +133,7 @@
             this.Controls.Add(this.btQuanLySanPham);
             this.Name = "FmTrangChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Trang Chủ";
+            this.Text = "Main Form";
             this.ResumeLayout(false);
 
         }

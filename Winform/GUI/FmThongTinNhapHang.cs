@@ -135,7 +135,12 @@ namespace Winform.GUI
             NhapHang infoform = ThongTinFormNhapHang;
             if (infoform == null) return;
             nh.change(infoform);
+            if (nh.ds_chitiet_nhaphang.Count <= 0)
+            {
+                MessageBox.Show("Không thể lưu phiếu nhập hàng rỗng!");
 
+                return;
+            }
             try
             {
                 nh.update_tonkho();

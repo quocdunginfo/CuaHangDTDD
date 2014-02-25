@@ -1,0 +1,35 @@
+﻿-Nhóm 17:
++3110410019 Nguyễn Quốc Dũng
++3110410003 Nguyễn Tuấn Anh
++3110410156 Đặng Phước Toàn
+
+-Yêu cầu hệ thống:
++ Windows XP hoặc mới hơn
++ .NET Framework >= 4.5
++ SQL Server >= 2008
++ IIS >= 7
++ Visual Studio >= 2012
+
+*Cấu hình cần thiết:
+-CSDL:
++ Database name: CuaHangDTDD
++ Authentication type: Windows Authentication
++ Import data: file "script.sql" nằm tại thư mục root của Solution
+***Phụ chú: nếu chưa có CSDL CuaHangDTDD trước hoặc muốn tạo CSDL rỗng
+thì có thể build và chạy Web lần đầu từ Visual để tạo tự động cấu trúc bảng,...
+(tính năng Database Code First)
+
+-Web:
++ Nếu muốn publish Website để chạy trên IIS thật thì sau khi import CSDL phải copy hình ảnh
+từ thư mục
+	"[Solution root]\CuaHangDTDD\_Upload\HinhAnh"
+vào thư mục
+	"[Website root]\_Upload\HinhAnh
+	
+-WinForm (trình quản lý):
++Cấu hình địa chỉ Website:
+WinForm -> MainForm -> Cấu hình địa chỉ Web để upload hình ảnh
+=> Nhập đường dẫn Home URL của web vd: http://localhost:12430 (không có ký tự / cuối)
+(Mặc định Solution đã được cấu hình để chạy từ http://localhost:12430)
+***Chú ý: WinForm chỉ hoạt động khi Web đã chạy trước đó
+(do upload/get hình ảnh phải thông qua cổng HTTP do Web cung cấp)

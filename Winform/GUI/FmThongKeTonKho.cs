@@ -26,7 +26,7 @@ namespace Winform.GUI
         void LoadDTGV_SanPham()
         {
             foreach (SanPham_ChiTiet spct in SPCTCtr.timkiem())
-                dtgvSanPham.Rows.Add(spct.id, spct.sanpham.masp, spct.sanpham.ten, spct.mausac.giatri, spct.sanpham.anhmacdinh, false);   
+                dtgvSanPham.Rows.Add(spct.id, spct.sanpham.masp, spct.sanpham.ten, spct.mausac.giatri, spct.sanpham.anhmacdinh, true);   
         }
 
         private void btThongKe_Click(object sender, EventArgs e)

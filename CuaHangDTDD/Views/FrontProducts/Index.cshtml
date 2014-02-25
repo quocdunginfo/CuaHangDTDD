@@ -104,7 +104,14 @@
 
                                                 </div>
                                                 <div class="browseAddToCartContainer">
+                                                    @if(item.is_instock())
+                                                    {
                                                     <button class="addtocart_button" type="button" value="Mua hàng" onclick="document.location='@link_to_this_product'">Mua hàng</button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button class="addtocart_button" type="button" value="Mua hàng" onclick="return false">Tạm hết</button>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

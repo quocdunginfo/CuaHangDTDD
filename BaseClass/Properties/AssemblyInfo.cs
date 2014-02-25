@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BaseClass")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("BaseClass CuaHangDTDD")]
+[assembly: AssemblyDescription("Module chung cho Web và Winform")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SGU - Dũng - Tuấn Anh - Phước Toàn")]
 [assembly: AssemblyProduct("BaseClass")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]

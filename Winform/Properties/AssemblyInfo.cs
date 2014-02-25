@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Winform")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Winform CuaHangDTDD")]
+[assembly: AssemblyDescription("Đồ án XDPMTMHPL Thầy Thanh 2013")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SGU-Nguyễn Quốc Dũng - Tuấn Anh - Phước Toàn")]
 [assembly: AssemblyProduct("Winform")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
